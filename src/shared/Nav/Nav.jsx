@@ -4,11 +4,12 @@ import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 //  import ReactTooltip from 'react-tooltip';
 import icon from "../../assets/medicine.png";
+import useAuth from "../../Hook/useAuth";
 
 const Nav = () => {
-//   const { logOut, user } = useAuth();
+  //  const {  user } = useAuth();
 
-  // console.log(user);
+  //  console.log(user);
 
 
 
@@ -27,11 +28,7 @@ const Nav = () => {
         </li>
       {/* )} */}
 
-      {/* {user && ( */}
-        {/* <li className="font-semibold">
-          <NavLink to="/"> </NavLink>
-        </li> */}
-      {/* )} */}
+     
    
 
     </>
@@ -111,7 +108,7 @@ const Nav = () => {
               <li>
                 <button
                   className="btn text-white bg-red-500 w-full"
-                //   onClick={logOut}
+                  //  onClick={logOut}
                 >
                   LogOut
                 </button>
