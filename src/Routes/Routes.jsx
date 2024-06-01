@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home/Home";
 import Error from "../Error/Error";
 import CategoryCard from "../pages/Home/Home/CategoryCard/CategoryCard";
 import CategoryDetails from "../pages/Home/Home/CategoryCard/CategoryDetails";
+import Shop from "../components/Shop/Shop";
 // import Login from "../pages/Login/Login"
 
  export const router = createBrowserRouter([
@@ -18,14 +19,7 @@ import CategoryDetails from "../pages/Home/Home/CategoryCard/CategoryDetails";
             path: '/',
             element: <Home></Home>
         },
-        {
-           path: '/categoryCard',
-           element: <CategoryCard></CategoryCard>
-        },
-        {
-          path: '/categoryDetails/:id',
-          element: <CategoryDetails></CategoryDetails>
-        },
+      
         // {
         //   path: "/login",
         //   element: <Login></Login>,
@@ -34,6 +28,18 @@ import CategoryDetails from "../pages/Home/Home/CategoryCard/CategoryDetails";
         //   path: "/signUp",
         //   element: <SignUp></SignUp>,
         // },
+        {
+          path: '/categoryCard',
+          element: <CategoryCard></CategoryCard>
+       },
+       {
+         path: '/categoryDetails/:category',
+         element: <CategoryDetails></CategoryDetails>,
+       },
+       {
+        path:'/shop',
+        element: <Shop></Shop>
+       },
       ]
     },
   ]);

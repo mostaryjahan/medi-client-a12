@@ -74,20 +74,21 @@
         "item_mass_unit": "3mg",
         "discount_percentage": 45
     },
+ 
     {
         "id": 6,
-        "image": "https://example.com/images/loratadine6.jpg",
-        "name": "Loratadine",
-        "generic_name": "Loratadine",
-        "company_name": "PharmaCorp",
-        "price": 60.83,
-        "description": "General wellness supplement.",
-        "category": "Capsule",
-        "price_per_unit": 8.74,
-        "number_of_medicines_in_category": 383,
+        "image": "https://example.com/images/lisinopril17.jpg",
+        "name": "Lisinopril",
+        "generic_name": "Lisinopril",
+        "company_name": "HealthMed",
+        "price": 13.19,
+        "description": "Reduces fever and inflammation.",
+        "category": "Syrup",
+        "price_per_unit": 4.88,
+        "number_of_medicines_in_category": 168,
         "discount_medicine": "discount",
-        "item_mass_unit": "5.5mg",
-        "discount_percentage": 32
+        "item_mass_unit": "2.5ml",
+        "discount_percentage": 14
     },
     {
         "id": 7,
@@ -241,18 +242,18 @@
     },
     {
         "id": 17,
-        "image": "https://example.com/images/lisinopril17.jpg",
-        "name": "Lisinopril",
-        "generic_name": "Lisinopril",
-        "company_name": "HealthMed",
-        "price": 13.19,
-        "description": "Reduces fever and inflammation.",
-        "category": "Syrup",
-        "price_per_unit": 4.88,
-        "number_of_medicines_in_category": 168,
+        "image": "https://example.com/images/loratadine6.jpg",
+        "name": "Loratadine",
+        "generic_name": "Loratadine",
+        "company_name": "PharmaCorp",
+        "price": 60.83,
+        "description": "General wellness supplement.",
+        "category": "Capsule",
+        "price_per_unit": 8.74,
+        "number_of_medicines_in_category": 383,
         "discount_medicine": "discount",
-        "item_mass_unit": "2.5ml",
-        "discount_percentage": 14
+        "item_mass_unit": "5.5mg",
+        "discount_percentage": 32
     },
     {
         "id": 18,

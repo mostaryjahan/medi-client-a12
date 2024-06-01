@@ -22,6 +22,9 @@ const Nav = () => {
       <li className="font-semibold">
         <NavLink to="/shop">Shop</NavLink>
       </li>
+      <li className="font-semibold">
+        <NavLink to="/categoryDetails/capsule">Category Details</NavLink>
+      </li>
       {/* {user && ( */}
         <li className="font-semibold">
           <NavLink to="/cart">Cart icon</NavLink>
