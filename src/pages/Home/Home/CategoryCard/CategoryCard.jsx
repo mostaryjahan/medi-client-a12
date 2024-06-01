@@ -5,7 +5,6 @@ import useCategory from "../../../../Hook/useCategory";
 const CategoryCard = () => {
   const [categories] = useCategory();
   //   const [loading, setLoading] = useState(true);
-  // console.log(category);
 
  
 

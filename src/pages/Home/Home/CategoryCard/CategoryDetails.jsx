@@ -25,6 +25,7 @@ const CategoryDetails = () => {
       }, [category]);
 
       const filteredMedicines = medicines.filter(medicine => medicine.category === category);
+      
       // console.log("Filtered medicines:", filteredMedicines); 
 
 

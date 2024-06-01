@@ -1,6 +1,10 @@
 
 const FilterCategory = ({ items, title }) => {
-  console.log(items, "items");
+  // console.log(items, "items");
+
+  if (items.length === 0) {
+    return null;
+  }
 
   return (
     <div className="pt-8">
@@ -20,8 +24,10 @@ const FilterCategory = ({ items, title }) => {
               <th></th>
             </tr>
           </thead>
+          
           <tbody>
-          {items.map((item, index) => (
+           
+          { items.map((item, index) => (
 
               <tr key={item.id}>
                 <th>{index + 1}</th>
@@ -30,6 +36,7 @@ const FilterCategory = ({ items, title }) => {
                 <td></td>
               </tr>
              ))}
+            
           </tbody> 
 
         </table>
