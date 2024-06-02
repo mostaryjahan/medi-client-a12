@@ -70,7 +70,7 @@ const FilterCategory = ({ items, title }) => {
       {selectedItem && (
       <dialog ref={modalRef} id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          <div className="flex justify-between">
+          <div className="md:flex justify-between">
             <div>
                 <img src={selectedItem.image} alt="image" />
             </div>

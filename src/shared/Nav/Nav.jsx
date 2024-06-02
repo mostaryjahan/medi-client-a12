@@ -69,7 +69,7 @@ const Nav = () => {
               {navLinks}
             </ul>
           </div>
-          <a className=" font-bold lg:text-2xl  sm:flex items-center justify-center text-purple-500 bg-clip-text">
+          <a className=" font-bold lg:text-2xl  sm:flex items-center justify-center text-purple-800 bg-clip-text">
             <span>
               <img src={icon} alt="" className="w-10 h-10 hidden lg:block " />
             </span>
