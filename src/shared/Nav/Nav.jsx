@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 //  import ReactTooltip from 'react-tooltip';
 import icon from "../../assets/medicine.png";
 import useAuth from "../../Hook/useAuth";
+import { FaCartPlus } from "react-icons/fa6";
 
 const Nav = () => {
   //  const {  user } = useAuth();
@@ -23,11 +24,11 @@ const Nav = () => {
         <NavLink to="/shop">Shop</NavLink>
       </li>
       <li className="font-semibold">
-        <NavLink to="/categoryDetails/capsule">Category Details</NavLink>
+        <NavLink to="/categoryDetails/Capsule">Category Details</NavLink>
       </li>
       {/* {user && ( */}
         <li className="font-semibold">
-          <NavLink to="/cart">Cart icon</NavLink>
+          <NavLink to="/cart"><FaCartPlus className="w-6 h-8 text-red-500"/></NavLink>
         </li>
       {/* )} */}
 

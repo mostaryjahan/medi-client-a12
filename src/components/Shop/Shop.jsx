@@ -3,7 +3,7 @@ import { IoEye } from "react-icons/io5";
 import { useEffect, useRef, useState } from "react";
 
 const Shop = () => {
-  const [category] = useCategory();
+  const [categories] = useCategory();
 
   const [selectedItem, setSelectedItem] = useState(null);
   //  console.log(selectedItem);
@@ -23,7 +23,7 @@ const Shop = () => {
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = category.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = categories.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -117,7 +117,7 @@ const Shop = () => {
       {/* Pagination */}
       <div className="flex justify-center my-4">
         {Array.from(
-          { length: Math.ceil(category.length / itemsPerPage) },
+          { length: Math.ceil(categories.length / itemsPerPage) },
           (_, i) => (
             <button
               key={i + 1}

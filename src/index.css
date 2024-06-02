@@ -14,21 +14,18 @@
       .swiper-wrapper {
         margin: 10px;
       }
-  
-      /* .swiper-slide {
-          text-align: center;
-          font-size: 18px;
-          background: #fff;
-                display: flex;
-          justify-content: center;
-          align-items: center;
-        } */
-  
       
         
         @media (max-width: 640px) {
           .carousel .slider-wrapper {
               height: 180px;
           }
-       
+          .mySwiper .swiper-slide {
+            width: calc((100% - 60px) / 2); 
+            height: 150px;/* 2 slides */
+          }
+        
+          .swiper-pagination {
+            margin-bottom: -8px;
+          }
           }
