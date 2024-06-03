@@ -106,7 +106,7 @@ const Nav = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-1  shadow bg-base-100 rounded-box w-40 z-[1]"
             >
-              <li>{user?.displayName}</li>
+              {/* <li>{user?.displayName}</li> */}
               <li className=" mb-2">
                 <NavLink to="/updateProfile">Update Profile</NavLink>
               </li>

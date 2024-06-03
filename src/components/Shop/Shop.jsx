@@ -83,6 +83,7 @@ const Shop = () => {
           <thead className="bg-purple-700 text-white">
             <tr>
               <th>#</th>
+              <th>Image</th>
               <th>Name</th>
               <th>Company</th>
               <th>Price</th>
@@ -94,6 +95,7 @@ const Shop = () => {
             {filteredItems.map((shop, index) => (
               <tr className="font-bold" key={shop.id}>
                 <th>{index + 1}</th>
+                <th><img src={shop.image} className="w-12 h-12 rounded" alt="medicine" /></th>
                 <td>{shop.name}</td>
                 <th>{shop.company_name}</th>
                 <td className="">${shop.price}</td>
@@ -137,7 +139,7 @@ const Shop = () => {
           className="modal modal-bottom sm:modal-middle"
         >
           <div className="modal-box">
-            <div className="md:flex justify-between">
+            <div className="">
               <div>
                 <img src={selectedItem.image} alt="image" />
               </div>
@@ -188,7 +190,7 @@ const Shop = () => {
 
             <div className="modal-action">
               <form method="dialog">
-                <button className="btn">Close</button>
+                <button className="btn bg-red-400">Close</button>
               </form>
             </div>
           </div>

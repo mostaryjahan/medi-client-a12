@@ -36,6 +36,7 @@ const FilterCategory = ({ items, title }) => {
           <thead className="bg-purple-800 text-white">
             <tr>
               <th></th>
+              <th>Image</th>
               <th>Name</th>
               <th>Category</th>
               <th>See Details</th>
@@ -47,6 +48,7 @@ const FilterCategory = ({ items, title }) => {
             {items.map((item, index) => (
               <tr key={item.id}>
                 <th>{index + 1}</th>
+                <th><img className="w-10 h-10 rounded" src={item.image} alt="" /></th>
                 <td>{item.name}</td>
                 <td>{item.category}</td>
                 <td>
@@ -70,7 +72,7 @@ const FilterCategory = ({ items, title }) => {
       {selectedItem && (
       <dialog ref={modalRef} id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          <div className="md:flex justify-between">
+          <div className="">
             <div>
                 <img src={selectedItem.image} alt="image" />
             </div>
@@ -111,7 +113,7 @@ const FilterCategory = ({ items, title }) => {
          
           <div className="modal-action">
             <form method="dialog">
-              <button className="btn">Close</button>
+              <button className="btn bg-red-400">Close</button>
             </form>
           </div>
         </div>

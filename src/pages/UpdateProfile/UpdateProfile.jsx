@@ -58,7 +58,7 @@ const UPdateProfile = () => {
         console.error("Error updating profile:", error);
       });
   };
-console.log(user)
+// console.log(user)
 
   const handleNameChange = (e) => {
     e.preventDefault();
