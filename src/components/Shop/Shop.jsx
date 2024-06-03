@@ -1,14 +1,85 @@
 import useCategory from "../../Hook/useCategory";
 import { IoEye } from "react-icons/io5";
 import { useEffect, useRef, useState } from "react";
+import useAuth from "../../Hook/useAuth";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
+// import useAxiosSecure from '../../Hook/useAxiosSecure'
+import useAxiosSecure from '../../Hook/useAxiosSecure'
 
 const Shop = () => {
   const [categories] = useCategory();
 
-  const handleAddToCart = (item) => {
-    console.log(item)
+  const {user} = useAuth();
+
+   const axiosSecure = useAxiosSecure()
+
+   const navigate = useNavigate();
+   const location = useLocation();
+
+  // const [, refetch] = useCart();
+ 
+
+  const handleAddToCart = (item) =>{
+    if(user && user.email){
+      // console.log(item, user.email)
+
+
+      //send data item to the database
+      const cartItem = {
+          menuId: item._id,
+          email: user.email,
+          name: item.name,
+          image: item.image,
+          price: item.price,
+          company: item.company_name,
+          price_per_unit: item.price_per_unit
+      }
+      console.log(cartItem);
+
+       axiosSecure.post('/carts', cartItem)
+      .then(res => {
+       console.log(res.data);
+       if(res.data.insertedId){
+        Swal.fire({
+          icon: "success",
+          title: `${item.name} Added Successfully`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+        //refetch cart to update the cart items count
+        // refetch();
+       }
+      })
+
+
+    }else{
+      Swal.fire({
+        title: "You are not logged In",
+        text: "Please login to add to the cart",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, login!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          navigate('/login'), {state: {from: location}}
+         
+        }
+      });
+    }
 
   }
+
+
+
+
+
+
+
 
   const [selectedItem, setSelectedItem] = useState(null);
   //  console.log(selectedItem);

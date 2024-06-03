@@ -2,11 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import icon from "../../assets/medicine.png";
 import useAuth from "../../Hook/useAuth";
 import { TiShoppingCart } from "react-icons/ti";
+import useCart from "../../Hook/useCart";
 
 const Nav = () => {
     const {  user , logOut} = useAuth();
 
   //  console.log(user);
+  const [cart] = useCart();
  
 
   const handleLogOut = () => {
@@ -40,7 +42,7 @@ const Nav = () => {
 
       <Link to="/dashboard/cart" > <li> <button className="btn bg-purple-800 border-none">
       <TiShoppingCart className="w-8 h-8 text-pink-400"/>
-            <div className="badge badge-secondary">+0</div>
+            <div className="badge badge-secondary">+{cart.length}</div>
           </button>
         </li>
       </Link>
