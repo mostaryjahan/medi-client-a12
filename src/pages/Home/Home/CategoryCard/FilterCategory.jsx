@@ -46,7 +46,7 @@ const FilterCategory = ({ items, title }) => {
 
           <tbody>
             {items.map((item, index) => (
-              <tr key={item.id}>
+              <tr key={item._id}>
                 <th>{index + 1}</th>
                 <th><img className="w-10 h-10 rounded" src={item.image} alt="" /></th>
                 <td>{item.name}</td>

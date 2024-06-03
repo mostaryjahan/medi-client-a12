@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import icon from "../../assets/medicine.png";
 import useAuth from "../../Hook/useAuth";
-import { FaCartPlus } from "react-icons/fa6";
+import { TiShoppingCart } from "react-icons/ti";
 
 const Nav = () => {
     const {  user , logOut} = useAuth();
@@ -22,21 +22,28 @@ const Nav = () => {
   const navLinks = (
     <>
       <li className="font-semibold " data-tip="Tooltip for Home">
-        <NavLink to="/">Home</NavLink>
+        <Link to="/">Home</Link>
       </li>
       <li className="font-semibold">
-        <NavLink to="/shop">Shop</NavLink>
+        <Link to="/shop">Shop</Link>
       </li>
       {user && (
       <li className="font-semibold">
-        <NavLink to="/categoryDetails/Capsule">Category Details</NavLink>
+        <Link to="/categoryDetails/Capsule">Category Details</Link>
       </li>
        )}
       {/* {user && ( */}
-        <li className="font-semibold">
-          <NavLink to="/cart"><FaCartPlus className="w-6 h-8 text-red-500"/></NavLink>
-        </li>
+        {/* <li className="font-semibold">
+          <Link to="/cart"><FaCartPlus className="w-6 h-8 text-red-500"/></Link>
+        </li> */}
       {/* )} */}
+
+      <Link to="/dashboard/cart" > <li> <button className="btn bg-purple-800 border-none">
+      <TiShoppingCart className="w-8 h-8 text-pink-400"/>
+            <div className="badge badge-secondary">+0</div>
+          </button>
+        </li>
+      </Link>
 
     </>
   );

@@ -17,7 +17,7 @@ const [medicines, setMedicines] = useState([]);
 
 
 useEffect(() => {
-  fetch("/category.json")
+  fetch("http://localhost:5000/category")
   .then((res) => res.json())
     .then((data) => setMedicines(data));
 }, [discount]);
@@ -43,7 +43,7 @@ const filteredMedicines = medicines.filter(medicine => medicine.discount_medicin
                     className="mySwiper"
                 >
                     {filteredMedicines.map((medicine) => (
-                        <SwiperSlide key={medicine.id} className="p-4 border rounded-lg">
+                        <SwiperSlide key={medicine._id} className="p-4 border rounded-lg">
                             <img src={medicine.image} alt={medicine.name} className="h-24 w-24 mx-auto"/>
                             <h2 className="md:block hidden md:text-xl font-bold mt-4 text-center">{medicine.name}</h2>
                            

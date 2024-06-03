@@ -1,6 +1,5 @@
 
 import { useParams } from "react-router-dom";
-import useCategory from "../../../../Hook/useCategory";
 import FilterCategory from "./FilterCategory";
 import { useEffect, useState } from "react";
 
@@ -11,15 +10,13 @@ const CategoryDetails = () => {
    
   //  console.log(category)
 
-    // const [selectedMedicine, setSelectedMedicine] = useState(null);
 
-      //  const [categories] = useCategory();
 
        const [medicines, setMedicines] = useState([]);
 
 
       useEffect(() => {
-        fetch("/category.json")
+        fetch("http://localhost:5000/category")
         .then((res) => res.json())
           .then((data) => setMedicines(data));
       }, [category]);
@@ -28,15 +25,6 @@ const CategoryDetails = () => {
       
       // console.log("Filtered medicines:", filteredMedicines); 
 
-
-  // const handleSelectMedicine = (medicine) => {
-  //   setSelectedMedicine(medicine);
-   
-  // };
-
-  // const handleCloseModal = () => {
-  //   setSelectedMedicine(null);
-  // };
 
   const capsule = filteredMedicines.filter(item => item.category === "Capsule");
   const injection = filteredMedicines.filter(item => item.category === "Injection");

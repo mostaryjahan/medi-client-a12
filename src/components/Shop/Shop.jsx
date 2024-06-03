@@ -5,6 +5,11 @@ import { useEffect, useRef, useState } from "react";
 const Shop = () => {
   const [categories] = useCategory();
 
+  const handleAddToCart = (item) => {
+    console.log(item)
+
+  }
+
   const [selectedItem, setSelectedItem] = useState(null);
   //  console.log(selectedItem);
   const modalRef = useRef(null);
@@ -93,7 +98,7 @@ const Shop = () => {
           </thead>
           <tbody>
             {filteredItems.map((shop, index) => (
-              <tr className="font-bold" key={shop.id}>
+              <tr className="font-bold" key={shop._id}>
                 <th>{index + 1}</th>
                 <th><img src={shop.image} className="w-12 h-12 rounded" alt="medicine" /></th>
                 <td>{shop.name}</td>
@@ -107,7 +112,9 @@ const Shop = () => {
                 </td>
 
                 <th>
-                  <button className="btn bg-purple-900 text-white">
+                  <button 
+                  onClick={() => handleAddToCart(shop)}
+                  className="btn bg-purple-900 text-white">
                     Select
                   </button>
                 </th>
@@ -116,6 +123,7 @@ const Shop = () => {
           </tbody>
         </table>
       </div>
+
       {/* Pagination */}
       <div className="flex justify-center my-4">
         {Array.from(
@@ -131,6 +139,8 @@ const Shop = () => {
           )
         )}
       </div>
+
+
       {/* Modal */}
       {selectedItem && (
         <dialog

@@ -12,7 +12,8 @@ import Shop from "../components/Shop/Shop";
 import Discount from "../pages/Home/Home/Discount/Discount";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
-// import Login from "../pages/Login/Login"
+
+
 
  export const router = createBrowserRouter([
     {

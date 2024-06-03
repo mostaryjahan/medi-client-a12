@@ -17,13 +17,13 @@ const CategoryCard = () => {
       <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mt-8">
         {categories.slice(0, 6).map((card) => (
             <Link to={`/categoryDetails/${card.category}`}
-            key={card.id}
-            className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-50text-gray-900"
+            key={card._id}
+            className=" p-6 rounded-md border-2 shadow-md dark:bg-gray-50text-gray-900"
           >
             <img
               src={card.image}
               alt={card.name}
-              className="object-cover object-center w-full rounded-md h-72 bg-gray-500"
+              className="object-cover object-center w-full rounded-md h-72 border-2 bg-yellow-50 border-gray-200"
             />
             <div className="mt-6 mb-2">
               <h2 className="text-xl font-semibold tracking-wide">
@@ -34,7 +34,7 @@ const CategoryCard = () => {
               </h2>
             </div>
             <p className="text-gray-800">
-              Quantity Medicines in this category: {card.number_of_medicines_in_category} pieces
+              Quantity: {card.number_of_medicines_in_category} pieces
             </p>
             </Link>
         ))}
