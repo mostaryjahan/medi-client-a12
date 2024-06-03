@@ -42,11 +42,22 @@ const AuthProvider = ({children}) => {
    }
 
    //update user profile
-   const updateUserProfile = (name, photo) =>{
+   const updateUserProfile = (name, photoURL) =>{
+    if (auth.currentUser) {
      return   updateProfile(auth.currentUser, {
             displayName: name,
-            photoURL: photo,
+            photoURL: photoURL,
         })
+        .then(() => {
+          setUser({
+              ...auth.currentUser,
+              displayName: name,
+              photoURL: photoURL
+          });
+      });
+}
+return Promise.reject('No user is signed in');
+
    }
 
 //observer
@@ -54,23 +65,23 @@ const AuthProvider = ({children}) => {
      const unSubscribe =   onAuthStateChanged(auth, currentUser =>{
           setUser(currentUser);
           console.log('current user', currentUser);
-          if(currentUser){
-          //get token
-          const userInfo = {email: currentUser.email}
-          axiosPublic.post('/jwt', userInfo)
-           .then(res => {
-            if(res.data.token){
-                 localStorage.setItem('access-token', res.data.token);
-                 setLoading(false);
+          // if(currentUser){
+        //  //get token
+          // const userInfo = {email: currentUser.email}
+          // axiosPublic.post('/jwt', userInfo)
+          //  .then(res => {
+          //   if(res.data.token){
+          //        localStorage.setItem('access-token', res.data.token);
+                //  setLoading(false);
 
-             }
-           })
-          }
-          else{
-            //remove token
-             localStorage.removeItem('remove access-token');
+          //    }
+          //  })
+          // }
+          // else{
+           // //remove token
+            //  localStorage.removeItem('remove access-token');
             setLoading(false)
-          }
+          // }
         });
         return () => {
             return unSubscribe();
@@ -82,6 +93,7 @@ const AuthProvider = ({children}) => {
 
     const authInfo ={
       user,
+      setUser,
       loading,
       createUser,
       signIn,

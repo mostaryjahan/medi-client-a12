@@ -1,17 +1,21 @@
 import { Link, NavLink } from "react-router-dom";
-// import useAuth from "../Hook/useAuth";
-// import { renderToString } from "react-dom/server";
-import { useEffect, useState } from "react";
-//  import ReactTooltip from 'react-tooltip';
 import icon from "../../assets/medicine.png";
 import useAuth from "../../Hook/useAuth";
 import { FaCartPlus } from "react-icons/fa6";
 
 const Nav = () => {
-  //  const {  user } = useAuth();
+    const {  user , logOut} = useAuth();
 
   //  console.log(user);
+ 
 
+  const handleLogOut = () => {
+      logOut()
+      .then(() => {})
+      .catch(error =>{
+        console.log(error)
+      })
+  }
 
 
 
@@ -23,17 +27,16 @@ const Nav = () => {
       <li className="font-semibold">
         <NavLink to="/shop">Shop</NavLink>
       </li>
+      {user && (
       <li className="font-semibold">
         <NavLink to="/categoryDetails/Capsule">Category Details</NavLink>
       </li>
+       )}
       {/* {user && ( */}
         <li className="font-semibold">
           <NavLink to="/cart"><FaCartPlus className="w-6 h-8 text-red-500"/></NavLink>
         </li>
       {/* )} */}
-
-     
-   
 
     </>
   );
@@ -65,7 +68,7 @@ const Nav = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 "
             >
               {navLinks}
             </ul>
@@ -82,7 +85,7 @@ const Nav = () => {
         </div>
 
         <div className="navbar-end">
-          {/* {user ? ( */}
+          {user ? (
              
             <div className="dropdown dropdown-end">
             <label
@@ -92,7 +95,7 @@ const Nav = () => {
               <div className="w-12 rounded-full">
                 <img
                   src={
-                    // user?.photoURL ||
+                     user?.photoURL ||
                     "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                   }
                   alt="User Avatar"
@@ -101,8 +104,9 @@ const Nav = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-1  shadow bg-base-100 rounded-box  -mr-16"
+              className="menu menu-sm dropdown-content mt-1  shadow bg-base-100 rounded-box w-40 z-[1]"
             >
+              <li>{user?.displayName}</li>
               <li className=" mb-2">
                 <NavLink to="/updateProfile">Update Profile</NavLink>
               </li>
@@ -112,7 +116,7 @@ const Nav = () => {
               <li>
                 <button
                   className="btn text-white bg-red-500 w-full"
-                  //  onClick={logOut}
+                    onClick={handleLogOut}
                 >
                   LogOut
                 </button>
@@ -120,7 +124,7 @@ const Nav = () => {
             </ul>
           </div>
 
-          {/* ) : ( */}
+          ) : (
     
 
             <div className="flex ">
@@ -129,13 +133,8 @@ const Nav = () => {
                   Join Us
                 </button>
               </Link>
-              {/* <Link to="/register">
-                <button className="btn bg-purple-500 text-white">
-                  Register
-                </button>
-              </Link> */}
             </div>
-          {/* )} */}
+          )}
         </div>
      
       </div>

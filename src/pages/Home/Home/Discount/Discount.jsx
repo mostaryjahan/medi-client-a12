@@ -24,7 +24,7 @@ useEffect(() => {
 
 const filteredMedicines = medicines.filter(medicine => medicine.discount_medicine === "discount");
 
-console.log(filteredMedicines)
+// console.log(filteredMedicines)
 
 
 
