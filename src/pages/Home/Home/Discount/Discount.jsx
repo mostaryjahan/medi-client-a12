@@ -31,6 +31,7 @@ const filteredMedicines = medicines.filter(medicine => medicine.discount_medicin
 
     return (
         <div>
+             
             <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold mt-8">Discount Section</h1>
           
             <div className="mt-8 mb-4">

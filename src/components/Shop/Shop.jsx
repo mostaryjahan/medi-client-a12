@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 // import useAxiosSecure from '../../Hook/useAxiosSecure'
 import useAxiosSecure from '../../Hook/useAxiosSecure'
+import { Helmet } from "react-helmet-async";
+import useCart from "../../Hook/useCart";
 
 const Shop = () => {
   const [categories] = useCategory();
@@ -17,7 +19,7 @@ const Shop = () => {
    const navigate = useNavigate();
    const location = useLocation();
 
-  // const [, refetch] = useCart();
+   const [, refetch] = useCart();
  
 
   const handleAddToCart = (item) =>{
@@ -28,7 +30,8 @@ const Shop = () => {
       //send data item to the database
       const cartItem = {
           menuId: item._id,
-          email: user.email,
+          user_email: user.email,
+          email: item.seller_email,
           name: item.name,
           image: item.image,
           price: item.price,
@@ -49,7 +52,7 @@ const Shop = () => {
         });
 
         //refetch cart to update the cart items count
-        // refetch();
+         refetch();
        }
       })
 
@@ -130,6 +133,9 @@ const Shop = () => {
 
   return (
     <div>
+       <Helmet>
+        <title>Medi corner | Shop</title>
+      </Helmet>
       <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold">
         Shop
       </h1>
@@ -265,6 +271,10 @@ const Shop = () => {
                 <p className="py-4">
                   <span className="font-bold">Discount Percentage: </span>
                   {selectedItem.discount_percentage} %
+                </p>
+                <p className="py-4">
+                  <span className="font-bold">Seller email: </span>
+                  {selectedItem?.seller_email ?? 'not found'}  
                 </p>
               </div>
             </div>

@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hook/useAuth';
  import Swal from 'sweetalert2';
 import Social from "../Social/Social"
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -12,7 +13,7 @@ const Login = () => {
     const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
-    console.log(location.state, 'login')
+    
 
   const handleLogin = e =>{
     e.preventDefault();
@@ -42,6 +43,9 @@ const Login = () => {
 
   return (
     <div>
+          <Helmet>
+        <title>Medi corner | logIn</title>
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col">
           <div className="text-center md:w-1/2 lg:text-left">

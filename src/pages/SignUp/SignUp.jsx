@@ -5,6 +5,7 @@ import useAuth from "../../Hook/useAuth";
  import Swal from "sweetalert2";
 // import useAxiosPublic from "../../hooks/useAxiosPublic";
  import Social from "../Social/Social";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
    const { createUser, updateUserProfile } = useAuth();
@@ -34,7 +35,7 @@ const SignUp = () => {
         reset();
            Swal.fire({
                 icon: "success",
-                title: "Your work has been saved",
+                title: "Sign Up successfully",
                 showConfirmButton: false,
                 timer: 1500,
               });
@@ -72,9 +73,9 @@ const SignUp = () => {
 
   return (
     <div>
-      {/* <Helmet>
+      <Helmet>
         <title>Medi corner | sign up</title>
-      </Helmet> */}
+      </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col">
           <div className="text-center ">

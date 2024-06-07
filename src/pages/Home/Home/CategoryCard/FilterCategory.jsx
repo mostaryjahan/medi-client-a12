@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../Hook/useAxiosSecure";
+import { useLocation, useNavigate } from "react-router-dom";
+import useCart from "../../../../Hook/useCart";
+import useAuth from "../../../../Hook/useAuth";
 
 const FilterCategory = ({ items, title }) => {
   // console.log(items, "items");
@@ -7,6 +13,70 @@ const FilterCategory = ({ items, title }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   // console.log(selectedItem);
   const modalRef = useRef(null);
+
+  const {user} = useAuth();
+
+  const axiosSecure = useAxiosSecure()
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [, refetch] = useCart();
+
+  const handleAddToCart = (item) =>{
+    if(user && user.email){
+      // console.log(item, user.email)
+
+
+      //send data item to the database
+      const cartItem = {
+          menuId: item._id,
+          user_email: user.email,
+          email: item.seller_email,
+          name: item.name,
+          image: item.image,
+          price: item.price,
+          company: item.company_name,
+          price_per_unit: item.price_per_unit
+      }
+      console.log(cartItem);
+
+       axiosSecure.post('/carts', cartItem)
+      .then(res => {
+       console.log(res.data);
+       if(res.data.insertedId){
+        Swal.fire({
+          icon: "success",
+          title: `${item.name} Added Successfully`,
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+        //refetch cart to update the cart items count
+         refetch();
+       }
+      })
+
+
+    }else{
+      Swal.fire({
+        title: "You are not logged In",
+        text: "Please login to add to the cart",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, login!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+          navigate('/login'), {state: {from: location}}
+         
+        }
+      });
+    }
+
+  }
 
   
   const openModal = (item) => {
@@ -27,6 +97,9 @@ const FilterCategory = ({ items, title }) => {
 
   return (
     <div className="pt-8">
+          <Helmet>
+        <title>Medi corner | details </title>
+      </Helmet>
       <h2 className="text-center text-xl font-bold mt-4">{title}</h2>
 
       <div className="overflow-x-auto">
@@ -59,7 +132,10 @@ const FilterCategory = ({ items, title }) => {
                   />
                 </td>
                 <td>
-                  <button className="btn bg-purple-900 text-white">
+                  <button 
+                   onClick={() => handleAddToCart(item)}
+
+                  className="btn bg-purple-900 text-white">
                     Select
                   </button>
                 </td>
@@ -108,6 +184,10 @@ const FilterCategory = ({ items, title }) => {
           <p className="py-4"><span className="font-bold">Discount Percentage: </span>
             {selectedItem.discount_percentage} %
           </p>
+          <p className="py-4">
+                  <span className="font-bold">Seller email: </span>
+                  {selectedItem?.seller_email ?? 'not found'}  
+                </p>
             </div>
           </div>
          

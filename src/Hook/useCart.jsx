@@ -1,15 +1,3 @@
-// import axios from "axios";
-
-
-// export const axiosSecure = axios.create({
-//     baseURL: 'http://localhost:5000'
-// })
-
-//  const useCart = () => {
-//   return axiosSecure;
-// };
-
-// export default useCart;
 
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hook/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const Social = () => {
@@ -29,6 +30,9 @@ const Social = () => {
   };
   return (
     <div>
+        <Helmet>
+        <title>Medi corner | google sign in</title>
+      </Helmet>
       <div>
         <button onClick={handleGoogleSignIn} className="btn w-3/4 mb-2 bg-blue-600 text-white">
           Google

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
 import useAuth from "../../Hook/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const UPdateProfile = () => {
@@ -77,7 +78,9 @@ const UPdateProfile = () => {
 
   return (
     <div>
-    
+      <Helmet>
+        <title>Medi corner | update profile</title>
+      </Helmet>
       <div className="mx-auto bg-cyan-100 md:w-[400px] h-[400px] p-4 border-2 mt-4 mb-4  rounded-xl border-sky-500 ">
         <h2 className=" text-3xl text-center">Update Profile</h2>
         <div className="flex flex-col mt-4 gap-2">

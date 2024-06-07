@@ -1,6 +1,8 @@
+
 const ExtraOne = () => {
   return (
     <section className="my-12 bg-purple-200">
+     
       <div className="container mx-auto flex flex-col items-center pb-6 mb-4 md:p-10 md:px-12">
         <h1 className="text-4xl mt-4 font-semibold leading-none text-center">
           What our customers are saying about us
@@ -78,10 +80,7 @@ const ExtraOne = () => {
           <span className="w-12 h-1 my-2 rounded-lg dark:bg-violet-600"></span>
           <p className="font-bold"> John Dey</p>
         </div>
-
-      
       </div>
-    
     </section>
   );
 };

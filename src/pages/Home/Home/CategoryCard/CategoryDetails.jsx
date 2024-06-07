@@ -2,6 +2,7 @@
 import { useParams } from "react-router-dom";
 import FilterCategory from "./FilterCategory";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const CategoryDetails = () => {
 
@@ -33,6 +34,9 @@ const CategoryDetails = () => {
 
   return (
     <div>
+          <Helmet>
+        <title>Medi corner | category section</title>
+      </Helmet>
       <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold mt-4">
         Details of Category Medicine
       </h1>

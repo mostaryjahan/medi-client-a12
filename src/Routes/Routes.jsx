@@ -12,6 +12,8 @@ import Shop from "../components/Shop/Shop";
 import Discount from "../pages/Home/Home/Discount/Discount";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
+import Dashboard from "../LayOut/Dashboard";
+import Cart from "../pages/Dashboard/User/Cart";
 
 
 
@@ -56,4 +58,14 @@ import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
        },
       ]
     },
+    {
+      path: '/dashboard',
+      element: <Dashboard></Dashboard>,
+      children: [
+       { path: '/dashboard/cart',
+        element: <Cart></Cart>
+       }
+
+      ]
+    }
   ]);

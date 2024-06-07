@@ -7,7 +7,9 @@ import img4 from "../../../../assets/banner/banner6.jpg"
 
 const Banner = () => {
     return (
+        
         <div className="">
+             
             
             <Carousel autoPlay  infiniteLoop >
           
