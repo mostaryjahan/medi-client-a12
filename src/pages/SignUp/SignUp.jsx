@@ -1,11 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hook/useAuth";
-// import { Helmet } from "react-helmet-async";
  import Swal from "sweetalert2";
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
  import Social from "../Social/Social";
 import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 const SignUp = () => {
    const { createUser, updateUserProfile } = useAuth();
@@ -13,7 +12,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-//   const axiosPublic = useAxiosPublic();
+   const axiosPublic = useAxiosPublic();
 
   const {
     register,
@@ -30,44 +29,33 @@ const SignUp = () => {
 
      // //update
        updateUserProfile(data.name, data.photoURL)
-       .then(()=>{
-        console.log('user profile info updated');
-        reset();
-           Swal.fire({
+       .then(() => {
+           console.log('user profile info updated');
+          //create user entry in database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+            role: data.role,
+          };
+          axiosPublic.post("/users", userInfo)
+          .then((res) => {
+            if (res.data.insertedId) {
+              console.log("user added to the database");
+              reset();
+              Swal.fire({
                 icon: "success",
-                title: "Sign Up successfully",
+                title: "Sign Up Successful",
                 showConfirmButton: false,
                 timer: 1500,
               });
-              navigate(from, { replace: true });
-       })
-       .catch(error => console.log(error))
-       // .then(() => {
-          //  console.log('user profile info updated');
-          //create user entry in database
-        //   const userInfo = {
-        //     name: data.name,
-        //     email: data.email,
-           // role: data.role,
-        //   };
-        //   axiosPublic.post("/users", userInfo).then((res) => {
-        //     if (res.data.insertedId) {
-        //       console.log("user added to the database");
-        //       reset();
-            //   Swal.fire({
-            //     icon: "success",
-            //     title: "Sign Up Successful,
-            //     showConfirmButton: false,
-            //     timer: 1500,
-            //   });
 
-              //  navigate(from, { replace: true });
-        //    }
-        //   });
-        // })
-        // .catch((error) => {
-        //   console.log(error);
-        // });
+               navigate(from, { replace: true });
+           }
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       });
   };
 

@@ -14,7 +14,7 @@ const Shop = () => {
 
   const {user} = useAuth();
 
-   const axiosSecure = useAxiosSecure()
+   const axiosSecure = useAxiosSecure();
 
    const navigate = useNavigate();
    const location = useLocation();

@@ -4,12 +4,18 @@ import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useCart from "../../../Hook/useCart";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import useAuth from "../../../Hook/useAuth";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
 //   console.log(cart);
-  const totalPrice = cart.reduce((total, item) => total + item.price, 0).toFixed(2);
+
+
   const axiosSecure = useAxiosSecure();
+  const {user} = useAuth();
+
+  const totalPrice = cart.reduce((total, item) => total + item.price, 0).toFixed(2);
+
 
     //  cart items by their unique identifier and calculate quantity
     const groupCartItems = (cart) => {
@@ -29,43 +35,80 @@ const Cart = () => {
 
 
 
+
+
+
+    // const handleIncreaseQuantity = (item) => {
+    //   axiosSecure.post(`/carts/increase/${item._id}`)
+    //     .then(res => {
+    //       console.log(res.data);
+    //               if (res.data.insertedId > 0) {
+    //       // Refetch cart to update the cart items count
+    //       refetch();
+    //     }
+    //     })
+    //     .catch(err => {
+    //       console.error("Error increasing quantity:", err);
+    //     });
+    // };
+
+
+
    
-    const handleIncreaseQuantity = (id) => {
-      // Check if the item already exists in the cart
-      const existingItem = cart.find(item => item._id === id);
+   
+    const handleIncreaseQuantity = (item) =>{
+        //send data item to the database
+        const cartItem = {
+            menuId: item._id,
+            user_email: user.email,
+            email: item.seller_email,
+            name: item.name,
+            image: item.image,
+            price: item.price,
+            company: item.company,
+            price_per_unit: item.price_per_unit,
+            quantity: 1
+        }
+        console.log(cartItem);
+  
+         axiosSecure.post(`/carts/increase/${item._id}`,  cartItem,{ quantity: item.quantity + 1 })
+        .then(res => {
+         console.log(res.data);
+
+         if(res.data.insertedId){
+       
+          //refetch cart to update the cart items count
+           refetch();
+         }
+         
+        })
       
-      if (existingItem) {
-        // If the item exists, send a PUT request to increase its quantity
-        axiosSecure.put(`/carts/increase/${id}`, { quantity: existingItem.quantity + 1 })
-          .then(res => {
-            if (res.status === 200) {
-              refetch();
-            } else {
-              console.error("Failed to increase quantity:", res.data.message);
-              // Handle error
-            }
-          })
-          .catch(err => {
-            console.error("Error increasing quantity:", err);
-            // Handle error
-          });
-      } else {
-        // If the item doesn't exist, send a POST request to add it to the cart with quantity 1
-        axiosSecure.post(`/carts/${id}`, { quantity: 1 })
-          .then(res => {
-            if (res.status === 200) {
-              refetch();
-            } else {
-              console.error("Failed to add item to cart:", res.data.message);
-              // Handle error
-            }
-          })
-          .catch(err => {
-            console.error("Error adding item to cart:", err);
-            // Handle error
-          });
-      }
-    };
+    }
+      
+    // const handleIncreaseQuantity = (item) => {
+    //   axiosSecure.put(`carts/${item._id}`, { quantity: item.quantity + 1 })
+    //     .then(res => {
+    //       if (res.data.modifiedCount > 0) {
+    //         refetch();
+    //       }
+    //     });
+    // };
+
+    // const handleIncreaseQuantity = (item) => {
+    //   console.log(item)
+    //   axiosSecure.put(`/carts/increase/${item._id}`, { quantity: item.quantity + 1 })
+    //     .then(res => {
+    //       console.log(res.data)
+    //       if (res.data.message === "Quantity increased successfully") {
+    //         refetch();
+    //       }
+    //     })
+    //     .catch(err => {
+    //       console.error("Error increasing quantity:", err);
+    //     });
+    // };
+    
+  
     
     
 
@@ -156,7 +199,7 @@ const Cart = () => {
 
         {groupedCartItems.length ?
       <Link to='/dashboard/payment'>
-      <button  className="btn bg-orange-400 text-white">Checkout</button>
+      <button  className="btn bg-green-500 text-white">Checkout</button>
       </Link>
       :
       <button disabled className="btn bg-orange-400 text-white">Checkout</button>
@@ -211,8 +254,9 @@ const Cart = () => {
                   <div className="flex items-center gap-2">
                     <button onClick={() => handleDecreaseQuantity(item._id)} className="btn btn-sm bg-red-500">-</button>
                     {item.quantity}
+                   
                     
-                    <button onClick={() => handleIncreaseQuantity(item._id)} className="btn btn-sm bg-green-400">+</button>
+                    <button onClick={() => handleIncreaseQuantity(item)} className="btn btn-sm bg-green-400">+</button>
                   </div>
                 </td>
 
