@@ -1,25 +1,23 @@
 import {
-    FaAd,
-    FaBook,
+
+  FaAd,
     FaHome,
     FaList,
-   
-    FaSearch,
+    FaMoneyBill,
     FaUsers,
-    FaUtensilSpoon,
-    FaVoicemail,
+
   } from "react-icons/fa";
   import { TiShoppingCart } from "react-icons/ti";
   import { NavLink, Outlet } from "react-router-dom";
 //   import useAdmin from "../hooks/useAdmin";
 import useCart from "../Hook/useCart"
 import { Helmet } from "react-helmet-async";
-import { FaShop } from "react-icons/fa6";
+import { FaKitMedical, FaShop, FaStairs } from "react-icons/fa6";
   
   const Dashboard = () => {
      const [cart] = useCart();
   
-    // const [isAdmin] = useAdmin();
+     const isAdmin = true;
   
     return (
       <div className="flex">
@@ -31,7 +29,48 @@ import { FaShop } from "react-icons/fa6";
           <h2 className="text-3xl text-center p-2 font-bold">Medi Corner</h2>
          
           <ul className="menu "> 
-          <li>
+           {
+            isAdmin ? <>
+                <li>
+                <NavLink to="/dashboard/AdminHome">
+                  <FaHome className="w-4 h-4" />
+                 Admin Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/allUsers">
+                  <FaUsers className="w-4 h-4" />
+                  Manage Users
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageItem">
+                  <FaKitMedical className="w-4 h-4" />
+                  Manage Category
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/paymentManagement">
+                  <FaMoneyBill className="w-4 h-4" />
+                  Payment Management
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/salesReport">
+                  <FaStairs className="w-4 h-4" />
+                  Sales Report
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/manageBanner">
+                  <FaAd className="w-4 h-4" />
+                  Manage Banner
+                </NavLink>
+              </li>
+            </>
+            :
+            <>
+             <li>
                 <NavLink to="/dashboard/userHome">
                   <FaHome className="w-4 h-4" />
                   User Home
@@ -49,6 +88,8 @@ import { FaShop } from "react-icons/fa6";
                   Payment History
                 </NavLink>
               </li>
+            </>
+           }
 
               <div className="divider "></div>
 

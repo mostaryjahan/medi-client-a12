@@ -186,7 +186,7 @@ const Cart = () => {
 
 
   return (
-    <div>
+    <div className="bg-purple-200">
              <Helmet>
         <title>Medi corner | cart</title>
        </Helmet>
@@ -196,14 +196,6 @@ const Cart = () => {
       <div className="flex justify-evenly mt-4">
         <h2 className="lg:text-3xl">Total Medicines: {groupedCartItems.length}</h2>
         <h2 className="lg:text-3xl">Total Prices: {totalPrice} $</h2>
-
-        {groupedCartItems.length ?
-      <Link to='/dashboard/payment'>
-      <button  className="btn bg-green-500 text-white">Checkout</button>
-      </Link>
-      :
-      <button disabled className="btn bg-orange-400 text-white">Checkout</button>
-    }
 
             <button onClick={handleClearCart} className="btn bg-red-500 text-white">Clear Cart</button>
 
@@ -252,11 +244,11 @@ const Cart = () => {
 
                     <td>
                   <div className="flex items-center gap-2">
-                    <button onClick={() => handleDecreaseQuantity(item._id)} className="btn btn-sm bg-red-500">-</button>
+                    <button onClick={() => handleDecreaseQuantity(item._id)} className="btn btn-sm border-2 border-red-600 text-red-600">-</button>
                     {item.quantity}
                    
                     
-                    <button onClick={() => handleIncreaseQuantity(item)} className="btn btn-sm bg-green-400">+</button>
+                    <button onClick={() => handleIncreaseQuantity(item)} className="btn btn-sm border-2 border-green-600 text-green-600 ">+</button>
                   </div>
                 </td>
 
@@ -273,6 +265,13 @@ const Cart = () => {
           </tbody>
          
         </table>
+        {groupedCartItems.length ?
+      <Link to='/dashboard/payment'>
+      <button  className="btn bg-green-400 ">Checkout</button>
+      </Link>
+      :
+      <button disabled className="btn bg-orange-400 text-white">Checkout</button>
+    }
       </div>
     </div>
   );
@@ -280,5 +279,3 @@ const Cart = () => {
 
 export default Cart;
 
-//tapox@mailinator.com
-//fepedi@mailinator.com
