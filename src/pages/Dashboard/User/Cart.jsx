@@ -4,125 +4,77 @@ import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useCart from "../../../Hook/useCart";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
-import useAuth from "../../../Hook/useAuth";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
+  
+
+
 //   console.log(cart);
 
 
   const axiosSecure = useAxiosSecure();
-  const {user} = useAuth();
-
-  const totalPrice = cart.reduce((total, item) => total + item.price, 0).toFixed(2);
 
 
-    //  cart items by their unique identifier and calculate quantity
+
+  // const totalPrice = cart.reduce((total, item) => total + item.price, 0).toFixed(2);
+
+    // const totalPrice = cart.reduce((total, item) => total + item.price * item.count, 0).toFixed(2);
+
+    const totalPrice = cart.reduce((total, item) => {
+      const price = parseFloat(item.price) || 0;
+      const count = parseInt(item.count) || 1;
+      return total + price * count;
+    }, 0).toFixed(2);
+
+
+
+
     const groupCartItems = (cart) => {
       const groupedItems = cart.reduce((medicines, item) => {
         const existingItem = medicines.find(i => i.menuId === item.menuId);
         if (existingItem) {
-          existingItem.quantity += 1;
+          existingItem.count += 1; // Use count instead of quantity
         } else {
-          medicines.push({ ...item, quantity: 1 });
+          medicines.push({ ...item, count: item.count || 1 }); // Ensure count is set to 1 if not already
         }
         return medicines;
       }, []);
       return groupedItems;
     };
-  
     const groupedCartItems = groupCartItems(cart);
+    console.log(groupedCartItems);
 
 
 
-
-
-
-    // const handleIncreaseQuantity = (item) => {
-    //   axiosSecure.post(`/carts/increase/${item._id}`)
-    //     .then(res => {
-    //       console.log(res.data);
-    //               if (res.data.insertedId > 0) {
-    //       // Refetch cart to update the cart items count
-    //       refetch();
-    //     }
-    //     })
-    //     .catch(err => {
-    //       console.error("Error increasing quantity:", err);
-    //     });
-    // };
-
-
-
-   
-   
-    const handleIncreaseQuantity = (item) =>{
-        //send data item to the database
-        const cartItem = {
-            menuId: item._id,
-            user_email: user.email,
-            email: item.seller_email,
-            name: item.name,
-            image: item.image,
-            price: item.price,
-            company: item.company,
-            price_per_unit: item.price_per_unit,
-            quantity: 1
-        }
-        console.log(cartItem);
-  
-         axiosSecure.post(`/carts/increase/${item._id}`,  cartItem,{ quantity: item.quantity + 1 })
-        .then(res => {
-         console.log(res.data);
-
-         if(res.data.insertedId){
-       
-          //refetch cart to update the cart items count
-           refetch();
-         }
-         
-        })
+    const handleIncreaseQuantity = async (id) => {
+      try {
+        console.log(id);
+        const response = await axiosSecure.put(`/carts/increase/${id}`);
+        console.log('Response from server:', response);
       
-    }
+            refetch();
+        
+      } catch (err) {
+        console.error('Error increasing quantity:', err);
+      }
+    };
+  
+
+    const handleDecreaseQuantity = async (id) => {
+      try {
+        console.log(id);
+        const response = await axiosSecure.put(`/carts/decrease/${id}`);
+        console.log('Response from server:', response);
       
-    // const handleIncreaseQuantity = (item) => {
-    //   axiosSecure.put(`carts/${item._id}`, { quantity: item.quantity + 1 })
-    //     .then(res => {
-    //       if (res.data.modifiedCount > 0) {
-    //         refetch();
-    //       }
-    //     });
-    // };
+            refetch();
+        
+      } catch (err) {
+        console.error('Error increasing quantity:', err);
+      }
+    };
 
-    // const handleIncreaseQuantity = (item) => {
-    //   console.log(item)
-    //   axiosSecure.put(`/carts/increase/${item._id}`, { quantity: item.quantity + 1 })
-    //     .then(res => {
-    //       console.log(res.data)
-    //       if (res.data.message === "Quantity increased successfully") {
-    //         refetch();
-    //       }
-    //     })
-    //     .catch(err => {
-    //       console.error("Error increasing quantity:", err);
-    //     });
-    // };
-    
-  
-    
-    
 
-  
-
-  //decrease
-  const handleDecreaseQuantity = (id) => {
-    axiosSecure.delete(`/carts/decrease/${id}`)
-      .then(res => {
-        if (res.data.deletedCount > 0) {
-          refetch();
-        }
-      });
-  };
 
 
 
@@ -194,7 +146,7 @@ const Cart = () => {
       <h1 className="text-3xl font-bold text-center mb-4">Want to Add More?</h1>
       <hr />
       <div className="flex justify-evenly mt-4">
-        <h2 className="lg:text-3xl">Total Medicines: {groupedCartItems.length}</h2>
+        <h2 className="lg:text-3xl">Total Medicines: {cart.length}</h2>
         <h2 className="lg:text-3xl">Total Prices: {totalPrice} $</h2>
 
             <button onClick={handleClearCart} className="btn bg-red-500 text-white">Clear Cart</button>
@@ -245,10 +197,11 @@ const Cart = () => {
                     <td>
                   <div className="flex items-center gap-2">
                     <button onClick={() => handleDecreaseQuantity(item._id)} className="btn btn-sm border-2 border-red-600 text-red-600">-</button>
-                    {item.quantity}
+                    
+                    {item.count}
                    
                     
-                    <button onClick={() => handleIncreaseQuantity(item)} className="btn btn-sm border-2 border-green-600 text-green-600 ">+</button>
+                    <button onClick={() => handleIncreaseQuantity(item._id)} className="btn btn-sm border-2 border-green-600 text-green-600 ">+</button>
                   </div>
                 </td>
 

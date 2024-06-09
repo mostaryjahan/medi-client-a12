@@ -36,7 +36,8 @@ const Shop = () => {
           image: item.image,
           price: item.price,
           company: item.company_name,
-          price_per_unit: item.price_per_unit
+          price_per_unit: item.price_per_unit,
+          //
       }
       console.log(cartItem);
 

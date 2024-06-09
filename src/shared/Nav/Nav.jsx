@@ -29,11 +29,11 @@ const Nav = () => {
       <li className="font-semibold">
         <Link to="/shop">Shop</Link>
       </li>
-      {user && (
+      {/* {user && (
       <li className="font-semibold">
         <Link to="/categoryDetails/Capsule">Category Details</Link>
       </li>
-       )}
+       )} */}
       {/* {user && ( */}
         {/* <li className="font-semibold">
           <Link to="/cart"><FaCartPlus className="w-6 h-8 text-red-500"/></Link>
@@ -120,7 +120,10 @@ const Nav = () => {
                 <NavLink to="/updateProfile">Update Profile</NavLink>
               </li>
               <li className=" mb-2">
-                <NavLink to="/dashboard">Dashboard</NavLink>
+                <NavLink to="/dashboard">  
+   
+                   Dashboard 
+                   </NavLink>
               </li>
               <li>
                 <button
