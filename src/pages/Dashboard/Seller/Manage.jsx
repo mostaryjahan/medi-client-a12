@@ -12,17 +12,18 @@ const Manage = () => {
     const axiosSecure = useAxiosSecure();
     const {user} = useAuth();
 
-//     const image_hosting_key = import.meta.env.VITE_Image_Hosting_key;
+    const image_hosting_key = import.meta.env.VITE_Image_Hosting_key;
 
-// const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 
  
     const {data: medicines =[], refetch} = useQuery({
-        queryKey: ['category'],
+        queryKey: ['category', user.email],
         queryFn: async () =>{
 
-         const res = await axiosSecure.get('/category');
+         const res = await axiosSecure.get(`/category/${user.email}`);
+         console.log(user.email)
          return res.data;
         }
     });
@@ -35,6 +36,7 @@ const Manage = () => {
       category: '',
       company_name: '',
       item_mass_unit: '',
+      number_of_medicines_in_category: '',
       price: 0,
       price_per_unit: 0,
       discount_percentage: 0,
@@ -69,7 +71,23 @@ useEffect(() => {
     }
   }, [isSubmitting, axiosSecure, formData, refetch]);
 
+  const handleImageUpload = async (imageFile) => {
+    const formData = new FormData();
+    formData.append('image', imageFile);
 
+    try {
+        const res = await fetch(image_hosting_api, {
+            method: 'POST',
+            body: formData
+        });
+        const data = await res.json();
+        return data.data.url;
+    } catch (error) {
+        console.error("Image upload failed:", error);
+        Swal.fire('Error', 'Image upload failed', 'error');
+        return null;
+    }
+};
 
 
 
@@ -82,9 +100,17 @@ useEffect(() => {
     }
 };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  setIsSubmitting(true);
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.image) {
+        const imageUrl = await handleImageUpload(formData.image);
+        if (imageUrl) {
+            setFormData({ ...formData, image: imageUrl });
+            setIsSubmitting(true);
+        }
+    } else {
+        setIsSubmitting(true);
+    }
 };
 
 const openModal = () => document.getElementById('my_modal_1').showModal();
@@ -273,6 +299,17 @@ const closeModal = () => document.getElementById('my_modal_1').close();
                                 type="number"
                                 name="price_per_unit"
                                 value={formData.price_per_unit}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="font-semibold">Quantity:</label>
+                            <input
+                                className="border-2 border-gray-300 rounded p-2"
+                                type="number"
+                                name="number_of_medicines_in_category"
+                                value={formData.number_of_medicines_in_category}
                                 onChange={handleChange}
                                 required
                             />

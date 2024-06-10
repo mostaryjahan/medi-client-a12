@@ -18,6 +18,8 @@ import AllUsers from "../pages/Dashboard/Admin/AllUsers";
 import SellerHome from "../pages/Dashboard/Seller/SellerHome";
 import UserHome from "../pages/Dashboard/User/UserHome";
 import Manage from "../pages/Dashboard/Seller/Manage";
+import Ask from "../pages/Dashboard/Seller/Ask";
+import Ad from "../pages/Dashboard/Admin/Ad";
 
 
 
@@ -76,6 +78,10 @@ import Manage from "../pages/Dashboard/Seller/Manage";
         element: <AllUsers></AllUsers>
 
       },
+      {
+          path: '/dashboard/ad',
+          element:<Ad></Ad>
+      },
       //seller
       {
         path: '/dashboard/sellerHome',
@@ -84,6 +90,10 @@ import Manage from "../pages/Dashboard/Seller/Manage";
       {
         path: '/dashboard/manageProducts',
         element: <Manage></Manage>
+      },
+      {
+         path: '/dashboard/ask',
+         element: <Ask></Ask>
       },
 
       //user

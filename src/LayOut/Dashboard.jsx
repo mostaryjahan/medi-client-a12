@@ -71,11 +71,12 @@ import useAuth from "../Hook/useAuth";
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageBanner">
+                <NavLink to="/dashboard/ad">
                   <FaAd className="w-4 h-4" />
-                  Manage Banner
+                 Manage Banner
                 </NavLink>
               </li>
+ 
             </>
              )}
               {user.role === "seller" && (
@@ -87,16 +88,16 @@ import useAuth from "../Hook/useAuth";
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/addProduct">
-                    <FaKitMedical className="w-4 h-4" />
-                    Add Product
-                  </NavLink>
-                </li>
-                <li>
                 <NavLink to="/dashboard/manageProducts">
                   <FaList className="w-4 h-4" />
                   Manage Products
                 </NavLink>
+                <li>
+                  <NavLink to="/dashboard/ask">
+                    <FaAd className="w-4 h-4" />
+                    Advertisement
+                  </NavLink>
+                </li>
               </li>
                 </>
               )}

@@ -1,11 +1,29 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
-import { Carousel } from 'react-responsive-carousel';
-import img1 from "../../../../assets/banner/banner3.jpg"
-import img2 from "../../../../assets/banner/banner4.jpg"
-import img3 from "../../../../assets/banner/banner5.jpg"
-import img4 from "../../../../assets/banner/banner6.jpg"
+ import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+ import { Carousel } from 'react-responsive-carousel';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import useAuth from "../../../../Hook/useAuth";
+
 
 const Banner = () => {
+    const [images, setImages] = useState([]);
+    const {user} = useAuth();
+
+    console.log(images)
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/slider'); 
+                setImages(response.data);
+            } catch (error) {
+                console.error('Error fetching images:', error);
+            }
+        };
+
+        fetchImages();
+    }, []);
+
     return (
         
         <div className="">
@@ -13,19 +31,14 @@ const Banner = () => {
             
             <Carousel autoPlay  infiniteLoop >
           
-          <div>
-          <img  src={img1} />
-      </div>
-      <div>
-          <img src={img2} />
-      </div>
-      <div>
-          <img src={img3} />
-      </div>
-      <div>
-          <img src={img4} />
-      </div>
-     
+            {images.map((item, index) => (
+                    <div key={index}>
+                        <img className="relative" src={item.medicineImage} alt={`Banner ${index}`} />
+                        <p className="absolute bottom-10 left-0 w-full bg-black bg-opacity-50 text-white p-2">{item.description}</p>
+                        <p className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-2">{item.sellerEmail}</p>
+                    </div>
+                ))}
+
          
      
   </Carousel>
