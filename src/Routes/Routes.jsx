@@ -15,6 +15,9 @@ import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 import Dashboard from "../LayOut/Dashboard";
 import Cart from "../pages/Dashboard/User/Cart";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers";
+import SellerHome from "../pages/Dashboard/Seller/SellerHome";
+import UserHome from "../pages/Dashboard/User/UserHome";
+import Manage from "../pages/Dashboard/Seller/Manage";
 
 
 
@@ -72,6 +75,23 @@ import AllUsers from "../pages/Dashboard/Admin/AllUsers";
         path: '/dashboard/allUsers',
         element: <AllUsers></AllUsers>
 
+      },
+      //seller
+      {
+        path: '/dashboard/sellerHome',
+        element: <SellerHome></SellerHome>
+      },
+      {
+        path: '/dashboard/manageProducts',
+        element: <Manage></Manage>
+      },
+
+      //user
+      {
+        
+          path: '/dashboard/userHome',
+          element: <UserHome></UserHome>
+        
       },
 
       ]

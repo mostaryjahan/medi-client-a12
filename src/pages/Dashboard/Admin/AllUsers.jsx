@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
-import { FaTrashAlt } from "react-icons/fa";
+// import { FaTrashAlt } from "react-icons/fa";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
@@ -42,34 +42,34 @@ const AllUsers = () => {
 
 
 
-    const handleDelete = (user) =>{
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
-            if (result.isConfirmed) {
+    // const handleDelete = (user) =>{
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!"
+    //       }).then((result) => {
+    //         if (result.isConfirmed) {
             
-              axiosSecure.delete(`users/${user._id}`)
-              .then(res => {
-                if(res.data.deletedCount > 0){
-                    //refresh data
-                    refetch();
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                      });
-                   }          
-                })
+    //           axiosSecure.delete(`users/${user._id}`)
+    //           .then(res => {
+    //             if(res.data.deletedCount > 0){
+    //                 //refresh data
+    //                 refetch();
+    //                 Swal.fire({
+    //                     title: "Deleted!",
+    //                     text: "Your file has been deleted.",
+    //                     icon: "success"
+    //                   });
+    //                }          
+    //             })
            
-            }
-          });
-      }
+    //         }
+    //       });
+    //   }
     
     return (
         <div>
@@ -114,14 +114,14 @@ const AllUsers = () => {
                       </button>
                     )}
                     </td>
-                    <th>
+                    {/* <th>
                       <button 
                       onClick={() => handleDelete(user)}
                        className="btn btn-ghost btn-lg">
                         <FaTrashAlt className="text-red-700 w-6 h-6">
                         </FaTrashAlt>
                         </button>
-                    </th>
+                    </th> */}
                   </tr>)
             }
           

@@ -13,11 +13,19 @@ import {
 import useCart from "../Hook/useCart"
 import { Helmet } from "react-helmet-async";
 import { FaKitMedical, FaShop, FaStairs } from "react-icons/fa6";
+import useAuth from "../Hook/useAuth";
   
   const Dashboard = () => {
      const [cart] = useCart();
+     const { user } = useAuth();
+
+
+    if (!user) {
+      return null;
+    }
   
-     const isAdmin = true;
+
+  
   
     return (
       <div className="flex">
@@ -28,9 +36,10 @@ import { FaKitMedical, FaShop, FaStairs } from "react-icons/fa6";
         <div className="w-64 min-h-screen bg-purple-400">
           <h2 className="text-3xl text-center p-2 font-bold">Medi Corner</h2>
          
-          <ul className="menu "> 
-           {
-            isAdmin ? <>
+          <ul className="menu ">
+        
+          {user.role === "admin" && (
+             <>
                 <li>
                 <NavLink to="/dashboard/AdminHome">
                   <FaHome className="w-4 h-4" />
@@ -68,7 +77,31 @@ import { FaKitMedical, FaShop, FaStairs } from "react-icons/fa6";
                 </NavLink>
               </li>
             </>
-            :
+             )}
+              {user.role === "seller" && (
+              <>
+                <li>
+                  <NavLink to="/dashboard/sellerHome">
+                    <FaHome className="w-4 h-4" />
+                    Seller Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/addProduct">
+                    <FaKitMedical className="w-4 h-4" />
+                    Add Product
+                  </NavLink>
+                </li>
+                <li>
+                <NavLink to="/dashboard/manageProducts">
+                  <FaList className="w-4 h-4" />
+                  Manage Products
+                </NavLink>
+              </li>
+                </>
+              )}
+              
+              {user.role === "user" && (
             <>
              <li>
                 <NavLink to="/dashboard/userHome">
@@ -89,7 +122,8 @@ import { FaKitMedical, FaShop, FaStairs } from "react-icons/fa6";
                 </NavLink>
               </li>
             </>
-           }
+    )}
+        
 
               <div className="divider "></div>
 

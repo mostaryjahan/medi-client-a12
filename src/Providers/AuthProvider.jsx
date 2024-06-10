@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import {app} from "../firebase/firebase.config"
+import useAxiosPublic from "../Hook/useAxiosPublic";
 //  import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
@@ -12,7 +13,7 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const[loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
-    // const axiosPublic = useAxiosPublic();
+     const axiosPublic = useAxiosPublic();
 
 
 
@@ -61,10 +62,10 @@ return Promise.reject('No user is signed in');
    }
 
 //observer
-     useEffect( () => {
-     const unSubscribe =   onAuthStateChanged(auth, currentUser =>{
-          setUser(currentUser);
-          console.log('current user', currentUser);
+    //  useEffect( () => {
+    //  const unSubscribe =   onAuthStateChanged(auth, currentUser =>{
+    //       setUser(currentUser);
+    //       console.log('current user', currentUser);
           // if(currentUser){
         //  //get token
           // const userInfo = {email: currentUser.email}
@@ -80,14 +81,32 @@ return Promise.reject('No user is signed in');
           // else{
            // //remove token
             //  localStorage.removeItem('remove access-token');
-            setLoading(false)
+            // setLoading(false)
           // }
-        });
-        return () => {
-            return unSubscribe();
-        }
+    //     });
+    //     return () => {
+    //         return unSubscribe();
+    //     }
 
-     },[])
+    //  },[])
+
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
+          if (currentUser) {
+            // const token = await currentUser.getIdToken();
+            const userInfo = { email: currentUser.email };
+            const response = await axiosPublic.post('/users/role', userInfo);
+            const role = response.data.role;
+    
+            setUser({ ...currentUser, role });
+          } else {
+            setUser(null);
+          }
+          setLoading(false);
+        });
+    
+        return () => unSubscribe();
+      }, []);
 
 
 
