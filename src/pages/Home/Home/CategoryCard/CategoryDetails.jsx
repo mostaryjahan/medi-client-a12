@@ -6,25 +6,35 @@ import { Helmet } from "react-helmet-async";
 
 const CategoryDetails = () => {
 
-   const { category } = useParams();
+  //  const { categoryCard } = useParams();
+  const { category } = useParams();
 
    
-  //  console.log(category)
+    //  console.log(categoryCard )
 
 
 
        const [medicines, setMedicines] = useState([]);
 
-
-      useEffect(() => {
+       useEffect(() => {
         fetch("http://localhost:5000/category")
         .then((res) => res.json())
           .then((data) => setMedicines(data));
       }, [category]);
 
+
+      // useEffect(() => {
+      //   fetch("http://localhost:5000/categoryCard")
+      //   .then((res) => res.json())
+      //     .then((data) => setMedicines(data));
+      // }, [categoryCard ]);
+
+      // const filteredMedicines = medicines.filter(medicine => medicine.category === categoryCard );
+
       const filteredMedicines = medicines.filter(medicine => medicine.category === category);
+
       
-      // console.log("Filtered medicines:", filteredMedicines); 
+        //  console.log("Filtered medicines:", filteredMedicines); 
 
 
   const capsule = filteredMedicines.filter(item => item.category === "Capsule");

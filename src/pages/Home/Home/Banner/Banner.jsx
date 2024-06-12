@@ -9,7 +9,7 @@ const Banner = () => {
     const [images, setImages] = useState([]);
     const {user} = useAuth();
 
-    console.log(images)
+    // console.log(images)
 
     useEffect(() => {
         const fetchImages = async () => {

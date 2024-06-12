@@ -6,19 +6,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const useCategory = () => {
-  // const axiosPublic = useAxiosPublic();
-
-  // const {
-  //   data: category = [],
-  //   isPending: loading,
-  //   refetch,
-  // } = useQuery({
-  //   queryKey: ["category"],
-  //   queryFn: async () => {
-  //     const res = await axiosPublic.get("/category");
-  //     return res.data;
-  //   },
-  // });
+  
 
   const [categories, setCategories] = useState([]);
   // const [loading, setLoading] = useState(true);

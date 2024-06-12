@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import {app} from "../firebase/firebase.config"
 import useAxiosPublic from "../Hook/useAxiosPublic";
-//  import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 export const AuthContext = createContext(null);
@@ -66,23 +65,23 @@ return Promise.reject('No user is signed in');
     //  const unSubscribe =   onAuthStateChanged(auth, currentUser =>{
     //       setUser(currentUser);
     //       console.log('current user', currentUser);
-          // if(currentUser){
-        //  //get token
-          // const userInfo = {email: currentUser.email}
-          // axiosPublic.post('/jwt', userInfo)
-          //  .then(res => {
-          //   if(res.data.token){
-          //        localStorage.setItem('access-token', res.data.token);
-                //  setLoading(false);
+    //       if(currentUser){
+    //      //get token
+    //       const userInfo = {email: currentUser.email}
+    //       axiosPublic.post('/jwt', userInfo)
+    //        .then(res => {
+    //         if(res.data.token){
+    //              localStorage.setItem('access-token', res.data.token);
+    //              setLoading(false);
 
-          //    }
-          //  })
-          // }
-          // else{
-           // //remove token
-            //  localStorage.removeItem('remove access-token');
-            // setLoading(false)
-          // }
+    //          }
+    //        })
+    //       }
+    //       else{
+    //        //remove token
+    //          localStorage.removeItem('remove access-token');
+    //         setLoading(false)
+    //       }
     //     });
     //     return () => {
     //         return unSubscribe();
@@ -90,23 +89,62 @@ return Promise.reject('No user is signed in');
 
     //  },[])
 
-    useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
-          if (currentUser) {
-            // const token = await currentUser.getIdToken();
-            const userInfo = { email: currentUser.email };
-            const response = await axiosPublic.post('/users/role', userInfo);
-            const role = response.data.role;
+    // useEffect(() => {
+    //     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
+    //       if (currentUser) {
+    //         // const token = await currentUser.getIdToken();
+    //         const userInfo = { email: currentUser.email };
+    //         const response = await axiosPublic.post('/users/role', userInfo);
+    //         const role = response.data.role;
     
-            setUser({ ...currentUser, role });
-          } else {
-            setUser(null);
+    //         setUser({ ...currentUser, role });
+    //       } else {
+    //         setUser(null);
+    //       }
+    //       setLoading(false);
+    //     });
+    
+    //     return () => unSubscribe();
+    //   }, []);
+
+
+
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setUser(currentUser);
+      console.log('current user', currentUser);
+
+      if (currentUser) {
+        // Get token
+        const userInfo = { email: currentUser.email };
+
+        try {
+          const tokenResponse = await axiosPublic.post('/jwt', userInfo);
+          if (tokenResponse.data.token) {
+            localStorage.setItem('access-token', tokenResponse.data.token);
           }
-          setLoading(false);
-        });
-    
-        return () => unSubscribe();
-      }, []);
+
+          const roleResponse = await axiosPublic.post('/users/role', userInfo);
+          const role = roleResponse.data.role;
+
+          setUser({ ...currentUser, role });
+        } catch (error) {
+          console.error('Error fetching token or role:', error);
+        }
+      } else {
+        // Remove token
+        localStorage.removeItem('access-token');
+       // setLoading(false)
+        setUser(null);
+      }
+
+      setLoading(false);
+    });
+
+    return () => {
+      unSubscribe();
+    };
+  }, [axiosPublic]);
 
 
 

@@ -268,18 +268,16 @@ const closeModal = () => document.getElementById('my_modal_1').close();
                             </select>
                         </div>
                         <div className="flex flex-col">
-                            <label className="font-semibold">Mass Unit:</label>
-                            <select
+                            <label className="font-semibold">Mass Unit(mg or ml): </label>
+                            <input
                                 className="border-2 border-gray-300 rounded p-2"
+                                type="number"
                                 name="item_mass_unit"
                                 value={formData.item_mass_unit}
                                 onChange={handleChange}
                                 required
-                            >
-                                <option value="">Select Mass Unit</option>
-                                <option value="Mg">Mg</option>
-                                <option value="ML">ML</option>
-                            </select>
+                            />
+                           
                         </div>
                         <div className="flex flex-col">
                             <label className="font-semibold">Price:</label>

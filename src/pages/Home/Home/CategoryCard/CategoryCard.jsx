@@ -1,12 +1,28 @@
-// import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import useCategory from "../../../../Hook/useCategory";
+import useAxiosSecure from "../../../../Hook/useAxiosSecure";
+import { useEffect, useState } from "react";
+
 
 const CategoryCard = () => {
-  const [categories] = useCategory();
-  //   const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
 
- 
+  const [categories, setCategories] = useState([]);
+  console.log(categories);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axiosSecure.get('/categoryCard');
+        setCategories(res.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [axiosSecure]);
+  
+  
 
   return (
     <div>
@@ -26,15 +42,12 @@ const CategoryCard = () => {
               className="object-cover object-center w-full rounded-md h-72 border-2 bg-yellow-50 border-gray-200"
             />
             <div className="mt-6 mb-2">
-              <h2 className="text-xl font-semibold tracking-wide">
-                {card.name}
-              </h2>
               <h2 className="font-semibold tracking-wide">
                 {card.category}
               </h2>
             </div>
             <p className="text-gray-800">
-              Quantity: {card.number_of_medicines_in_category} pieces
+              Quantity: {card.number_of_medicine} pieces
             </p>
             </Link>
         ))}

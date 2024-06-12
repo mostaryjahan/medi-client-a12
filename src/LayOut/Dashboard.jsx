@@ -14,11 +14,14 @@ import useCart from "../Hook/useCart"
 import { Helmet } from "react-helmet-async";
 import { FaKitMedical, FaShop, FaStairs } from "react-icons/fa6";
 import useAuth from "../Hook/useAuth";
+import useAdmin from "../Hook/useAdmin";
   
   const Dashboard = () => {
      const [cart] = useCart();
      const { user } = useAuth();
 
+
+    //  const [isAdmin] = useAdmin();
 
     if (!user) {
       return null;
@@ -41,7 +44,7 @@ import useAuth from "../Hook/useAuth";
           {user.role === "admin" && (
              <>
                 <li>
-                <NavLink to="/dashboard/AdminHome">
+                <NavLink to="/dashboard/adminHome">
                   <FaHome className="w-4 h-4" />
                  Admin Home
                 </NavLink>
@@ -53,7 +56,7 @@ import useAuth from "../Hook/useAuth";
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageItem">
+                <NavLink to='/dashboard/manageCategory/category'>
                   <FaKitMedical className="w-4 h-4" />
                   Manage Category
                 </NavLink>

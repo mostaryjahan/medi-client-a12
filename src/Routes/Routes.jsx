@@ -20,6 +20,8 @@ import UserHome from "../pages/Dashboard/User/UserHome";
 import Manage from "../pages/Dashboard/Seller/Manage";
 import Ask from "../pages/Dashboard/Seller/Ask";
 import Ad from "../pages/Dashboard/Admin/Ad";
+import ManageCategory from "../pages/Dashboard/Admin/ManageCategory";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 
 
 
@@ -53,6 +55,7 @@ import Ad from "../pages/Dashboard/Admin/Ad";
        {
          path: '/categoryDetails/:category',
          element: <PrivateRoute><CategoryDetails></CategoryDetails></PrivateRoute>,
+
        },
        {
         path: '/discount/:discount',
@@ -67,12 +70,21 @@ import Ad from "../pages/Dashboard/Admin/Ad";
     {
       path: '/dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+      errorElement: <Error></Error>,
       children: [
+      // {
+      //    index: true,
+      //    element: 
+      // },
        { path: '/dashboard/cart',
         element: <Cart></Cart>
        },
 
       //  admin route
+      {
+        path: '/dashboard/adminHome',
+        element: <AdminHome></AdminHome>
+      },
       {
         path: '/dashboard/allUsers',
         element: <AllUsers></AllUsers>
@@ -81,6 +93,11 @@ import Ad from "../pages/Dashboard/Admin/Ad";
       {
           path: '/dashboard/ad',
           element:<Ad></Ad>
+      },
+      {
+         path: '/dashboard/manageCategory/:category',
+         element: <ManageCategory></ManageCategory>,
+         
       },
       //seller
       {
