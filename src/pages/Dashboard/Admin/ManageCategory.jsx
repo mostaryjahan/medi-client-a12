@@ -10,13 +10,14 @@ const ManageCategory = () => {
   const [categories, setCategories] = useState([]);
   const [editingCategory, setEditingCategory] = useState(null);
 
+  // console.log(editingCategory)
+
   const [newCategory, setNewCategory] = useState({
-    // name: "",
+    
     category: "",
     image: "",
      number_of_medicine: "",
-    // price_per_unit: "",
-    // price: "",
+  
   });
 
   const image_hosting_key = import.meta.env.VITE_Image_Hosting_key;
@@ -65,12 +66,11 @@ const ManageCategory = () => {
       });
       fetchCategories();
       setNewCategory({
-        // name: "",
+  
         image: "",
         category: "",
          number_of_medicine: "",
-        // price_per_unit: "",
-        // price: "",
+       
       });
       Swal.fire({
         icon: "success",
@@ -110,72 +110,14 @@ const ManageCategory = () => {
   };
 
 
-  //update
-  // const handleUpdateCategorySubmit = async (e) => {
-  //   e.preventDefault();
-  //   if (!editingCategory?._id) {
-  //     Swal.fire({
-  //       icon: "error",
-  //       title: "Invalid category ID",
-  //       showConfirmButton: false,
-  //       timer: 1500,
-  //     });
-  //     return;
-  //   }
-  //   const file = e.target.elements.image.files[0];
-  //   let imageUrl = editingCategory.image;
-
-  //   if (file) {
-  //     imageUrl = await handleImageUpload(file);
-  //     if (!imageUrl) {
-  //       Swal.fire({
-  //         icon: "error",
-  //         title: "Failed to upload image",
-  //         showConfirmButton: false,
-  //         timer: 1500,
-  //       });
-  //       return;
-  //     }
-  //   }
-  //   try {
-  //     await axiosSecure.put(`/categoryCard/${editingCategory._id}`, { ...editingCategory, image: imageUrl });
-  //     fetchCategories();
-  //     setEditingCategory({
-  //       name: "",
-  //       image: "",
-  //       category: "",
-  //       company_name: "",
-  //       price_per_unit: "",
-  //       price: "",
-  //     });
-  //     Swal.fire({
-  //       icon: "success",
-  //       title: "Category has been updated",
-  //       showConfirmButton: false,
-  //       timer: 1500,
-  //     });
-
-  //     document.getElementById("editCategoryModal").close();
-     
-  //   } catch (error) {
-  //     console.error("Error updating category:", error);
-  //   }
-  // };
+ 
 
   const handleUpdateCategorySubmit = async (e) => {
     e.preventDefault();
-    if (!editingCategory?._id) {
-      Swal.fire({
-        icon: "error",
-        title: "Invalid category ID",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      return;
-    }
+  
     const file = e.target.elements.image.files[0];
     let imageUrl = editingCategory.image;
-
+  
     if (file) {
       imageUrl = await handleImageUpload(file);
       if (!imageUrl) {
@@ -188,40 +130,40 @@ const ManageCategory = () => {
         return;
       }
     }
+  
     try {
-      await axiosSecure.put(`/categoryCard/${editingCategory._id}`, { ...editingCategory, image: imageUrl });
-      fetchCategories();
-      setEditingCategory({
-        name: "",
-        image: "",
-        category: "",
-        company_name: "",
-        price_per_unit: "",
-        price: "",
+      const formData = new FormData();
+      formData.append("image", imageUrl); // append the file directly
+      formData.append("category", editingCategory.category);
+      formData.append("number_of_medicine", editingCategory.number_of_medicine);
+      formData.append("imageUrl", imageUrl); // include the image URL
+  
+      await axiosSecure.put(`/categoryCard/${editingCategory._id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
+  
+      fetchCategories();
+      setEditingCategory(null);
       Swal.fire({
         icon: "success",
         title: "Category has been updated",
         showConfirmButton: false,
         timer: 1500,
       });
-
+  
       document.getElementById("editCategoryModal").close();
-     
     } catch (error) {
       console.error("Error updating category:", error);
     }
   };
-
-
-
-
+  
 
 
 
 
   const handleEditCategory = (category) => {
-    console.log('Editing Category:', category); 
     setEditingCategory(category);
     document.getElementById("editCategoryModal").showModal();
   };
@@ -264,7 +206,7 @@ const ManageCategory = () => {
                 </th>
                 <td>{item.category}</td>
                 <td>
-                <button className="btn bg-slate-500" onClick={() => handleEditCategory(item._id)}>
+                <button className="btn bg-slate-500" onClick={() => handleEditCategory(item)}>
                     <FaEdit className="text-white" />
                   </button>
                 </td>
@@ -285,18 +227,7 @@ const ManageCategory = () => {
           <h3 className="font-bold text-lg">Add New Category</h3>
           <form onSubmit={handleAddCategory}>
 
-            {/* <div className="form-control">
-              <label className="label "> Name :</label>
-              <input
-                type="text"
-                className="border-2 border-gray-300 rounded p-2"
-                value={newCategory.name}
-                onChange={(e) =>
-                  setNewCategory({ ...newCategory, name: e.target.value })
-                }
-                required
-              />
-            </div>  */}
+        
 
             <div className="form-control">
               <label className="label ">Category Name: </label>
@@ -318,30 +249,7 @@ const ManageCategory = () => {
               
             </div>
 
-            {/* <div className="form-control">
-              <label className="label ">Company Name: </label>
-              <select
-                                className="border-2 border-gray-300 rounded p-2"
-                                name="category"
-                                value={newCategory.company_name}
-                                onChange={(e) =>
-                                  setNewCategory({ ...newCategory, company_name: e.target.value })
-                                }
-                                required
-                            >
-                                <option value="">Select Company</option>
-                                <option value="lifeLine">LifeLine</option>
-                                <option value="mediLife">MediLife</option>
-                                <option value="healthMed">HealthMed</option>
-                                <option value="vitalCare">VitalCare</option>
-                                <option value="bioGen">BioGen</option>
-                                <option value="wellnessLabs">WellnessLab</option>
-                                <option value="pharmaCop">PharmaCop</option>
-                                <option value="cureWell">CureWell</option>
-                                <option value="pureHealth">PureHealth</option>
-                            </select>
-              
-            </div> */}
+          
 
             <div className="form-control">
               <label className="label "> Quantity :</label>
@@ -356,18 +264,6 @@ const ManageCategory = () => {
               />
             </div> 
 
-            {/* <div className="form-control">
-              <label className="label "> Price per unit :</label>
-              <input
-                type="text"
-                className="border-2 border-gray-300 rounded p-2"
-                value={newCategory.price_per_unit}
-                onChange={(e) =>
-                  setNewCategory({ ...newCategory, price_per_unit: e.target.value })
-                }
-                required
-              />
-            </div>  */}
 
             <div className="form-control">
               <label className="label">Category Image </label>
@@ -398,19 +294,6 @@ const ManageCategory = () => {
           <h3 className="font-bold text-lg">Edit Category</h3>
           <form onSubmit={handleUpdateCategorySubmit}>
             <div className="form-control">
-              <label className="label">Name:</label>
-              <input
-                type="text"
-                className="border-2 border-gray-300 rounded p-2"
-                value={editingCategory?.name || ""}
-                onChange={(e) =>
-                  setEditingCategory({ ...editingCategory, name: e.target.value })
-                }
-           
-              />
-            </div>
-
-            <div className="form-control">
               <label className="label">Category Name:</label>
               <select
                 className="border-2 border-gray-300 rounded p-2"
@@ -418,7 +301,6 @@ const ManageCategory = () => {
                 onChange={(e) =>
                   setEditingCategory({ ...editingCategory, category: e.target.value })
                 }
-               
               >
                 <option value="">Select Category</option>
                 <option value="Capsule">Capsule</option>
@@ -429,57 +311,14 @@ const ManageCategory = () => {
             </div>
 
             <div className="form-control">
-              <label className="label">Company Name:</label>
-              <select
-                className="border-2 border-gray-300 rounded p-2"
-                value={editingCategory?.company_name || ""}
-                onChange={(e) =>
-                  setEditingCategory({
-                    ...editingCategory,
-                    company_name: e.target.value,
-                  })
-                }
-                
-              >
-                <option value="">Select Company</option>
-                <option value="lifeLine">LifeLine</option>
-                <option value="mediLife">MediLife</option>
-                <option value="healthMed">HealthMed</option>
-                <option value="vitalCare">VitalCare</option>
-                <option value="bioGen">BioGen</option>
-                <option value="wellnessLabs">WellnessLab</option>
-                <option value="pharmaCop">PharmaCop</option>
-                <option value="cureWell">CureWell</option>
-                <option value="pureHealth">PureHealth</option>
-              </select>
-            </div>
-
-            <div className="form-control">
-              <label className="label">Price:</label>
+              <label className="label">Quantity:</label>
               <input
                 type="text"
                 className="border-2 border-gray-300 rounded p-2"
-                value={editingCategory?.price || ""}
+                value={editingCategory?.number_of_medicine || ""}
                 onChange={(e) =>
-                  setEditingCategory({ ...editingCategory, price: e.target.value })
+                  setEditingCategory({ ...editingCategory, number_of_medicine: e.target.value })
                 }
-               
-              />
-            </div>
-
-            <div className="form-control">
-              <label className="label">Price per unit:</label>
-              <input
-                type="text"
-                className="border-2 border-gray-300 rounded p-2"
-                value={editingCategory?.price_per_unit || ""}
-                onChange={(e) =>
-                  setEditingCategory({
-                    ...editingCategory,
-                    price_per_unit: e.target.value,
-                  })
-                }
-              
               />
             </div>
 
@@ -489,15 +328,11 @@ const ManageCategory = () => {
             </div>
 
             <div className="modal-action">
-              <button type="submit" className="btn">
-                Update Category
-              </button>
+              <button type="submit" className="btn">Update Category</button>
               <button
                 type="button"
                 className="btn"
-                onClick={() =>
-                  document.getElementById("editCategoryModal").close()
-                }
+                onClick={() => document.getElementById("editCategoryModal").close()}
               >
                 Close
               </button>
