@@ -39,7 +39,7 @@ const FilterCategory = ({ items, title }) => {
           company: item.company_name,
           price_per_unit: item.price_per_unit
       }
-      console.log(cartItem);
+      // console.log(cartItem);
 
        axiosSecure.post('/carts', cartItem)
       .then(res => {

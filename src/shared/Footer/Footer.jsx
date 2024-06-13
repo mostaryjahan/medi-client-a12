@@ -3,6 +3,7 @@
 const Footer = () => {
     return (
         <div>
+      
         
                 <footer className="footer p-10 bg-neutral text-neutral-content flex justify-around">
         <nav>

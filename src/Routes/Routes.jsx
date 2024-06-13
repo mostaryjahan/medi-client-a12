@@ -25,6 +25,11 @@ import CheckOutPayment from "../pages/Dashboard/payment/CheckOutPayment";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import Invoice from "../pages/Dashboard/payment/Invoice";
 import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
+import PaymentManage from "../pages/Dashboard/Admin/PaymentManage";
+import Sales from "../pages/Dashboard/Admin/Sales";
+import AdminHome from "../pages/Dashboard/Admin/AdminHome";
+import SellerHome from "../pages/Dashboard/Seller/SellerHome";
+import SellerPayment from "../pages/Dashboard/Seller/SellerPayment";
 
 
 
@@ -87,13 +92,6 @@ import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
          index: true,
          element: <DashboardHome></DashboardHome>
       },
-      
-
-      //  admin route
-      // {
-      //   path: '/dashboard/adminHome',
-      //   element: <AdminHome></AdminHome>
-      // },
       {
         path: '/dashboard/allUsers',
         element: <AllUsers></AllUsers>
@@ -108,11 +106,25 @@ import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
          element: <ManageCategory></ManageCategory>,
          
       },
+      {
+        path: '/dashboard/paymentManage',
+        element: <PaymentManage></PaymentManage>,
+        
+     },
+     {
+        path: '/dashboard/sales',
+        element: <Sales></Sales>
+     },
+     {
+        path: '/dashboard/adminHome',
+        element:<AdminHome></AdminHome>
+     },
+
       //seller
-      // {
-      //   path: '/dashboard/sellerHome',
-      //   element: <SellerHome></SellerHome>
-      // },
+      {
+        path: '/dashboard/sellerHome',
+        element: <SellerHome></SellerHome>
+      },
       {
         path: '/dashboard/manageProducts',
         element: <Manage></Manage>
@@ -120,6 +132,10 @@ import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
       {
          path: '/dashboard/ask',
          element: <Ask></Ask>
+      },
+      {
+        path: '/dashboard/sellerPayment',
+        element: <SellerPayment></SellerPayment>
       },
 
       //user

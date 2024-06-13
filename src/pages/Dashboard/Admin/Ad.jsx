@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Ad = () => {
     const [sliderRequests, setSliderRequests] = useState([]);
@@ -31,6 +32,9 @@ const Ad = () => {
 
     return (
         <div>
+               <Helmet>
+        <title>Medi corner | Advertisement</title>
+      </Helmet>
             <h1 className="text-center font-bold text-xl md:text-3xl">Manage Banner Advertisement</h1>
 
             <div className="overflow-x-auto">

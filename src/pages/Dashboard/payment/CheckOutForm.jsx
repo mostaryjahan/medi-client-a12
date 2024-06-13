@@ -5,6 +5,7 @@ import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import useCart from '../../../Hook/useCart.jsx';
 import useAuth from "../../../Hook/useAuth.jsx";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const CheckOutForm = () => {
     const [error, setError] = useState('');
@@ -92,7 +93,7 @@ const CheckOutForm = () => {
           date: new Date(),// utc date convert .use moment js
           cartIds: cart.map(item => item._id),
           menuItemIds: cart.map(item => item.menuId),
-          status: 'completed'
+          status: 'pending'
          }
        const res = await axiosSecure.post('/payments', payment);
          console.log('payment saved',res.data);
@@ -115,6 +116,9 @@ const CheckOutForm = () => {
     }
     return (
         <div>
+             <Helmet>
+        <title>Medi corner | Payment</title>
+      </Helmet>
                 <form onSubmit={handleSubmit}>
        <CardElement
         options={{

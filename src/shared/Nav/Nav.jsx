@@ -29,16 +29,6 @@ const Nav = () => {
       <li className="font-semibold">
         <Link to="/shop">Shop</Link>
       </li>
-      {/* {user && (
-      <li className="font-semibold">
-        <Link to="/categoryDetails/Capsule">Category Details</Link>
-      </li>
-       )} */}
-      {/* {user && ( */}
-        {/* <li className="font-semibold">
-          <Link to="/cart"><FaCartPlus className="w-6 h-8 text-red-500"/></Link>
-        </li> */}
-      {/* )} */}
 
       <Link to="/dashboard/cart" > <li> <button className="btn bg-purple-800 border-none">
       <TiShoppingCart className="w-8 h-8 text-pink-400"/>

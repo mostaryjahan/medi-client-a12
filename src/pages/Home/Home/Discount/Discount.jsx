@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import './discount.css'
 import '../../../../index.css'
+import { Helmet } from "react-helmet-async";
 
 const Discount = () => {
     const { discount} = useParams();
@@ -31,6 +32,9 @@ const filteredMedicines = medicines.filter(medicine => medicine.discount_medicin
 
     return (
         <div>
+               <Helmet>
+        <title>Medi corner |  Home</title>
+      </Helmet>
              
             <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold mt-8">Discount Section</h1>
           

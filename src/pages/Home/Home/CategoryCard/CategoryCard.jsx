@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../../Hook/useAxiosSecure";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const CategoryCard = () => {
   const axiosSecure = useAxiosSecure();
 
   const [categories, setCategories] = useState([]);
-  console.log(categories);
+  // console.log(categories);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +27,9 @@ const CategoryCard = () => {
 
   return (
     <div>
+         <Helmet>
+        <title>Medi corner | Home</title>
+      </Helmet>
       <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold">
         Category of Medicines
       </h1>

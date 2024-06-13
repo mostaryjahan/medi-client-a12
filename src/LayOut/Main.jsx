@@ -22,7 +22,6 @@ const Main = () => {
           <Outlet></Outlet>
         </div>
       </div>
-      {/* <ToastContainer></ToastContainer> */}
       <Footer></Footer>
         </div>
     );

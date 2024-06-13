@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import useAuth from '../../../Hook/useAuth';
 import logo from '../../../assets/medicine.png';
 
@@ -18,6 +19,9 @@ const Invoice = () => {
     
     return (
         <div>
+               <Helmet>
+        <title>Medi corner | Invoice</title>
+      </Helmet>
             <h1 className='text-center mt-4 mb-4 font-bold text-2xl'>Invoice of your payment</h1>
             <div className='flex items-center justify-center'>
             <img src={logo} alt="" className="w-16 h-12 " />

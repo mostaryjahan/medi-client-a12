@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 // import { FaTrashAlt } from "react-icons/fa";
 
 const AllUsers = () => {
@@ -73,6 +74,9 @@ const AllUsers = () => {
     
     return (
         <div>
+             <Helmet>
+        <title>Medi corner | All Users</title>
+      </Helmet>
             <h1 className="text-center text-3xl">Manage All Users</h1>
             <p>Total Users: {users.length}</p>
 

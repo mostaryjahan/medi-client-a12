@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import error from "../assets/404.png";
+import { Helmet } from "react-helmet-async";
 
 const Error = () => {
   return (
     <div>
+         <Helmet>
+        <title>Medi corner | error</title>
+      </Helmet>
       <img
         src={error}
         alt=""

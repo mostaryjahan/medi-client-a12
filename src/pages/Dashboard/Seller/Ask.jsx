@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import useAuth from "../../../Hook/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Ask = () => {
   const { user } = useAuth();
@@ -84,6 +85,9 @@ const Ask = () => {
 
   return (
     <div>
+         <Helmet>
+        <title>Medi corner | Ask for slider</title>
+      </Helmet>
       <h1 className="text-center font-bold text-xl md:text-3xl">
         Ask for Slider
       </h1>

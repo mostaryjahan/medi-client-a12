@@ -1,6 +1,11 @@
+import { Helmet } from "react-helmet-async";
+
 const ExtraTwo = () => {
   return (
     <section className="mt-14 bg-purple-100 dark:text-gray-800">
+         <Helmet>
+        <title>Medi corner | Home</title>
+      </Helmet>
       <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
         <h2 className="text-2xl text-center font-semibold sm:text-4xl">
         Frequently Asked Questions

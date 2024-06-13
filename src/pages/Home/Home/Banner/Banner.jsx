@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../../../Hook/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const Banner = () => {
@@ -27,7 +28,9 @@ const Banner = () => {
     return (
         
         <div className="">
-             
+                <Helmet>
+        <title>Medi corner | Home</title>
+      </Helmet>
             
             <Carousel autoPlay  infiniteLoop >
           

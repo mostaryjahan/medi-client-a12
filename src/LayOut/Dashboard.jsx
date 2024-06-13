@@ -14,6 +14,7 @@ import useCart from "../Hook/useCart"
 import { Helmet } from "react-helmet-async";
 import { FaKitMedical, FaShop, FaStairs } from "react-icons/fa6";
 import useAuth from "../Hook/useAuth";
+import { MdPayments } from "react-icons/md";
 // import useAdmin from "../Hook/useAdmin";
   
   const Dashboard = () => {
@@ -43,12 +44,12 @@ import useAuth from "../Hook/useAuth";
         
           {user.role === "admin" && (
              <>
-                {/* <li>
+                <li>
                 <NavLink to="/dashboard/adminHome">
                   <FaHome className="w-4 h-4" />
                  Admin Home
                 </NavLink>
-              </li> */}
+              </li>
               <li>
                 <NavLink to="/dashboard/allUsers">
                   <FaUsers className="w-4 h-4" />
@@ -62,13 +63,13 @@ import useAuth from "../Hook/useAuth";
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/paymentManagement">
+                <NavLink to="/dashboard/paymentManage">
                   <FaMoneyBill className="w-4 h-4" />
                   Payment Management
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/salesReport">
+                <NavLink to="/dashboard/sales">
                   <FaStairs className="w-4 h-4" />
                   Sales Report
                 </NavLink>
@@ -84,24 +85,31 @@ import useAuth from "../Hook/useAuth";
              )}
               {user.role === "seller" && (
               <>
-                {/* <li>
+                <li>
                   <NavLink to="/dashboard/sellerHome">
                     <FaHome className="w-4 h-4" />
                     Seller Home
                   </NavLink>
-                </li> */}
+                </li>
                 <li>
                 <NavLink to="/dashboard/manageProducts">
                   <FaList className="w-4 h-4" />
                   Manage Products
                 </NavLink>
+                </li>
+                <li>
+                <NavLink to="/dashboard/sellerPayment">
+                <MdPayments className="w-4 h-4" />
+                  Payment History
+                </NavLink>
+                </li>
                 <li>
                   <NavLink to="/dashboard/ask">
                     <FaAd className="w-4 h-4" />
                     Advertisement
                   </NavLink>
                 </li>
-              </li>
+             
                 </>
               )}
               

@@ -36,7 +36,7 @@ const CategoryDetails = () => {
   return (
     <div>
           <Helmet>
-        <title>Medi corner | category section</title>
+        <title>Medi corner | Home </title>
       </Helmet>
       <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold mt-4">
         Details of Category Medicine

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hook/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -23,7 +24,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
         queryFn: async () =>{
 
          const res = await axiosSecure.get(`/category/${user.email}`);
-         console.log(user.email)
+        //  console.log(user.email)
          return res.data;
         }
     });
@@ -123,6 +124,9 @@ const closeModal = () => document.getElementById('my_modal_1').close();
 
     return (
         <div>
+               <Helmet>
+        <title>Medi corner | Manage Medicine</title>
+      </Helmet>
             <h1 className="text-center font-bold text-xl md:text-3xl">Manage Medicines</h1>
            <div className="flex gap-4 mt-8 mb-6">
            <p>Total Medicines: {medicines.length}</p>

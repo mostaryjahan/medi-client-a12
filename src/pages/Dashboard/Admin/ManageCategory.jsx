@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageCategory = () => {
   const axiosSecure = useAxiosSecure();
@@ -170,6 +171,9 @@ const ManageCategory = () => {
 
   return (
     <div>
+         <Helmet>
+        <title>Medi corner | Manage Category</title>
+      </Helmet>
       <h1 className="text-center text-3xl">Manage Category</h1>
       <p>Total category: {categories.length}</p>
 

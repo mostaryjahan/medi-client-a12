@@ -8,18 +8,10 @@ import useAxiosSecure from "../../../Hook/useAxiosSecure";
 const Cart = () => {
   const [cart, refetch] = useCart();
   
-
-
 //   console.log(cart);
 
 
   const axiosSecure = useAxiosSecure();
-
-
-
-  // const totalPrice = cart.reduce((total, item) => total + item.price, 0).toFixed(2);
-
-    // const totalPrice = cart.reduce((total, item) => total + item.price * item.count, 0).toFixed(2);
 
     const totalPrice = cart.reduce((total, item) => {
       const price = parseFloat(item.price) || 0;
@@ -34,16 +26,16 @@ const Cart = () => {
       const groupedItems = cart.reduce((medicines, item) => {
         const existingItem = medicines.find(i => i.menuId === item.menuId);
         if (existingItem) {
-          existingItem.count += 1; // Use count instead of quantity
+          existingItem.count += 1; 
         } else {
-          medicines.push({ ...item, count: item.count || 1 }); // Ensure count is set to 1 if not already
+          medicines.push({ ...item, count: item.count || 1 });
         }
         return medicines;
       }, []);
       return groupedItems;
     };
     const groupedCartItems = groupCartItems(cart);
-    console.log(groupedCartItems);
+    // console.log(groupedCartItems);
 
 
 

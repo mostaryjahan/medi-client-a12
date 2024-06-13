@@ -1,8 +1,49 @@
+import { useState, useEffect } from 'react';
+import useAxiosSecure from '../../../Hook/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const SellerHome = () => {
+    const axiosSecure = useAxiosSecure();
+    const [totalPaid, setTotalPaid] = useState(0);
+    const [totalPending, setTotalPending] = useState(0);
+
+    useEffect(() => {
+        fetchSalesData();
+    }, []);
+
+    const fetchSalesData = async () => {
+        try {
+            const response = await axiosSecure.get('/seller-sales');
+            const { totalPaid, totalPending } = response.data;
+            setTotalPaid(totalPaid);
+            setTotalPending(totalPending);
+        } catch (error) {
+            console.error('Error fetching sales data:', error);
+        }
+    };
+
     return (
         <div>
-            seller home
+               <Helmet>
+        <title>Medi corner | Seller Home</title>
+      </Helmet>
+            <h1 className="font-bold text-3xl text-center mt-10">Seller Dashboard</h1>
+
+            <div className="flex justify-center mt-8">
+                <div className="w-1/2 bg-white p-8 rounded shadow-md">
+                    <h2 className="text-xl font-bold mb-4">Total Sales Revenue Overview</h2>
+                    <div className="flex justify-between mb-4">
+                        <div>
+                            <p className="text-lg font-semibold">Total Paid:</p>
+                            <p className="text-lg">${totalPaid.toFixed(2)}</p>
+                        </div>
+                        <div>
+                            <p className="text-lg font-semibold">Total Pending:</p>
+                            <p className="text-lg">${totalPending.toFixed(2)}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
