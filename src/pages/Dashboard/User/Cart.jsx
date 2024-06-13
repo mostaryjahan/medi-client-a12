@@ -219,7 +219,7 @@ const Cart = () => {
          
         </table>
         {groupedCartItems.length ?
-      <Link to='/dashboard/payment'>
+      <Link to='/payment'>
       <button  className="btn bg-green-400 ">Checkout</button>
       </Link>
       :

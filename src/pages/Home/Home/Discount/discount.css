@@ -1,7 +1,4 @@
-.mySwiper {
-    width: 100%;
-    height: 100%;
-  }
+
   
   .mySwiper .swiper-slide {
     display: flex;
@@ -21,15 +18,12 @@
   .swiper {
     gap: 4px;
   }
+ 
 
-  /* @media (max-width: 768px) {
-    .mySwiper .swiper-slide {
-      width: calc((100% - 60px) / 2); /* 2 slides */
-    /* }
   
-    .swiper-pagination {
-      margin-bottom: -8px;
-    } */
-  /* } */ 
+  
+   
+   
+  
   
   

@@ -14,7 +14,7 @@ import useCart from "../Hook/useCart"
 import { Helmet } from "react-helmet-async";
 import { FaKitMedical, FaShop, FaStairs } from "react-icons/fa6";
 import useAuth from "../Hook/useAuth";
-import useAdmin from "../Hook/useAdmin";
+// import useAdmin from "../Hook/useAdmin";
   
   const Dashboard = () => {
      const [cart] = useCart();
@@ -43,12 +43,12 @@ import useAdmin from "../Hook/useAdmin";
         
           {user.role === "admin" && (
              <>
-                <li>
+                {/* <li>
                 <NavLink to="/dashboard/adminHome">
                   <FaHome className="w-4 h-4" />
                  Admin Home
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink to="/dashboard/allUsers">
                   <FaUsers className="w-4 h-4" />
@@ -84,12 +84,12 @@ import useAdmin from "../Hook/useAdmin";
              )}
               {user.role === "seller" && (
               <>
-                <li>
+                {/* <li>
                   <NavLink to="/dashboard/sellerHome">
                     <FaHome className="w-4 h-4" />
                     Seller Home
                   </NavLink>
-                </li>
+                </li> */}
                 <li>
                 <NavLink to="/dashboard/manageProducts">
                   <FaList className="w-4 h-4" />
@@ -107,12 +107,12 @@ import useAdmin from "../Hook/useAdmin";
               
               {user.role === "user" && (
             <>
-             <li>
+             {/* <li>
                 <NavLink to="/dashboard/userHome">
                   <FaHome className="w-4 h-4" />
                   User Home
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink to="/dashboard/cart">
                   <TiShoppingCart className="w-4 h-4" />

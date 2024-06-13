@@ -6,7 +6,11 @@
 .carousel .slider-wrapper {
     height: 500px;
   }
-  
+  .mySwiper {
+    width: 100%;
+    height: 100%;
+  }
+
   .thumbs {
       text-align: center;
       }
@@ -14,6 +18,8 @@
       .swiper-wrapper {
         margin: 10px;
       }
+
+    
       
         
         @media (max-width: 640px) {
@@ -21,8 +27,8 @@
               height: 180px;
           }
           .mySwiper .swiper-slide {
-            width: calc((100% - 60px) / 2); 
-            height: 150px;/* 2 slides */
+            width: auto; 
+            height: 180px; 
           }
         
           .swiper-pagination {

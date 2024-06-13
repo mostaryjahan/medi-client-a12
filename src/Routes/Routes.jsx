@@ -15,13 +15,16 @@ import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 import Dashboard from "../LayOut/Dashboard";
 import Cart from "../pages/Dashboard/User/Cart";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers";
-import SellerHome from "../pages/Dashboard/Seller/SellerHome";
-import UserHome from "../pages/Dashboard/User/UserHome";
+
 import Manage from "../pages/Dashboard/Seller/Manage";
 import Ask from "../pages/Dashboard/Seller/Ask";
 import Ad from "../pages/Dashboard/Admin/Ad";
 import ManageCategory from "../pages/Dashboard/Admin/ManageCategory";
-import AdminHome from "../pages/Dashboard/Admin/AdminHome";
+
+import CheckOutPayment from "../pages/Dashboard/payment/CheckOutPayment";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
+import Invoice from "../pages/Dashboard/payment/Invoice";
+import PaymentHistory from "../pages/Dashboard/User/PaymentHistory";
 
 
 
@@ -65,26 +68,32 @@ import AdminHome from "../pages/Dashboard/Admin/AdminHome";
         path:'/shop',
         element: <Shop></Shop>
        },
+       {
+        path: '/payment',
+        element: <CheckOutPayment></CheckOutPayment>
+     },
+     {
+      path: '/invoice',
+      element: <Invoice></Invoice>
+     }
       ]
     },
     {
-      path: '/dashboard',
+      path: `/dashboard`,
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       errorElement: <Error></Error>,
       children: [
-      // {
-      //    index: true,
-      //    element: 
-      // },
-       { path: '/dashboard/cart',
-        element: <Cart></Cart>
-       },
+      {
+         index: true,
+         element: <DashboardHome></DashboardHome>
+      },
+      
 
       //  admin route
-      {
-        path: '/dashboard/adminHome',
-        element: <AdminHome></AdminHome>
-      },
+      // {
+      //   path: '/dashboard/adminHome',
+      //   element: <AdminHome></AdminHome>
+      // },
       {
         path: '/dashboard/allUsers',
         element: <AllUsers></AllUsers>
@@ -100,10 +109,10 @@ import AdminHome from "../pages/Dashboard/Admin/AdminHome";
          
       },
       //seller
-      {
-        path: '/dashboard/sellerHome',
-        element: <SellerHome></SellerHome>
-      },
+      // {
+      //   path: '/dashboard/sellerHome',
+      //   element: <SellerHome></SellerHome>
+      // },
       {
         path: '/dashboard/manageProducts',
         element: <Manage></Manage>
@@ -114,10 +123,14 @@ import AdminHome from "../pages/Dashboard/Admin/AdminHome";
       },
 
       //user
+      { path: '/dashboard/cart',
+        element: <Cart></Cart>
+       },
+     
       {
         
-          path: '/dashboard/userHome',
-          element: <UserHome></UserHome>
+          path: '/dashboard/paymentHistory',
+          element: <PaymentHistory></PaymentHistory>
         
       },
 
