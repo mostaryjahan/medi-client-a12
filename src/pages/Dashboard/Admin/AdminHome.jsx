@@ -5,8 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const AdminHome = () => {
     const axiosSecure = useAxiosSecure();
-    // const [totalPaid, setTotalPaid] = useState(0); // Initialize as 0
-    // const [totalPending, setTotalPending] = useState(0); // Initialize as 0
+  
 
    
 
@@ -31,9 +30,9 @@ const AdminHome = () => {
             <h1 className="font-bold text-3xl text-center mt-10">Admin Dashboard</h1>
 
             <div className="flex justify-center mt-8">
-                <div className="w-1/2 bg-white p-8 rounded shadow-md">
+                <div className="md:w-1/2 bg-white p-8 rounded shadow-md">
                     <h2 className="text-xl font-bold mb-4">Total Revenue Overview</h2>
-                    <div className="flex justify-between mb-4">
+                    <div className="flex justify-between gap-4 mb-4">
                         <div>
                         <p className="text-lg font-semibold">Total Paid:</p>
                         <p className="text-lg">${stats?.revenue.toFixed(2)}</p>

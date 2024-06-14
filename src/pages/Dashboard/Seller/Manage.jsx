@@ -140,7 +140,7 @@ const closeModal = () => document.getElementById('my_modal_1').close();
         <table className="table">
           {/* head */}
           <thead>
-            <tr className="bg-orange-400">
+            <tr className="bg-purple-700">
               <th>#</th>
               <th>Image</th>
               <th>Name</th>

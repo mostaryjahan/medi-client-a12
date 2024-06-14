@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import { Helmet } from 'react-helmet-async';
+import useAuth from '../../../Hook/useAuth';
+
 
 const SellerHome = () => {
     const axiosSecure = useAxiosSecure();
     const [totalPaid, setTotalPaid] = useState(0);
     const [totalPending, setTotalPending] = useState(0);
+    const {user} = useAuth()
+   
 
     useEffect(() => {
         fetchSalesData();
@@ -13,7 +17,7 @@ const SellerHome = () => {
 
     const fetchSalesData = async () => {
         try {
-            const response = await axiosSecure.get('/seller-sales');
+            const response = await axiosSecure.get(`/seller-sales/${user.email}`);
             const { totalPaid, totalPending } = response.data;
             setTotalPaid(totalPaid);
             setTotalPending(totalPending);
@@ -30,9 +34,9 @@ const SellerHome = () => {
             <h1 className="font-bold text-3xl text-center mt-10">Seller Dashboard</h1>
 
             <div className="flex justify-center mt-8">
-                <div className="w-1/2 bg-white p-8 rounded shadow-md">
+                <div className="md:w-1/2 bg-white p-8 rounded shadow-md">
                     <h2 className="text-xl font-bold mb-4">Total Sales Revenue Overview</h2>
-                    <div className="flex justify-between mb-4">
+                    <div className="flex justify-between gap-4 mb-4">
                         <div>
                             <p className="text-lg font-semibold">Total Paid:</p>
                             <p className="text-lg">${totalPaid.toFixed(2)}</p>

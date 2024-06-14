@@ -60,54 +60,6 @@ return Promise.reject('No user is signed in');
 
    }
 
-//observer
-    //  useEffect( () => {
-    //  const unSubscribe =   onAuthStateChanged(auth, currentUser =>{
-    //       setUser(currentUser);
-    //       console.log('current user', currentUser);
-    //       if(currentUser){
-    //      //get token
-    //       const userInfo = {email: currentUser.email}
-    //       axiosPublic.post('/jwt', userInfo)
-    //        .then(res => {
-    //         if(res.data.token){
-    //              localStorage.setItem('access-token', res.data.token);
-    //              setLoading(false);
-
-    //          }
-    //        })
-    //       }
-    //       else{
-    //        //remove token
-    //          localStorage.removeItem('remove access-token');
-    //         setLoading(false)
-    //       }
-    //     });
-    //     return () => {
-    //         return unSubscribe();
-    //     }
-
-    //  },[])
-
-    // useEffect(() => {
-    //     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
-    //       if (currentUser) {
-    //         // const token = await currentUser.getIdToken();
-    //         const userInfo = { email: currentUser.email };
-    //         const response = await axiosPublic.post('/users/role', userInfo);
-    //         const role = response.data.role;
-    
-    //         setUser({ ...currentUser, role });
-    //       } else {
-    //         setUser(null);
-    //       }
-    //       setLoading(false);
-    //     });
-    
-    //     return () => unSubscribe();
-    //   }, []);
-
-
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -124,9 +76,10 @@ return Promise.reject('No user is signed in');
             localStorage.setItem('access-token', tokenResponse.data.token);
           }
 
-          const roleResponse = await axiosPublic.post('/users/role', userInfo);
+           const roleResponse = await axiosPublic.post('/users/role', userInfo);
+           
           const role = roleResponse.data.role;
-
+        
           setUser({ ...currentUser, role });
         } catch (error) {
           console.error('Error fetching token or role:', error);
@@ -134,7 +87,7 @@ return Promise.reject('No user is signed in');
       } else {
         // Remove token
         localStorage.removeItem('access-token');
-       // setLoading(false)
+        setLoading(false)
         setUser(null);
       }
 
@@ -145,6 +98,9 @@ return Promise.reject('No user is signed in');
       unSubscribe();
     };
   }, [axiosPublic]);
+
+
+ 
 
 
 

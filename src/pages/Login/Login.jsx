@@ -46,7 +46,7 @@ const Login = () => {
           <Helmet>
         <title>Medi corner | Login</title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-purple-200">
         <div className="hero-content flex-col">
           <div className="text-center md:w-1/2 lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
@@ -80,7 +80,7 @@ const Login = () => {
 
               <div className="form-control mt-6">
                 <input
-                 className="btn btn-primary"
+                 className="btn bg-purple-700 text-white"
                   type="submit"
                    value="Login" />
               </div>

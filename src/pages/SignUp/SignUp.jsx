@@ -50,6 +50,7 @@ const SignUp = () => {
               });
 
                navigate(from, { replace: true });
+               window.location.reload();
            }
           });
         })
@@ -64,7 +65,7 @@ const SignUp = () => {
       <Helmet>
         <title>Medi corner | sign up</title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-purple-200">
         <div className="hero-content flex-col">
           <div className="text-center ">
             <h1 className="md:text-5xl text-2xl font-bold">SignUp now!</h1>
@@ -158,7 +159,7 @@ const SignUp = () => {
 
               <div className="form-control mt-6">
                 <input
-                  className="btn btn-primary"
+                  className="btn bg-purple-700 text-white"
                   type="submit"
                   value="Sign Up"
                 />

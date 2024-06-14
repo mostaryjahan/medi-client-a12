@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import useAuth from '../../../Hook/useAuth';
 import logo from '../../../assets/medicine.png';
 
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 const Invoice = () => {
@@ -19,7 +19,7 @@ const Invoice = () => {
     
     return (
         <div>
-               <Helmet>
+     <Helmet>
         <title>Medi corner | Invoice</title>
       </Helmet>
             <h1 className='text-center mt-4 mb-4 font-bold text-2xl'>Invoice of your payment</h1>
@@ -47,6 +47,9 @@ const Invoice = () => {
                     <li>Customer name: {user.displayName}</li>
                     <li>Email : {user.email}</li>
                 </ul>
+                <Link to='/'>
+                <p className='text-center mt-6 text-blue-600'>Go back</p>
+                </Link>
             </div>
         </div>
     );

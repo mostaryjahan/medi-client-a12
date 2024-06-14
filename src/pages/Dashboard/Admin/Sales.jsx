@@ -7,7 +7,6 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Helmet } from 'react-helmet-async';
 
-
 const SalesReport = () => {
     const [sales, setSales] = useState([]);
     const [filteredSales, setFilteredSales] = useState([]);
@@ -25,7 +24,6 @@ const SalesReport = () => {
                 setSales(response.data);
                 setFilteredSales(response.data);
             } else {
-                // console.error('Unexpected data format:', response.data);
                 setSales([]);
                 setFilteredSales([]);
             }
@@ -49,38 +47,29 @@ const SalesReport = () => {
     };
 
     const columns = [
-        { name: 'Medicine Name', selector: row => row.medicineName, sortable: true },
-        { name: 'Seller Email', selector: row => row.sellerEmail, sortable: true },
-        { name: 'Buyer Email', selector: row => row.buyerEmail, sortable: true },
-        { name: 'Total Price', selector: row => row.totalPrice, sortable: true },
+        { name: 'Email', selector: row => row.email, sortable: true },
+        { name: 'Price', selector: row => row.price, sortable: true },
         { name: 'Date', selector: row => new Date(row.date).toLocaleDateString(), sortable: true }
     ];
 
     const exportPDF = () => {
         const doc = new jsPDF();
         doc.autoTable({
-            head: [['Medicine Name', 'Seller Email', 'Buyer Email', 'Total Price', 'Date']],
+            head: [['Email', 'Price', 'Date']],
             body: filteredSales.map(sale => [
-                sale.medicineName,
-                sale.sellerEmail,
-                sale.buyerEmail,
-                sale.totalPrice,
+                sale.email,
+                sale.price,
                 new Date(sale.date).toLocaleDateString()
             ])
         });
         doc.save('sales_report.pdf');
     };
 
-
-
-
-    // console.log(filteredSales); 
-
     return (
         <div>
-               <Helmet>
-        <title>Medi corner | Sales</title>
-      </Helmet>
+            <Helmet>
+                <title>Medi corner | Sales</title>
+            </Helmet>
             <h1 className="font-bold text-3xl text-center mt-10">Sales Report</h1>
             <div className="flex justify-center mt-4 mb-4">
                 <DatePicker
@@ -113,11 +102,19 @@ const SalesReport = () => {
                 data={filteredSales}
                 pagination
             />
+                <div className="flex justify-center mt-4">
+                {filteredSales.map(sale => (
+                    <ul key={sale._id} className="">
+                        <li>Email: {sale.email}</li>
+                        <li>Price: {sale.price}</li>
+                        <li>Date: {new Date(sale.date).toLocaleDateString()}</li>
+                    </ul>
+                ))}
+            </div>
             <div className="flex justify-center mt-4">
                 <button onClick={exportPDF} className="bg-red-500 text-white py-1 px-3 rounded mr-2">Export PDF</button>
-                {/* <button onClick={exportExcel} className="bg-green-500 text-white py-1 px-3 rounded mr-2">Export Excel</button>
-                <button onClick={exportCSV} className="bg-orange-500 text-white py-1 px-3 rounded">Export CSV</button> */}
             </div>
+        
         </div>
     );
 };

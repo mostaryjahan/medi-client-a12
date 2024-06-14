@@ -33,6 +33,7 @@ import SellerPayment from "../pages/Dashboard/Seller/SellerPayment";
 
 
 
+
  export const router = createBrowserRouter([
     {
       path: "/",
@@ -79,8 +80,9 @@ import SellerPayment from "../pages/Dashboard/Seller/SellerPayment";
      },
      {
       path: '/invoice',
-      element: <Invoice></Invoice>
-     }
+      element: <Invoice />
+     },
+  
       ]
     },
     {

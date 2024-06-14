@@ -33,7 +33,7 @@ const PaymentManage = () => {
     return (
         <div>
                <Helmet>
-        <title>Medi corner | Payment Management</title>
+        <title>Medi corner | Payment Manage</title>
       </Helmet>
             <h1 className="font-bold text-3xl text-center mt-10">Payment Management</h1>
 

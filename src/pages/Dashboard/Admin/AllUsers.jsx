@@ -85,12 +85,11 @@ const AllUsers = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr className="bg-orange-400">
+            <tr className="bg-purple-400">
               <th>#</th>
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
