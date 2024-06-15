@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import icon from "../../assets/medicine.png";
 import useAuth from "../../Hook/useAuth";
 import { TiShoppingCart } from "react-icons/ti";
-import useCart from "../../Hook/useCart";
+ import useCart from "../../Hook/useCart";
 
 const Nav = () => {
     const {  user , logOut} = useAuth();
