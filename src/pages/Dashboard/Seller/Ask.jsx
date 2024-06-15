@@ -1,11 +1,6 @@
 
 
-
-
-
-
 import useCart from "../../../Hook/useCart";
-// import Modaln from "./Modal";
 import "ka-table/style.css";
 import { Table } from "ka-table";
 import { DataType, EditingMode, SortingMode } from "ka-table/enums";
@@ -13,19 +8,22 @@ import useAuth from "../../../Hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hook/useAxiosPublic";
 import { Avatar } from "@nextui-org/react";
+import Modaln from "./Modaln";
 
 const Ask = () => {
-  const [, refetch] = useCart();
+   const [, refetch] = useCart();
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
 
-  const { data: advertisement = [], isPending} = useQuery({
+  const { data: advertisement = [], refetch: refetchAds} = useQuery({
     queryKey: ["advertisement"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/slider${user?.email}`);
+      const res = await axiosPublic.get(`/slider/${user?.email}`);
+      refetch();
       return res.data;
-     
+      
     },
+    enabled: !!user?.email,
   });
 //   console.log(advertisement);
 
@@ -37,19 +35,23 @@ const Ask = () => {
     id: index,
   }));
 
+  const handleRefetch = () => {
+    refetchAds(); 
+    refetch();    
+  };
+
   return (
     <div>
       
      
-      <div className="font-popins flex    justify-center                items-center  my-16">
-        {/* <Modaln refetch={refetch}></Modaln> */}
+      <div className=" flex    justify-center                items-center  my-16">
+        <Modaln refetch={handleRefetch}></Modaln>
        </div>
-       <div className="font-popins text-2xl font-bold">
+       <div className=" text-2xl font-bold">
       
-       <Table
+       <Table className='overflow-auto'
         columns={[
           { key: "description", title: "description", dataType: DataType.String },
-          // { key: "ItemName", title: "Item Name", dataType: DataType.String },
           { key: "status", title: "status", dataType: DataType.String },
           {
             key: "ProfilePicture",
@@ -61,7 +63,7 @@ const Ask = () => {
 
          
         ]}
-        // width={100}
+       
         data={dataArray}
         editingMode={EditingMode.Cell}
         rowKeyField={"id"}

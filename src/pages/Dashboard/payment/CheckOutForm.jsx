@@ -93,7 +93,10 @@ const CheckOutForm = () => {
           date: new Date(),
           cartIds: cart.map(item => item._id),
           menuItemIds: cart.map(item => item.menuId),
-          status: 'pending'
+          status: 'pending',
+          //edited
+          seller_email: cart.map(item=> item.email),
+          nameOfMedicine: cart.map(item=>item.name)
          }
        const res = await axiosSecure.post('/payments', payment);
          console.log('payment saved',res.data);

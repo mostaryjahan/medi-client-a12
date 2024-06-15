@@ -4,7 +4,7 @@
 
 # Medi Corner
 
-**Live Site URL**: [Medi Corner](http://your-live-site-url.com)
+**Live Site URL**:(https://medi-corner-22.web.app)
 
 
 **Admin Username**:   admin@email.com

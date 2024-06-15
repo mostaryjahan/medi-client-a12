@@ -4,7 +4,9 @@ import useAuth from "../Hook/useAuth"
 
 
  const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    //baseURL: 'https://medi-server-omega.vercel.app'
+     baseURL: 'http://localhost:5000'
+
 })
 
  const useAxiosSecure = () => {

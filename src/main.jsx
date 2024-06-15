@@ -7,11 +7,13 @@ import AuthProvider from "./Providers/AuthProvider.jsx";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { HelmetProvider } from "react-helmet-async";
+import { NextUIProvider } from "@nextui-org/react";
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <NextUIProvider>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <HelmetProvider>
@@ -19,5 +21,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </HelmetProvider>
       </AuthProvider>
     </QueryClientProvider>
+    </NextUIProvider>
   </React.StrictMode>
 );

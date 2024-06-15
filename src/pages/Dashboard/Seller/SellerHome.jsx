@@ -3,13 +3,11 @@ import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import { Helmet } from 'react-helmet-async';
 import useAuth from '../../../Hook/useAuth';
 
-
 const SellerHome = () => {
     const axiosSecure = useAxiosSecure();
     const [totalPaid, setTotalPaid] = useState(0);
     const [totalPending, setTotalPending] = useState(0);
-    const {user} = useAuth()
-   
+    const {user} = useAuth();
 
     useEffect(() => {
         fetchSalesData();
@@ -18,6 +16,7 @@ const SellerHome = () => {
     const fetchSalesData = async () => {
         try {
             const response = await axiosSecure.get(`/seller-sales/${user.email}`);
+            console.log(user.email)
             const { totalPaid, totalPending } = response.data;
             setTotalPaid(totalPaid);
             setTotalPending(totalPending);
