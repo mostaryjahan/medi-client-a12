@@ -11,7 +11,7 @@ const SalesReport = () => {
   const axiosSecure = useAxiosSecure();
   const tableRef = useRef(null);
   // const axiosPublic=UseAxiosPublic()
-  const { data: sales = [], refetch } = useQuery({
+  const { data: sales = [] } = useQuery({
     queryKey: ["sales"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/payments`);
@@ -112,7 +112,7 @@ const SalesReport = () => {
                 <tr key={item._id}>
                   <td>{index + 1}</td>
 
-                  <td>{item.price}</td>
+                  <td> $ {item.price} </td>
                   <td>{item.nameOfMedicine}</td>
                   <td>{item?.email}</td>
                   <td>{item?.seller_email}</td>

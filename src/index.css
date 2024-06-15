@@ -13,14 +13,16 @@
 
   .thumbs {
       text-align: center;
+    
+
+     
       }
       
       .swiper-wrapper {
         margin: 10px;
       }
 
-    
-      
+  
         
         @media (max-width: 640px) {
           .carousel .slider-wrapper {

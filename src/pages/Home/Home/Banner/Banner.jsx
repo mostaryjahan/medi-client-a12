@@ -1,10 +1,8 @@
- import { Swiper, SwiperSlide } from "swiper/react";
 // import "./slide.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
  import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../Hook/useAxiosPublic";
 
@@ -15,7 +13,7 @@ import { Helmet } from "react-helmet-async";
 const Banner = () => {
 
 const axiosPublic=useAxiosPublic()
-  const { data: advertisementb = [], isPending,refetch } = useQuery({
+  const { data: advertisementb = []} = useQuery({
     queryKey: ["advertisementb"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/slider`);
@@ -31,47 +29,22 @@ const approvedItems = advertisementb.filter(item => item.status === "approve");
 
   return (
     <div>
-      {/* <Swiper
-        slidesPerView={1}
-        spaceBetween={30}
-        loop={true}
-        pagination={{
-          clickable: true,
-        }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper1"
-      >
-       
-        {
-          approvedItems.map(item=><SwiperSlide key={item._id}>
-            <div className="w-full h-full">
-              {" "}
-              <img className="" src={item.photo} alt="" />
-            </div>
-            <div>
-                <h1>Description: {item.description}</h1>
-            </div>
-          </SwiperSlide>)
-        }
-      
-      </Swiper> */}
+  
 
-                       <Helmet>
+       <Helmet>
         <title>Medi corner | Home</title>
        </Helmet>
             
             <Carousel autoPlay  infiniteLoop >
           
              {approvedItems.map((item, index) => (
-                     <div key={index}>
-                         <img className="relative w-full h-fit" src={item.photo} alt={`Banner ${index}`} />
-                        <p className="absolute bottom-50 left-0 w-full bg-black bg-opacity-50 text-white p-2">{item.description}</p>
-                         <p className="absolute bottom-20 left-0 w-full bg-black bg-opacity-100 text-white p-2">{item.email}</p>
+                     <div className="relative w-full" key={index}>
+                         <img className="w-full object-cover  " src={item.photo} alt={`Banner ${index}`} />
+                         <div className="rounded-md text-white md:p-6 absolute md:top-1/3 top-5 left-1/2 bg-white bg-opacity-50 -translate-x-1/2">
+                         <p className=" text-2xl font-bold capitalize text-purple-800">{item.description}</p>
+                         <p className="text-black">Banner By : {item.email}</p>
+                         </div>
+                      
                     </div>
                     
                 ))}          
@@ -82,52 +55,8 @@ const approvedItems = advertisementb.filter(item => item.status === "approve");
 
 export default Banner;
 
-//  import "react-responsive-carousel/lib/styles/carousel.min.css"; 
-//  import { Carousel } from 'react-responsive-carousel';
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-// import useAuth from "../../../../Hook/useAuth";
-// import { Helmet } from "react-helmet-async";
 
 
-// const Banner = () => {
-//     const [images, setImages] = useState([]);
-//     const {user} = useAuth();
 
-//     // console.log(images)
-
-//     useEffect(() => {
-//         const fetchImages = async () => {
-//             try {
-//                 const response = await axios.get('https://medi-server-omega.vercel.app/slider'); 
-//                 setImages(response.data);
-//             } catch (error) {
-//                 console.error('Error fetching images:', error);
-//             }
-//         };
-
-//         fetchImages();
-//     }, []);
-
-//     return (
         
-//         <div className="">
-//                 <Helmet>
-//         <title>Medi corner | Home</title>
-//       </Helmet>
-            
-//             <Carousel autoPlay  infiniteLoop >
-          
-//             {images.map((item, index) => (
-//                     <div key={index}>
-//                         <img className="relative" src={item.medicineImage} alt={`Banner ${index}`} />
-//                         <p className="absolute bottom-10 left-0 w-full bg-black bg-opacity-50 text-white p-2">{item.description}</p>
-//                         <p className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white p-2">{item.sellerEmail}</p>
-//                     </div>
-//                 ))}          
-//   </Carousel>
-//         </div>
-//     );
-// };
 
-// export default Banner;
