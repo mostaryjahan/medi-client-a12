@@ -10,8 +10,7 @@
 **Admin Username**:   admin@email.com
 **Admin Password**:   111111
 
-**Seller Username**:  seller@email.com
-**Seller Password**:  111111
+
 
 
 ## Features of Medi Corner

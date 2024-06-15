@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hook/useAxiosPublic";
 import { Avatar } from "@nextui-org/react";
 import Modaln from "./Modaln";
+import { Helmet } from "react-helmet-async";
 
 const Ask = () => {
    const [, refetch] = useCart();
@@ -42,7 +43,9 @@ const Ask = () => {
 
   return (
     <div>
-      
+      <Helmet>
+        medi corner | ask for banner
+      </Helmet>
      
       <div className=" flex    justify-center                items-center  my-16">
         <Modaln refetch={handleRefetch}></Modaln>

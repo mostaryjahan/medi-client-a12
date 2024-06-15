@@ -3,6 +3,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hook/useAxiosPublic";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const Ad = () => {
   const axiosPublic = useAxiosPublic();
@@ -57,8 +58,10 @@ const Ad = () => {
   };
 
   return (
-    <div className="font-popins font-bold ">
-     
+    <div className=" font-bold ">
+     <Helmet>
+      medi corner | approve banner
+     </Helmet>
       <div className="overflow-x-auto p-2 w-full font-popins ">
         <table className="table ">
           {/* head */}

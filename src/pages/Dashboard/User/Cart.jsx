@@ -138,7 +138,7 @@ const Cart = () => {
       <h1 className="text-3xl font-bold text-center mb-4">Want to Add More?</h1>
       <hr />
       <div className="flex justify-evenly mt-4">
-        <h2 className="lg:text-3xl">Total Medicines: {cart.length}</h2>
+        {/* <h2 className="lg:text-3xl">Total Medicines: {cart.length}</h2> */}
         <h2 className="lg:text-3xl">Total Prices: {totalPrice} $</h2>
 
             <button onClick={handleClearCart} className="btn bg-red-500 text-white">Clear Cart</button>
