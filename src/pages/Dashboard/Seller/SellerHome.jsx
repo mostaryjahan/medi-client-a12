@@ -16,7 +16,7 @@ const SellerHome = () => {
     const fetchSalesData = async () => {
         try {
             const response = await axiosSecure.get(`/seller-sales/${user.email}`);
-            console.log(user.email)
+            // console.log(user.email)
             const { totalPaid, totalPending } = response.data;
             setTotalPaid(totalPaid);
             setTotalPending(totalPending);

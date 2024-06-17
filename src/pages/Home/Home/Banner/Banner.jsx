@@ -21,7 +21,7 @@ const axiosPublic=useAxiosPublic()
     },
   });
 
-console.log(advertisementb);
+// console.log(advertisementb);
 
 const approvedItems = advertisementb.filter(item => item.status === "approve");
 
