@@ -55,12 +55,13 @@ const SalesReport = () => {
 
   return (
     <div>
+             <Helmet>
+        <title>Medi corner | All sales report</title>
+      </Helmet>
         <h1 className='text-2xl md:4xl font-semibold text-center mt-6'>
             Sales Report
         </h1>
-        <Helmet>
-            medi corner | sales report
-        </Helmet>
+      
                     <div className="flex justify-center mt-4 mb-4">
                  <DatePicker
                     selected={startDate}

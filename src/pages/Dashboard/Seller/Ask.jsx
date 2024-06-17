@@ -43,8 +43,8 @@ const Ask = () => {
 
   return (
     <div>
-      <Helmet>
-        medi corner | ask for banner
+            <Helmet>
+        <title>Medi corner | Add Advertisement</title>
       </Helmet>
      
       <div className=" flex    justify-center                items-center  my-16">

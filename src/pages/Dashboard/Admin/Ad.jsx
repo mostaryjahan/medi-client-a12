@@ -59,9 +59,10 @@ const Ad = () => {
 
   return (
     <div className=" font-bold ">
-     <Helmet>
-      medi corner | approve banner
-     </Helmet>
+         <Helmet>
+        <title>Medi corner | Manage Banner</title>
+      </Helmet>
+     <h1 className="text-2xl md:text-3xl font-bold text-center">Manage Advertisement</h1>
       <div className="overflow-x-auto p-2 w-full font-popins ">
         <table className="table ">
           {/* head */}
