@@ -16,8 +16,8 @@ const CategoryDetails = () => {
        const [medicines, setMedicines] = useState([]);
 
        useEffect(() => {
-        // fetch("https://medi-server-omega.vercel.app/category")
-        fetch("http://localhost:5000/category")
+         fetch("https://medi-server-omega.vercel.app/category")
+      //  fetch("http://localhost:5000/category")
         .then((res) => res.json())
           .then((data) => setMedicines(data));
       }, [category]);
