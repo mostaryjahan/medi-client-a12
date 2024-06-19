@@ -128,8 +128,9 @@ const closeModal = () => document.getElementById('my_modal_1').close();
         <title>Medi corner | Manage Medicine</title>
       </Helmet>
             <h1 className="text-center font-bold text-xl md:text-3xl">Manage Medicines</h1>
-           <div className="flex gap-4 mt-8 mb-6">
+           <div className="flex gap-6 mt-8 mb-6 px-6 items-center">
            <p>Total Medicines: {medicines.length}</p>
+
             <button onClick={openModal}
              className="btn bg-green-400">   Add Medicine
           </button>
@@ -140,7 +141,7 @@ const closeModal = () => document.getElementById('my_modal_1').close();
         <table className="table">
           {/* head */}
           <thead>
-            <tr className="bg-purple-700">
+            <tr className="bg-purple-700 text-white">
               <th>#</th>
               <th>Image</th>
               <th>Name</th>

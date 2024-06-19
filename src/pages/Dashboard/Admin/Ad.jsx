@@ -63,11 +63,11 @@ const Ad = () => {
         <title>Medi corner | Manage Banner</title>
       </Helmet>
      <h1 className="text-2xl md:text-3xl font-bold text-center">Manage Advertisement</h1>
-      <div className="overflow-x-auto p-2 w-full font-popins ">
+      <div className="overflow-x-auto p-2 w-full ">
         <table className="table ">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="bg-purple-800 text-white">
               <th>SL</th>
               <th>description</th>
               <th>Email</th>
@@ -79,15 +79,15 @@ const Ad = () => {
           <tbody>
             {/* row 1 */}
             {advertisemente?.map((user, index) => (
-              <tr key={user._id} className="bg-base-200 my-3">
-                <th>{index + 1}</th>
+              <tr key={user._id} className="even:bg-purple-200 my-3">
+                <td>{index + 1}</td>
                 <td>{user?.description}</td>
                 <td>{user?.email}</td>
                 <td>{user?.status}</td>
-                <td>
+                <td className="min-w-28 md:min-w-12 md:max-w-16">
                   <img
                     src={user?.photo}
-                    className="w-[100px] h-[100px]"
+                    className="size-full rounded"
                     alt=""
                   />
                 </td>
@@ -95,14 +95,14 @@ const Ad = () => {
                   {user?.status === "pending" ? (
                     <button
                       onClick={() => handleApprove(user?._id)}
-                      className="btn bg-primary text-white hover:bg-special-button-hover hover:text-black"
+                      className="btn bg-green-500 text-white hover:bg-special-button-hover hover:text-black"
                     >
                  Active
                     </button>
                   ) : (
                     <button
                       onClick={() => handlepending(user?._id)}
-                      className="btn bg-primary text-white hover:bg-special-button-hover hover:text-black"
+                      className="btn bg-red-500 text-white hover:bg-special-button-hover hover:text-black"
                     >
                       InActive
                     </button>

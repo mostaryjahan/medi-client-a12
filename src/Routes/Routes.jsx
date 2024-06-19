@@ -30,6 +30,8 @@ import Sales from "../pages/Dashboard/Admin/Sales";
 import AdminHome from "../pages/Dashboard/Admin/AdminHome";
 import SellerHome from "../pages/Dashboard/Seller/SellerHome";
 import SellerPayment from "../pages/Dashboard/Seller/SellerPayment";
+import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
 
 
 
@@ -76,7 +78,7 @@ import SellerPayment from "../pages/Dashboard/Seller/SellerPayment";
        },
        {
         path: '/payment',
-        element: <CheckOutPayment></CheckOutPayment>
+        element: <PrivateRoute><CheckOutPayment></CheckOutPayment></PrivateRoute>
      },
      {
       path: '/invoice',
@@ -96,48 +98,48 @@ import SellerPayment from "../pages/Dashboard/Seller/SellerPayment";
       },
       {
         path: '/dashboard/allUsers',
-        element: <AllUsers></AllUsers>
+        element:<AdminRoute><AllUsers></AllUsers></AdminRoute> 
 
       },
       {
           path: '/dashboard/ad',
-          element:<Ad></Ad>
+          element:<AdminRoute><Ad></Ad></AdminRoute>
       },
       {
          path: '/dashboard/manageCategory/:category',
-         element: <ManageCategory></ManageCategory>,
+         element: <AdminRoute><ManageCategory></ManageCategory></AdminRoute>,
          
       },
       {
         path: '/dashboard/paymentManage',
-        element: <PaymentManage></PaymentManage>,
+        element: <AdminRoute><PaymentManage></PaymentManage></AdminRoute>,
         
      },
      {
         path: '/dashboard/sales',
-        element: <Sales></Sales>
+        element: <AdminRoute><Sales></Sales></AdminRoute>
      },
      {
         path: '/dashboard/adminHome',
-        element:<AdminHome></AdminHome>
+        element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
      },
 
       //seller
       {
         path: '/dashboard/sellerHome',
-        element: <SellerHome></SellerHome>
+        element: <SellerRoute><SellerHome></SellerHome></SellerRoute>
       },
       {
         path: '/dashboard/manageProducts',
-        element: <Manage></Manage>
+        element: <SellerRoute><Manage></Manage></SellerRoute>
       },
       {
          path: '/dashboard/ask',
-         element: <Ask></Ask>
+         element: <SellerRoute><Ask></Ask></SellerRoute>
       },
       {
         path: '/dashboard/sellerPayment',
-        element: <SellerPayment></SellerPayment>
+        element: <SellerRoute><SellerPayment></SellerPayment></SellerRoute>
       },
 
       //user
