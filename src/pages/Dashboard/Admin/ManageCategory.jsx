@@ -175,10 +175,10 @@ const ManageCategory = () => {
         <title>Medi corner | Manage Category</title>
       </Helmet>
       <h1 className="text-center text-3xl">Manage Category</h1>
-      <p>Total category: {categories.length}</p>
+      {/* <p>Total category: {categories.length}</p> */}
 
       <button
-        className="btn mt-4"
+        className="btn mt-4 bg-green-400 "
         onClick={() => document.getElementById("addCategoryModal").showModal()}
       >
         Add New Category
@@ -189,7 +189,7 @@ const ManageCategory = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr className="bg-orange-400">
+            <tr className="bg-purple-800 text-white">
               <th>#</th>
               <th>Image</th>
               <th>Categories</th>
@@ -249,6 +249,7 @@ const ManageCategory = () => {
                                 <option value="Tablet">Tablet</option>
                                 <option value="Syrup">Syrup</option>
                                 <option value="Injection">Injection</option>
+                                <option value="others">Others</option>
                             </select>
               
             </div>
@@ -311,6 +312,7 @@ const ManageCategory = () => {
                 <option value="Tablet">Tablet</option>
                 <option value="Syrup">Syrup</option>
                 <option value="Injection">Injection</option>
+                <option value="others">Others</option>
               </select>
             </div>
 

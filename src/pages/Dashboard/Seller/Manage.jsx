@@ -249,6 +249,7 @@ const closeModal = () => document.getElementById('my_modal_1').close();
                                 <option value="tablet">Tablet</option>
                                 <option value="syrup">Syrup</option>
                                 <option value="injection">Injection</option>
+                                <option value="others">Others</option>
                             </select>
                         </div>
                         <div className="flex flex-col">

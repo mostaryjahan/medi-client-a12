@@ -16,8 +16,8 @@ const CategoryDetails = () => {
        const [medicines, setMedicines] = useState([]);
 
        useEffect(() => {
-         fetch("https://medi-server-omega.vercel.app/category")
-      //  fetch("http://localhost:5000/category")
+        fetch("https://medi-server-omega.vercel.app/category")
+      // fetch("http://localhost:5000/category")
         .then((res) => res.json())
           .then((data) => setMedicines(data));
       }, [category]);
@@ -33,6 +33,7 @@ const CategoryDetails = () => {
   const injection = filteredMedicines.filter(item => item.category === "Injection");
   const tablet = filteredMedicines.filter(item => item.category === "Tablet");
   const syrup = filteredMedicines.filter(item => item.category === "Syrup");
+  const others = filteredMedicines.filter(item => item.category === "others");
 
   return (
     <div>
@@ -56,6 +57,8 @@ const CategoryDetails = () => {
 
        
          <FilterCategory items={syrup} title="Syrup" ></FilterCategory>  
+
+         <FilterCategory items={others} title="others" ></FilterCategory> 
         </div>
 
 
