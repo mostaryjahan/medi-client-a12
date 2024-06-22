@@ -1,31 +1,24 @@
 
-// import { useQuery } from "@tanstack/react-query";
-// import useAxiosPublic from "./useAxiosPublic";
+ import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "./useAxiosPublic";
 
-import { useEffect } from "react";
-import { useState } from "react";
+
 
 const useCategory = () => {
+
+  const axiosPublic = useAxiosPublic();
+
+  const { refetch, data: categories = [] } = useQuery({
+    queryKey: ["categories"],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/category`);
+      return res.data;
+    },
+  });
+  return [categories, refetch];
   
 
-  const [categories, setCategories] = useState([]);
-  // const [loading, setLoading] = useState(true);
-  // console.log(category)
-
-  useEffect(() => {
-   fetch("https://medi-server-omega.vercel.app/category")
-    // fetch("http://localhost:5000/category")
-      .then((res) => res.json())
-      .then((data) => {
-
-        setCategories(data);
-        // setLoading(false)
-      });
-  }, []);
-
-  return [categories];
-
-  // return [category, loading, refetch];
+ 
 };
 
 export default useCategory;

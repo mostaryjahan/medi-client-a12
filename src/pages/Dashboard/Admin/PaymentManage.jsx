@@ -1,29 +1,28 @@
-import { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import { Helmet } from 'react-helmet-async';
+import { useQuery } from '@tanstack/react-query';
 
 const PaymentManage = () => {
-    const [payments, setPayments] = useState([]);
+
     const axiosSecure = useAxiosSecure();
 
 
-    useEffect(() => {
-        fetchPayments();
-    }, []);
+    //get data
+  const {  data: payments = [], refetch} = useQuery({
+    queryKey: ['payment-manage-admin'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/payments')
+      return res.data
+    }
+  })
 
-    const fetchPayments = async () => {
-        try {
-            const response = await axiosSecure.get('/payments');
-            setPayments(response.data);
-        } catch (error) {
-            console.error('Error fetching payments', error);
-        }
-    };
+
     
     const handleAcceptPayment = async (id) => {
         try {
             await axiosSecure.patch(`/payments/${id}`, { status: 'paid' });
-            fetchPayments();
+            // fetchPayments();
+            refetch()
         } catch (error) {
             console.error('Error updating payment status', error);
         }

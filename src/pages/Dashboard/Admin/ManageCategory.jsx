@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
 
 const ManageCategory = () => {
   const axiosSecure = useAxiosSecure();
 
-  const [categories, setCategories] = useState([]);
+
+
   const [editingCategory, setEditingCategory] = useState(null);
 
   // console.log(editingCategory)
@@ -25,9 +27,7 @@ const ManageCategory = () => {
 
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
+
 
   const handleImageUpload = async (file) => {
     const formData = new FormData();
@@ -65,7 +65,8 @@ const ManageCategory = () => {
         ...newCategory,
         image: imageUrl,
       });
-      fetchCategories();
+      refetch();
+      
       setNewCategory({
   
         image: "",
@@ -85,20 +86,27 @@ const ManageCategory = () => {
     }
   };
 
-  const fetchCategories = async () => {
-    try {
-      const res = await axiosSecure.get("/categoryCard");
-      setCategories(res.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
+
+
+
+
+//get data
+  const {  data: categories = [], refetch} = useQuery({
+    queryKey: ['manage-category-admin'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/categoryCard')
+      return res.data
     }
-  };
+  })
+
+
 
   //delete
   const handleDeleteCategory = async (id) => {
     try {
       await axiosSecure.delete(`/categoryCard/${id}`);
-      fetchCategories();
+      refetch();
+      
       Swal.fire({
         icon: "success",
         title: "Category has been deleted",
@@ -145,7 +153,8 @@ const ManageCategory = () => {
         },
       });
   
-      fetchCategories();
+      
+      refetch();
       setEditingCategory(null);
       Swal.fire({
         icon: "success",
@@ -277,12 +286,12 @@ const ManageCategory = () => {
 
 
             <div className="modal-action">
-              <button type="submit" className="btn">
+              <button type="submit" className="btn bg-green-400">
                 Add Category
               </button>
               <button
                 type="button"
-                className="btn"
+                className="btn bg-red-500"
                 onClick={() =>
                   document.getElementById("addCategoryModal").close()
                 }
@@ -334,10 +343,10 @@ const ManageCategory = () => {
             </div>
 
             <div className="modal-action">
-              <button type="submit" className="btn">Update Category</button>
+              <button type="submit" className="btn bg-green-400">Update Category</button>
               <button
                 type="button"
-                className="btn"
+                className="btn bg-red-500"
                 onClick={() => document.getElementById("editCategoryModal").close()}
               >
                 Close

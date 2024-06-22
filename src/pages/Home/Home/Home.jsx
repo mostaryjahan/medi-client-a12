@@ -8,7 +8,7 @@ import Discount from "./Discount/Discount";
 const Home = () => {
     return (
         <div>
-               <Helmet>
+       <Helmet>
         <title>Medi corner | Home</title>
       </Helmet>
            

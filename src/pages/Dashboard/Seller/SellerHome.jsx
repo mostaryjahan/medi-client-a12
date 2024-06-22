@@ -1,29 +1,38 @@
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 import useAxiosSecure from '../../../Hook/useAxiosSecure';
 import { Helmet } from 'react-helmet-async';
 import useAuth from '../../../Hook/useAuth';
+import { useQuery } from '@tanstack/react-query';
 
 const SellerHome = () => {
     const axiosSecure = useAxiosSecure();
-    const [totalPaid, setTotalPaid] = useState(0);
-    const [totalPending, setTotalPending] = useState(0);
+    // const [totalPaid, setTotalPaid] = useState(0);
+    // const [totalPending, setTotalPending] = useState(0);
     const {user} = useAuth();
 
-    useEffect(() => {
-        fetchSalesData();
-    }, []);
 
-    const fetchSalesData = async () => {
-        try {
-            const response = await axiosSecure.get(`/seller-sales/${user.email}`);
-            // console.log(user.email)
-            const { totalPaid, totalPending } = response.data;
-            setTotalPaid(totalPaid);
-            setTotalPending(totalPending);
-        } catch (error) {
-            console.error('Error fetching sales data:', error);
+
+
+    //get data
+    const { data: salesData = {}, refetch } = useQuery({
+        queryKey: ['seller-sales', user.email],
+        queryFn: async () => {
+          const res = await axiosSecure.get(`/seller-sales/${user.email}`);
+          return res.data;
+        },
+        refetchOnWindowFocus: false,
+        enabled: !!user?.email, 
+      });
+    
+      const totalPaid = salesData.totalPaid || 0;
+      const totalPending = salesData.totalPending || 0;
+    
+      useEffect(() => {
+        if (user?.email) {
+          refetch();
         }
-    };
+      }, [user, refetch]);
+    
 
     return (
         <div>

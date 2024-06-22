@@ -65,7 +65,7 @@ import SellerRoute from "./SellerRoute";
        },
        {
          path: '/categoryDetails/:category',
-         element: <PrivateRoute><CategoryDetails></CategoryDetails></PrivateRoute>,
+         element: <CategoryDetails></CategoryDetails>,
 
        },
        {

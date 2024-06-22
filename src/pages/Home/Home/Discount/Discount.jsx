@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -7,25 +6,25 @@ import 'swiper/css/pagination';
 import './discount.css'
 import '../../../../index.css'
 import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../../../Hook/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const Discount = () => {
-    const { discount} = useParams();
-    // const [categories] = useCategory();
-    // console.log(categories);
 
 
-const [medicines, setMedicines] = useState([]);
+const axiosPublic = useAxiosPublic();
 
 
-useEffect(() => {
-  fetch("https://medi-server-omega.vercel.app/category")
-  .then((res) => res.json())
-    .then((data) => setMedicines(data));
-}, [discount]);
+const {  data: medicines = []} = useQuery({
+  queryKey: ['discount-home'],
+  queryFn: async () => {
+    const res = await axiosPublic.get('/category')
+    return res.data
+  }
+})
+
 
 const filteredMedicines = medicines.filter(medicine => medicine.discount_medicine === "discount");
-
-// console.log(filteredMedicines)
 
 
 

@@ -5,16 +5,16 @@ import useAuth from "../../Hook/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 // import useAxiosSecure from '../../Hook/useAxiosSecure'
-import useAxiosSecure from '../../Hook/useAxiosSecure'
 import { Helmet } from "react-helmet-async";
 import useCart from "../../Hook/useCart";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 const Shop = () => {
   const [categories] = useCategory();
 
   const {user} = useAuth();
 
-   const axiosSecure = useAxiosSecure();
+   const axiosPublic = useAxiosPublic();
 
    const navigate = useNavigate();
    const location = useLocation();
@@ -39,9 +39,9 @@ const Shop = () => {
           price_per_unit: item.price_per_unit,
           //
       }
-      console.log(cartItem);
+      // console.log(cartItem);
 
-       axiosSecure.post('/carts', cartItem)
+       axiosPublic.post('/carts', cartItem)
       .then(res => {
        console.log(res.data);
        if(res.data.insertedId){

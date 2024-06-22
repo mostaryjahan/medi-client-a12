@@ -1,27 +1,20 @@
 import { Link } from "react-router-dom";
-import useAxiosSecure from "../../../../Hook/useAxiosSecure";
-import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import useAxiosPublic from "../../../../Hook/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 
 const CategoryCard = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
 
-  const [categories, setCategories] = useState([]);
-  // console.log(categories);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axiosSecure.get('/categoryCard');
-        setCategories(res.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, [axiosSecure]);
+  const {  data: categories = []} = useQuery({
+    queryKey: ['category-cards-home'],
+    queryFn: async () => {
+      const res = await axiosPublic.get('/categoryCard')
+      return res.data
+    }
+  })
   
   
 

@@ -64,7 +64,7 @@ return Promise.reject('No user is signed in');
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      console.log('current user', currentUser);
+      // console.log('current user', currentUser);
 
       if (currentUser) {
         // Get token
