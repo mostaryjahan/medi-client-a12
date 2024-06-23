@@ -90,6 +90,7 @@ const AllUsers = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -99,6 +100,7 @@ const AllUsers = () => {
                     <th>{index + 1}</th>
                     <td> {user.name} </td>
                     <td> {user.email}</td>
+                    <td>{user.role}</td>
                     <td>
 
                          {user.role !== "admin" && (
@@ -117,14 +119,7 @@ const AllUsers = () => {
                       </button>
                     )}
                     </td>
-                    {/* <th>
-                      <button 
-                      onClick={() => handleDelete(user)}
-                       className="btn btn-ghost btn-lg">
-                        <FaTrashAlt className="text-red-700 w-6 h-6">
-                        </FaTrashAlt>
-                        </button>
-                    </th> */}
+              
                   </tr>)
             }
           
