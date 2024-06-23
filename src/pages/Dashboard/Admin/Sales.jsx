@@ -37,18 +37,20 @@ const SalesReport = () => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
 
+ 
     const handleDateFilter = () => {
-        if (startDate && endDate) {
-         
-            const filtered = sales.filter(sale => {
-                const saleDate = new Date(sale.date).getTime();
-                return saleDate >= new Date(startDate).setHours(0, 0, 0, 0) && saleDate <= new Date(endDate).setHours(23, 59, 59, 999);
-
-            });
-            setFilteredSales(filtered);
-        } else {
-            setFilteredSales(sales);
-        }
+      if (startDate && endDate) {
+        const startTimestamp = new Date(startDate).setHours(0, 0, 0, 0); 
+        const endTimestamp = new Date(endDate).setHours(23, 59, 59, 999);
+  
+        const filtered = sales.filter(sale => {
+          const saleTimestamp = new Date(sale.date).getTime();
+          return saleTimestamp >= startTimestamp && saleTimestamp <= endTimestamp; 
+        });
+        setFilteredSales(filtered);
+      } else {
+        setFilteredSales(sales);
+      }
     };
 
 
@@ -102,6 +104,7 @@ const SalesReport = () => {
                 <th>#</th>
                 <th>Total Price</th>
                 <th>Medicine Name</th>
+                <th>Date</th>
                 <th>Buyer Email</th>
                 <th>seller Email</th>
               </tr>
@@ -115,6 +118,7 @@ const SalesReport = () => {
 
                   <td> $ {item.price} </td>
                   <td>{item.nameOfMedicine}</td>
+                  <td>{new Date(item.date).toLocaleDateString()}</td>
                   <td>{item?.email}</td>
                   <td>{item?.seller_email}</td>
                 </tr>
