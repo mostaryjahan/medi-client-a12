@@ -23,11 +23,13 @@ const SalesReport = () => {
     const exportPDF = () => {
         const doc = new jsPDF();
         doc.autoTable({
-            head: [['Email', 'Price', 'Date']],
+            head: [['Medicine Name','Email', 'Price', 'Date','Seller Email']],
             body:  (filteredSales.length ? filteredSales : sales).map(sale => [
+               sale.nameOfMedicine,
                 sale.email,
                 sale.price,
-                new Date(sale.date).toLocaleDateString()
+                new Date(sale.date).toLocaleDateString(),
+                sale.seller_email
             ])
         });
         doc.save('sales_report.pdf');
