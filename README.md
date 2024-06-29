@@ -7,8 +7,8 @@
 **Live Site URL**:(https://medi-corner-22.web.app)
 
 
-**Admin Username**:   admin@email.com
-**Admin Password**:   111111
+<!-- **Admin Username**:   admin@email.com
+**Admin Password**:   111111 -->
 
 
 
