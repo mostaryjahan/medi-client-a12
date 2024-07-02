@@ -1,8 +1,7 @@
+## Multi-Vendor Medicine Selling E-commerce Website
 
 
-
-
-# Medi Corner
+## Website: Medi Corner
 
 **Live Site URL**:(https://medi-corner-22.web.app)
 
@@ -10,31 +9,40 @@
 <!-- **Admin Username**:   admin@email.com
 **Admin Password**:   111111 -->
 
+## Project Overview
+This project is a comprehensive web application for a multi-vendor e-commerce platform specializing in the sale of medicines and healthcare products. The platform provides a seamless user experience for purchasing medications, submitting queries, and receiving expert advice using the MERN stack.
 
 
 
-## Features of Medi Corner
+## Features 
 
-1. **User-Friendly Interface**: Easy-to-navigate website with a clean and modern design, ensuring a smooth shopping experience for users.
+1. **User Authentication**: Secure registration and login functionality with JWT token-based authentication. Social login with Google.
 
-2. **Comprehensive Medicine Catalog**: Extensive collection of medicines categorized for easy search and discovery.
+2. **Payment Integration**: Stripe payment gateway for secure online transactions. Users receive an invoice upon successful payment.
 
-3. **Secure User Authentication**: Secure login and registration for users, including role-based access control for admins and sellers.
+3. **Data Management**: Implemented Tanstack query for data fetching (GET method) and local storage for access token management.
 
-4. **Seller Dashboard**: Sellers can manage their products, view total sales revenue, and track payment statuses.
+<!-- - **Shopping Cart**: Users can add medicines to their cart, adjust quantities, and proceed to checkout.
+- **Admin Dashboard**: Admins can manage users, categories, payments, and view sales reports.
+- **Seller Dashboard**: Sellers can manage their medicines, view sales history, and request advertisements.
+- **User Dashboard**: Users can view their payment history and queries. -->
 
-5. **Admin Dashboard**: Admins can manage users, review sales statistics, and monitor overall site performance.
 
-6. **Dynamic Payment System**: Integrated with Stripe for secure payments, supporting multiple payment statuses like paid and pending.
+## Technologies Used
 
-7. **Cart Functionality**: Users can add medicines to their cart, update quantities, and proceed to checkout seamlessly.
+- **Frontend**: React, react-router-dom, axios, react-datepicker, JWT for authentication, Tanstack query.
+- **Backend**: Node.js, Express.js, MongoDB for database management.
+- **Additional Tools**: Stripe for payment processing, Firebase for environment variables, integration with Vercel for deployment.
 
-8. **Order Management**: Users can view their order history, and sellers can track the status of each order.
+## Cloning and Local Setup
 
-9. **Secure File Uploads**: Secure handling of image uploads for product listings, ensuring data integrity and security.
+To run this project locally, follow these steps:
 
-10. **Detailed Payment History**: Both sellers and admins can view detailed payment histories with transaction IDs, amounts, and statuses.
-
+1. Clone this repository.
+2. Install dependencies(npm install).
+3. Set up MongoDB and Firebase credentials in environment variables.
+4. Clone the server site repository(https://github.com/mostaryjahan/medi-server-a12).
+5. Install server dependencies and start the server.
 
 
 
