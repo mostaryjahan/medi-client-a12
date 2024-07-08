@@ -14,15 +14,15 @@ const Main = () => {
 
   if(loading){
     return ( 
-      
-    <span className="loading mx-auto flex justify-center items-center loading-bars text-purple-700 loading-lg"></span>
+      <div className="w-16 h-16 mx-auto mt-20 border-4 border-dashed rounded-full animate-spin border-purple-600"></div>
+   
 );
   }
 
 
     return (
         <div>
-             <div className="max-w-7xl mx-auto p-2">
+             <div className="max-w-8xl mx-auto md:p-4 p-2 dark:text-gray-200">
              {!shouldHideNavFooter && <Nav />}
 
         {/* <Nav></Nav> */}

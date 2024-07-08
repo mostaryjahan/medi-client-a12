@@ -30,12 +30,12 @@ const filteredMedicines = medicines.filter(medicine => medicine.discount_medicin
 
 
     return (
-        <div>
+        <div className='text-black'>
                <Helmet>
         <title>Medi corner |  Home</title>
       </Helmet>
              
-            <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold mt-8">Discount Section</h1>
+            <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold mt-8 dark:text-gray-300">Discount Section</h1>
           
             <div className="mt-8 mb-4">
                 <Swiper

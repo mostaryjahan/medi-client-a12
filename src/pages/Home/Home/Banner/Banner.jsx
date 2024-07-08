@@ -40,8 +40,8 @@ const approvedItems = advertisementb.filter(item => item.status === "approve");
              {approvedItems.map((item, index) => (
                      <div className="relative w-full" key={index}>
                          <img className="w-full object-cover  " src={item.photo} alt={`Banner ${index}`} />
-                         <div className="rounded-md text-white md:p-6 absolute md:top-1/3 top-5 left-1/2 bg-white bg-opacity-50 -translate-x-1/2">
-                         <p className=" text-2xl font-bold capitalize text-purple-800">{item.description}</p>
+                         <div className="rounded-md text-white md:p-6 absolute  top-5 left-1/2  bg-white sm:bg-opacity-0 bg-opacity-50 -translate-x-1/2">
+                         <p className=" md:text-2xl font-bold capitalize text-purple-800">{item.description}</p>
                          <p className="text-black">Banner By : {item.email}</p>
                          </div>
                       

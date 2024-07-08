@@ -171,7 +171,7 @@ const SignUp = () => {
                 <Link to="/login">
                   {" "}
                   <br />{" "}
-                  <span className="text-blue-500 font-bold text-sm">
+                  <span className="text-purple-700 font-bold text-sm">
                     Login
                   </span>{" "}
                 </Link>

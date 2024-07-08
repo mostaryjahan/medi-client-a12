@@ -20,20 +20,22 @@ const Nav = () => {
       })
   }
 
+ 
+
 
 
   const navLinks = (
     <>
-      <li className="font-semibold " data-tip="Tooltip for Home">
+      <li className="font-semibold md:text-lg " data-tip="Tooltip for Home">
         <Link to="/">Home</Link>
       </li>
-      <li className="font-semibold">
+      <li className="font-semibold md:text-lg ">
         <Link to="/shop">Shop</Link>
       </li>
 
-      <Link to="/dashboard/cart" > <li> <button className="btn bg-purple-800 border-none">
-      <TiShoppingCart className="w-8 h-8 text-pink-400"/>
-            <div className="badge badge-secondary">+{cart.length}</div>
+      <Link to="/dashboard/cart" > <li> <button className=" bg-base-800 border border-purple-600 md:text-lg ">
+      <TiShoppingCart className="w-8 h-8 text-purple-700"/>
+            <div className="badge text-purple-700">+{cart.length}</div>
           </button>
         </li>
       </Link>
@@ -43,7 +45,7 @@ const Nav = () => {
 
   return (
     <div className="">
-      <div className="navbar bg-purple-300  border-b-2 border-blue-500">
+      <div className="navbar bg-base-100 font-extrabold ">
         <div className="navbar-start ">
           <div className="dropdown">
             <div
@@ -73,7 +75,7 @@ const Nav = () => {
               {navLinks}
             </ul>
           </div>
-          <a className=" font-bold lg:text-2xl  sm:flex items-center justify-center text-purple-800 bg-clip-text">
+          <a className=" font-bold lg:text-2xl  sm:flex items-center justify-center text-purple-600 bg-clip-text">
             <span>
               <img src={icon} alt="" className="w-10 h-10 hidden lg:block " />
             </span>
@@ -139,6 +141,8 @@ const Nav = () => {
             </div>
           )}
         </div>
+
+     
      
       </div>
     </div>
