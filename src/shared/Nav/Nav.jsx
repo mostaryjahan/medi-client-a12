@@ -26,16 +26,16 @@ const Nav = () => {
 
   const navLinks = (
     <>
-      <li className="font-semibold md:text-lg " data-tip="Tooltip for Home">
+      <li className="font-semibold md:text-lg dark:text-black" data-tip="Tooltip for Home">
         <Link to="/">Home</Link>
       </li>
-      <li className="font-semibold md:text-lg ">
+      <li className="font-semibold md:text-lg dark:text-black">
         <Link to="/shop">Shop</Link>
       </li>
 
       <Link to="/dashboard/cart" > <li> <button className=" bg-base-800 border border-purple-600 md:text-lg ">
-      <TiShoppingCart className="w-8 h-8 text-purple-700"/>
-            <div className="badge text-purple-700">+{cart.length}</div>
+      <TiShoppingCart className="w-8 h-8 text-purple-700 "/>
+            <div className="badge text-purple-700 dark:text-white">+{cart.length}</div>
           </button>
         </li>
       </Link>
@@ -45,7 +45,7 @@ const Nav = () => {
 
   return (
     <div className="">
-      <div className="navbar bg-base-100 font-extrabold ">
+      <div className="navbar bg-purple-100 font-extrabold ">
         <div className="navbar-start ">
           <div className="dropdown">
             <div
@@ -75,11 +75,11 @@ const Nav = () => {
               {navLinks}
             </ul>
           </div>
-          <a className=" font-bold lg:text-2xl  sm:flex items-center justify-center text-purple-600 bg-clip-text">
+          <a className=" font-bold lg:text-2xl  sm:flex items-center justify-center text-purple-700 bg-clip-text">
             <span>
               <img src={icon} alt="" className="w-10 h-10 hidden lg:block " />
             </span>
-           Medi Corner
+           MediCorner
           </a>
         </div>
         <div className="navbar-center  hidden sm:block md:flex lg:flex">
@@ -94,7 +94,7 @@ const Nav = () => {
               tabIndex={0}
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-12 rounded-full">
+              <div className="w-12 rounded-full border border-purple-800">
                 <img
                   src={
                      user?.photoURL ||
@@ -109,10 +109,10 @@ const Nav = () => {
               className="menu menu-sm dropdown-content mt-1  shadow bg-base-100 rounded-box w-40 z-[1]"
             >
               {/* <li>{user?.displayName}</li> */}
-              <li className=" mb-2">
+              <li className=" mb-2 font-semibold">
                 <NavLink to="/updateProfile">Update Profile</NavLink>
               </li>
-              <li className=" mb-2">
+              <li className="font-semibold mb-2">
                 <NavLink to="/dashboard">  
    
                    Dashboard 

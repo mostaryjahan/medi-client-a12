@@ -46,16 +46,16 @@ const Login = () => {
           <Helmet>
         <title>Medi corner | Login</title>
       </Helmet>
-      <div className="hero min-h-screen bg-purple-200">
+      <div className="hero min-h-screen bg-purple-200 ">
         <div className="hero-content flex-col">
           <div className="text-center md:w-1/2 lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
+            <h1 className="text-5xl font-bold text-black">Login now!</h1>
           </div>
           <div className="card  md:w-[400px]">
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-black">Email</span>
                 </label>
                 <input
                   type="email"
@@ -67,7 +67,7 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-black">Password</span>
                 </label>
                 <input
                   type="password"
@@ -85,9 +85,9 @@ const Login = () => {
                    value="Login" />
               </div>
             </form>
-            <p className='text-center font-semibold'>New here? <Link to='/signUp'>  <span className='text-purple-700 font-bold text-base'>Sign Up</span> </Link></p>
-            <p className='text-center '>or,</p>
-            <div className=' text-center'>
+            <p className='text-center font-semibold text-black'>New here? <Link to='/signUp'>  <span className='text-purple-700 font-bold text-base'>Sign Up</span> </Link></p>
+            <p className='text-center text-black'>or,</p>
+            <div className=' text-center text-black'>
               <Social></Social>
            
             </div>

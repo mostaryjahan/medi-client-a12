@@ -5,6 +5,7 @@ import useAuth from "../../Hook/useAuth";
  import Social from "../Social/Social";
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+// import img from "../../assets/pic1.jpg"
 
 const SignUp = () => {
    const { createUser, updateUserProfile } = useAuth();
@@ -65,21 +66,23 @@ const SignUp = () => {
       <Helmet>
         <title>Medi corner | sign up</title>
       </Helmet>
-      <div className="hero min-h-screen bg-purple-200">
+      <div className="hero min-h-screen bg-purple-200"
+      // style={{ backgroundImage: `url(${img})` }}
+      >
         <div className="hero-content flex-col">
           <div className="text-center ">
-            <h1 className="md:text-5xl text-2xl font-bold">SignUp now!</h1>
+            <h1 className="md:text-5xl text-2xl font-bold text-black">SignUp now!</h1>
           </div>
-          <div className="card  md:w-[400px] bg-base-100">
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Name</span>
+          <div className="card  md:w-[400px] dark:bg-slate-100 bg-base-100">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
+              <div className="form-control dark:bg-slate-100 ">
+                <label className="label ">
+                  <span className="label-text text-black">Name</span>
                 </label>
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="input input-bordered"
+                  className="input input-bordered dark:bg-slate-100"
                   name="name"
                   {...register("name", { required: true })}
                 />
@@ -89,12 +92,12 @@ const SignUp = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Photo URL</span>
+                  <span className="label-text text-black">Photo URL</span>
                 </label>
                 <input
                   type="text"
                   placeholder="Photo URL"
-                  className="input input-bordered"
+                  className="input input-bordered dark:bg-slate-100"
                   name="photoURL"
                   {...register("photoURL", { required: true })}
                 />
@@ -104,7 +107,7 @@ const SignUp = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-black">Email</span>
                 </label>
                 <input
                   type="email"
@@ -119,7 +122,7 @@ const SignUp = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-black">Password</span>
                 </label>
                 <input
                   type="password"
@@ -140,11 +143,11 @@ const SignUp = () => {
               {/* role */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Select Role</span>
+                  <span className="label-text text-black">Select Role</span>
                 </label>
                 <select
                 defaultValue='default'
-                  className="input input-bordered"
+                  className="input input-bordered text-black dark:bg-slate-100"
                   name="role"
                   {...register("role", { required: true })}
                 >
@@ -165,7 +168,7 @@ const SignUp = () => {
                 />
               </div>
             </form>
-            <p className="text-center">
+            <p className="text-center text-black">
               <small>
                 Already have an account?
                 <Link to="/login">
@@ -178,7 +181,7 @@ const SignUp = () => {
               </small>
             </p>
             <hr />
-            <div className=" text-center">
+            <div className="text-black text-center">
               <Social></Social>
             </div>
           </div>
