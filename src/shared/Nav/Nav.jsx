@@ -2,44 +2,46 @@ import { Link, NavLink } from "react-router-dom";
 import icon from "../../assets/medicine.png";
 import useAuth from "../../Hook/useAuth";
 import { TiShoppingCart } from "react-icons/ti";
- import useCart from "../../Hook/useCart";
+import useCart from "../../Hook/useCart";
 
 const Nav = () => {
-    const {  user , logOut} = useAuth();
+  const { user, logOut } = useAuth();
 
-    // console.log(user);
-    
+  // console.log(user);
+
   const [cart] = useCart();
- 
 
   const handleLogOut = () => {
-      logOut()
+    logOut()
       .then(() => {})
-      .catch(error =>{
-        console.log(error)
-      })
-  }
-
- 
-
-
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const navLinks = (
     <>
-      <li className="font-semibold md:text-lg dark:text-black" data-tip="Tooltip for Home">
+      <li
+        className="font-semibold md:text-lg dark:text-black"
+      >
         <Link to="/">Home</Link>
       </li>
       <li className="font-semibold md:text-lg dark:text-black">
         <Link to="/shop">Shop</Link>
       </li>
 
-      <Link to="/dashboard/cart" > <li> <button className=" bg-base-800 border border-purple-600 md:text-lg ">
-      <TiShoppingCart className="w-8 h-8 text-purple-700 "/>
-            <div className="badge text-purple-700 dark:text-white">+{cart.length}</div>
+      <Link to="/dashboard/cart">
+        {" "}
+        <li>
+          {" "}
+          <button className=" bg-base-800 border border-purple-600 md:text-lg ">
+            <TiShoppingCart className="w-8 h-8 text-purple-700 " />
+            <div className="badge text-purple-700 dark:text-white">
+              +{cart.length}
+            </div>
           </button>
         </li>
       </Link>
-
     </>
   );
 
@@ -79,7 +81,7 @@ const Nav = () => {
             <span>
               <img src={icon} alt="" className="w-10 h-10 hidden lg:block " />
             </span>
-           MediCorner
+            MediCorner
           </a>
         </div>
         <div className="navbar-center  hidden sm:block md:flex lg:flex">
@@ -88,50 +90,40 @@ const Nav = () => {
 
         <div className="navbar-end">
           {user ? (
-             
             <div className="dropdown dropdown-end">
-            <label
-              tabIndex={0}
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-12 rounded-full border border-purple-800">
-                <img
-                  src={
-                     user?.photoURL ||
-                    "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                  }
-                  alt="User Avatar"
-                />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-1  shadow bg-base-100 rounded-box w-40 z-[1]"
-            >
-              {/* <li>{user?.displayName}</li> */}
-              <li className=" mb-2 font-semibold">
-                <NavLink to="/updateProfile">Update Profile</NavLink>
-              </li>
-              <li className="font-semibold mb-2">
-                <NavLink to="/dashboard">  
-   
-                   Dashboard 
-                   </NavLink>
-              </li>
-              <li>
-                <button
-                  className="btn text-white bg-red-500 w-full"
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-12 rounded-full border border-purple-800">
+                  <img
+                    src={
+                      user?.photoURL ||
+                      "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    }
+                    alt="User Avatar"
+                  />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-1  shadow bg-base-100 rounded-box w-40 z-[1]"
+              >
+                
+                <li className=" mb-2 font-semibold">
+                  <NavLink to="/updateProfile">Update Profile</NavLink>
+                </li>
+                <li className="font-semibold mb-2">
+                  <NavLink to="/dashboard">Dashboard</NavLink>
+                </li>
+                <li>
+                  <button
+                    className="btn text-white bg-red-500 w-full"
                     onClick={handleLogOut}
-                >
-                  LogOut
-                </button>
-              </li>
-            </ul>
-          </div>
-
+                  >
+                    LogOut
+                  </button>
+                </li>
+              </ul>
+            </div>
           ) : (
-    
-
             <div className="flex ">
               <Link to="/login">
                 <button className="btn bg-purple-500  text-white">
@@ -141,9 +133,6 @@ const Nav = () => {
             </div>
           )}
         </div>
-
-     
-     
       </div>
     </div>
   );

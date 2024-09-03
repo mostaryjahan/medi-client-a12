@@ -23,15 +23,15 @@ const CategoryCard = () => {
          <Helmet>
         <title>Medi corner | Home</title>
       </Helmet>
-      <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold">
+      <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold mt-10">
         Category of Medicines
       </h1>
     
-      <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4  mt-8">
+      <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4  mt-8 max-w-6xl  mx-auto">
         {categories.slice(0, 6).map((card) => (
             <Link to={`/categoryDetails/${card.category}`}
             key={card._id}
-            className=" p-6  rounded-md border-2 shadow-md dark:bg-gray-50text-gray-900"
+            className=" p-6 rounded-md border-2 shadow-md dark:bg-gray-50 text-gray-900 transform transition-transform duration-300 ease-in-out hover:scale-105"
           >
             <img
               src={card.image}
@@ -46,6 +46,11 @@ const CategoryCard = () => {
             <p className="text-gray-800 dark:text-gray-400">
               Quantity: {card.number_of_medicine} pieces
             </p>
+            
+            <Link to={`/categoryDetails/${card.category}`}>
+            <button className="btn mt-2 w-full bg-purple-700 text-white hover:bg-purple-500">See Details</button>
+            </Link>
+            
             </Link>
         ))}
       </div>

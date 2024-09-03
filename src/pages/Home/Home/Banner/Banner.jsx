@@ -13,17 +13,17 @@ import { Helmet } from "react-helmet-async";
 const Banner = () => {
 
 const axiosPublic=useAxiosPublic()
-  const { data: advertisementb = []} = useQuery({
-    queryKey: ["advertisementb"],
+  const { data: advertisement = []} = useQuery({
+    queryKey: ["advertisements"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/slider`);
       return res.data;
     },
   });
 
-// console.log(advertisementb);
+// console.log(advertisements);
 
-const approvedItems = advertisementb.filter(item => item.status === "approve");
+const approvedItems = advertisement.filter(item => item.status === "approve");
 
 
 
@@ -32,7 +32,7 @@ const approvedItems = advertisementb.filter(item => item.status === "approve");
   
 
        <Helmet>
-        <title>Medi corner | Home</title>
+        <title>MediCorner | Home</title>
        </Helmet>
             
             <Carousel autoPlay  infiniteLoop >

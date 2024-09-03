@@ -79,7 +79,7 @@ const UPdateProfile = () => {
   return (
     <div>
       <Helmet>
-        <title>Medi corner | update profile</title>
+        <title>MediCorner | update user profile</title>
       </Helmet>
       <div className="mx-auto bg-cyan-100 md:w-[400px] h-[400px] p-4 border-2 mt-4 mb-4  rounded-xl border-sky-500 ">
         <h2 className=" text-3xl text-center">Update Profile</h2>
