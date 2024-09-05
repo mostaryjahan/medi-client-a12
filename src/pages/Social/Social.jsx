@@ -36,8 +36,8 @@ const Social = () => {
         <Helmet>
         <title>Medi corner | google sign in</title>
       </Helmet>
-      <div> <h3>Login with </h3>
-        <button onClick={handleGoogleSignIn} className="btn w-3/4 mb-2 bg-purple-700 text-white">
+      <div> 
+        <button onClick={handleGoogleSignIn} className="btn w-3/4 mb-2 bg-[#00157c] hover:border-2 hover:border-[#00157c] text-white hover:bg-white hover:text-[#00157c]">
           Google
         </button>
       </div>

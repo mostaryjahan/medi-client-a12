@@ -18,10 +18,10 @@ const Main = () => {
 
   return (
     <div>
-      <div className="max-w-8xl mx-auto md:px-4 px-2 dark:text-gray-200">
+      <div className="max-w-8xl mx-auto  dark:text-gray-200">
         {!shouldHideNavFooter && <Nav />}
 
-        <div className="">
+        <div className="px-2">
           <Outlet></Outlet>
         </div>
       </div>

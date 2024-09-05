@@ -21,12 +21,10 @@ const Nav = () => {
 
   const navLinks = (
     <>
-      <li
-        className="font-semibold md:text-lg dark:text-black"
-      >
+      <li className="font-semibold md:text-lg   text-white hover:text-white hover:underline">
         <Link to="/">Home</Link>
       </li>
-      <li className="font-semibold md:text-lg dark:text-black">
+      <li className="font-semibold md:text-lg text-white hover:text-white hover:underline ">
         <Link to="/shop">Shop</Link>
       </li>
 
@@ -34,9 +32,9 @@ const Nav = () => {
         {" "}
         <li>
           {" "}
-          <button className=" bg-base-800 border border-purple-600 md:text-lg ">
-            <TiShoppingCart className="w-8 h-8 text-purple-700 " />
-            <div className="badge text-purple-700 dark:text-white">
+          <button className=" bg-base-800 border-white  md:text-lg hover:text-white hover:underline">
+            <TiShoppingCart className="w-8 h-8 text-white " />
+            <div className="badge text-[#00157c] dark:text-white">
               +{cart.length}
             </div>
           </button>
@@ -47,7 +45,7 @@ const Nav = () => {
 
   return (
     <div className="">
-      <div className="navbar bg-purple-100 font-extrabold ">
+      <div className="navbar bg-[#00157c] font-extrabold ">
         <div className="navbar-start ">
           <div className="dropdown">
             <div
@@ -77,9 +75,9 @@ const Nav = () => {
               {navLinks}
             </ul>
           </div>
-          <a className=" font-bold lg:text-2xl  sm:flex items-center justify-center text-purple-700 bg-clip-text">
+          <a href="/" className=" font-bold md:text-xl lg:text-2xl  sm:flex items-center justify-center text-white bg-clip-text">
             <span>
-              <img src={icon} alt="" className="w-10 h-10 hidden lg:block " />
+              <img src={icon} alt="" className="w-10 h-10 hidden md:block " />
             </span>
             MediCorner
           </a>
@@ -92,7 +90,7 @@ const Nav = () => {
           {user ? (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-12 rounded-full border border-purple-800">
+                <div className="w-12 rounded-full border-white border-2">
                   <img
                     src={
                       user?.photoURL ||
@@ -106,7 +104,6 @@ const Nav = () => {
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-1  shadow bg-base-100 rounded-box w-40 z-[1]"
               >
-                
                 <li className=" mb-2 font-semibold">
                   <NavLink to="/updateProfile">Update Profile</NavLink>
                 </li>
@@ -126,7 +123,7 @@ const Nav = () => {
           ) : (
             <div className="flex ">
               <Link to="/login">
-                <button className="btn bg-purple-500  text-white">
+                <button className="btn border-b-[3px] border border-white bg-transparent text-white hover:bg-white hover:text-[#00157c] rounded-xl">
                   Join Us
                 </button>
               </Link>
