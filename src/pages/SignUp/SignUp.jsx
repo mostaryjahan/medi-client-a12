@@ -5,11 +5,10 @@ import Swal from "sweetalert2";
 import Social from "../Social/Social";
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
-import img from "../../assets/bg.jpg"
+import img from "../../assets/bg.jpg";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useAuth();
-
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -22,95 +21,118 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
+  const imgbbApiKey = import.meta.env.VITE_Image_Hosting_key;
+  const imgbbUrl = `https://api.imgbb.com/1/upload?key=${imgbbApiKey}`;
+
   const onSubmit = (data) => {
-    console.log(data);
-    createUser(data.email, data.password).then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
+    const formData = new FormData();
+    formData.append("image", data.photoURL[0]);
 
-      // //update
-      updateUserProfile(data.name, data.photoURL)
-        .then(() => {
-          console.log("user profile info updated");
-          //create user entry in database
-          const userInfo = {
-            name: data.name,
-            email: data.email,
-            role: data.role,
-          };
-          axiosPublic.post("/users", userInfo).then((res) => {
-            if (res.data.insertedId) {
-              console.log("user added to the database");
-              reset();
-              Swal.fire({
-                icon: "success",
-                title: "Sign Up Successful",
-                showConfirmButton: false,
-                timer: 1500,
+    // Upload the image to ImgBB
+    fetch(imgbbUrl, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgResponse) => {
+        if (imgResponse.success) {
+          const imageUrl = imgResponse.data.url;
+          console.log("Image URL:", imageUrl);
+
+          // Create the user with email and password
+          createUser(data.email, data.password).then((result) => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+
+            // Update the user profile with name and uploaded image URL
+            updateUserProfile(data.name, imageUrl)
+              .then(() => {
+                console.log("User profile info updated");
+
+                // Create user entry in database
+                const userInfo = {
+                  name: data.name,
+                  email: data.email,
+                  role: data.role,
+                  imageUrl: imageUrl,
+                };
+                axiosPublic.post("/users", userInfo).then((res) => {
+                  if (res.data.insertedId) {
+                    console.log("User added to the database");
+                    reset();
+                    Swal.fire({
+                      icon: "success",
+                      title: "Sign Up Successful",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+
+                    navigate(from, { replace: true });
+                    window.location.reload();
+                  }
+                });
+              })
+              .catch((error) => {
+                console.log("Error updating profile:", error);
               });
-
-              navigate(from, { replace: true });
-              window.location.reload();
-            }
           });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
+        }
+      })
+      .catch((error) => {
+        console.log("Image upload failed:", error);
+      });
   };
 
   return (
     <div>
       <Helmet>
-        <title>Medi corner | sign up</title>
+        <title>Medi corner | Sign Up</title>
       </Helmet>
       <div
         className="hero"
         style={{
-          backgroundImage:  `url(${img})`, 
+          backgroundImage: `url(${img})`,
           backgroundSize: 'fit',
           backgroundPosition: 'center',
         }}
       >
         <div className="hero-content flex-col">
-          <div className="text-center ">
+          <div className="text-center">
             <h1 className="md:text-5xl text-2xl font-bold text-black">
-              SignUp now!
+              Sign Up now!
             </h1>
           </div>
-          <div className="card  md:w-[400px]">
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
-              <div className="form-control ">
-                <label className="label ">
+          <div className="card md:w-[400px]">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text text-black text-lg font-semibold">Name:</span>
                 </label>
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="input input-bordered "
-                  name="name"
+                  className="input input-bordered dark:bg-slate-100"
                   {...register("name", { required: true })}
                 />
                 {errors.name && (
                   <span className="text-red-600">This field is required</span>
                 )}
               </div>
+
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-black text-lg font-semibold">Photo URL:</span>
+                  <span className="label-text text-black text-lg font-semibold">Photo:</span>
                 </label>
                 <input
-                  type="text"
-                  placeholder="Photo URL"
-                  className="input input-bordered "
-                  name="photoURL"
+                  type="file"
+                  className="input input-bordered dark:bg-slate-100 px-1 py-2"
                   {...register("photoURL", { required: true })}
                 />
                 {errors.photoURL && (
                   <span className="text-red-600">This field is required</span>
                 )}
               </div>
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-black text-lg font-semibold">Email:</span>
@@ -118,14 +140,14 @@ const SignUp = () => {
                 <input
                   type="email"
                   placeholder="email"
-                  className="input input-bordered"
-                  name="email"
+                  className="input input-bordered dark:bg-slate-100"
                   {...register("email", { required: true })}
                 />
                 {errors.email && (
                   <span className="text-red-600">This field is required</span>
                 )}
               </div>
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-black text-lg font-semibold">Password:</span>
@@ -133,8 +155,7 @@ const SignUp = () => {
                 <input
                   type="password"
                   placeholder="password"
-                  className="input input-bordered"
-                  name="password"
+                  className="input input-bordered dark:bg-slate-100"
                   {...register("password", {
                     required: true,
                     minLength: 6,
@@ -146,7 +167,6 @@ const SignUp = () => {
                 )}
               </div>
 
-              {/* role */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-black text-lg font-semibold">Select Your Role:</span>
@@ -154,7 +174,6 @@ const SignUp = () => {
                 <select
                   defaultValue="default"
                   className="input input-bordered text-black dark:bg-slate-100"
-                  name="role"
                   {...register("role", { required: true })}
                 >
                   <option disabled value="default">
@@ -176,20 +195,20 @@ const SignUp = () => {
                 />
               </div>
             </form>
+
             <p className="text-center text-black font-semibold">
-             
-                Already have an account?
-                <Link to="/login">
+              Already have an account?
+              <Link to="/login">
                 <span className="underline font-bold text-base hover:text-blue-800 ml-1">
-                    Login
-                  </span>{" "}
-                </Link>
-             
+                  Login
+                </span>
+              </Link>
             </p>
+
             <p className="text-center text-black font-semibold">Or,</p>
-         
+
             <div className="mt-2 text-black text-center">
-              <Social></Social>
+              <Social />
             </div>
           </div>
         </div>
@@ -198,4 +217,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUp
