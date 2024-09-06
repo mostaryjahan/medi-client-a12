@@ -3,7 +3,7 @@ import useAuth from "../../Hook/useAuth";
 import Swal from "sweetalert2";
 import Social from "../Social/Social";
 import { Helmet } from "react-helmet-async";
-import img from "../../assets/bg.jpg"
+import img1 from "../../assets/login.jpg"
 
 const Login = () => {
   const { signIn } = useAuth();
@@ -41,19 +41,19 @@ const Login = () => {
       <div
         className="hero"
         style={{
-          backgroundImage:  `url(${img})`, 
+          backgroundImage:  `url(${img1})`, 
           backgroundSize: 'fit',
           backgroundPosition: 'center',
         }}
       >
         <div className="hero-content flex-col">
           <div className="text-center md:w-2/3 lg:text-left">
-            <h1 className="lg:text-5xl text-3xl font-bold text-black">
-              Login now!
+            <h1 className="lg:text-5xl text-3xl font-bold text-primary">
+              Login Now!
             </h1>
           </div>
-          <div className="card md:w-[400px]">
-            <form onSubmit={handleLogin} className="card-body">
+          <div className="card md:w-[400px] bg-slate-200 opacity-80">
+            <form onSubmit={handleLogin} className="card-body ">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-black text-lg font-semibold">Email:</span>
@@ -79,9 +79,9 @@ const Login = () => {
                 />
               </div>
 
-              <div className="form-control mt-6">
+              <div className="form-control mt-2">
                 <input
-                  className="btn bg-[#00157c] hover:border-2 hover:bg-white hover:border-[#00157c] text-white hover:text-[#00157c]"
+                  className="btn w-full mx-auto bg-[#00157c] hover:border-2 hover:bg-white hover:border-[#00157c] text-white hover:text-[#00157c]"
                   type="submit"
                   value="Login"
                 />

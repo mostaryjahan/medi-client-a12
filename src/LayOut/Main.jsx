@@ -12,7 +12,11 @@ const Main = () => {
 
   if (loading) {
     return (
-      <div className="w-16 h-16 mx-auto mt-20 border-4 border-dashed rounded-full animate-spin border-purple-600"></div>
+      // <div className="w-16 h-16 mx-auto mt-20 border-4 border-dashed rounded-full animate-spin border-purple-600">
+      <div className="loader mx-auto mt-28 ">
+
+        
+      </div>
     );
   }
 

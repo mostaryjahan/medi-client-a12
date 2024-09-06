@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import Social from "../Social/Social";
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
-import img from "../../assets/bg.jpg";
+import img from "../../assets/login.jpg"
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useAuth();
@@ -86,7 +86,7 @@ const SignUp = () => {
   return (
     <div>
       <Helmet>
-        <title>Medi corner | Sign Up</title>
+        <title>MediCorner | Sign Up</title>
       </Helmet>
       <div
         className="hero"
@@ -98,11 +98,11 @@ const SignUp = () => {
       >
         <div className="hero-content flex-col">
           <div className="text-center">
-            <h1 className="md:text-5xl text-2xl font-bold text-black">
+            <h1 className="md:text-5xl text-2xl font-bold text-primary">
               Sign Up now!
             </h1>
           </div>
-          <div className="card md:w-[400px]">
+          <div className="card md:w-[400px]  bg-slate-200 opacity-80">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -187,7 +187,7 @@ const SignUp = () => {
                 )}
               </div>
 
-              <div className="form-control mt-6">
+              <div className="form-control mt-2">
                 <input
                   className="btn bg-[#00157c] hover:border-2 hover:border-[#00157c] hover:bg-white text-white hover:text-[#00157c]"
                   type="submit"
@@ -217,4 +217,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp
+export default SignUp;

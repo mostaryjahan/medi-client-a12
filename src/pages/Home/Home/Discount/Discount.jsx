@@ -63,7 +63,7 @@ const Discount = () => {
         <title>Medi corner | Home</title>
       </Helmet>
 
-      <h1 className="text-center font-semibold lg:text-4xl text-2xl mt-14 text-blue-900">
+      <h1 className="text-center font-semibold lg:text-4xl text-2xl mt-14 text-primary">
         <span style={{ color: '', fontWeight: 'bold' }}>
           <Typewriter
             words={['Discount Medicines']}
@@ -82,7 +82,7 @@ const Discount = () => {
       <div className="mt-6 mb-4 slider-container max-w-7xl mx-auto ">
         <Slider {...sliderSettings}>
           {filteredMedicines.map((medicine) => (
-            <div key={medicine._id} className="p-4 border-4 border-white rounded-lg bg-blue-200 ">
+            <div key={medicine._id} className="p-4 border-4 border-white bg-blue-200 ">
               <img src={medicine.image} alt={medicine.name} className="h-24 w-32 mx-auto" />
               <h2 className="md:block hidden md:text-xl font-bold mt-4 text-center">{medicine.name}</h2>
               <p className="text-center font-medium mt-2">Price: ${medicine.price}</p>

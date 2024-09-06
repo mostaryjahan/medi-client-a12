@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hook/useAuth";
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+import google from "../../assets/google.png"
 
 
 const Social = () => {
@@ -34,11 +35,12 @@ const Social = () => {
   return (
     <div>
         <Helmet>
-        <title>Medi corner | google sign in</title>
+        <title>MediCorner | Google signIn</title>
       </Helmet>
-      <div> 
-        <button onClick={handleGoogleSignIn} className="btn w-3/4 mb-2 bg-[#00157c] hover:border-2 hover:border-[#00157c] text-white hover:bg-white hover:text-[#00157c]">
-          Google
+      <div className="mb-4 flex justify-center items-center gap-2"> 
+        <p className="text-base font-medium">Login With <span></span></p>
+        <button onClick={handleGoogleSignIn} className="">
+          <img src={google} alt="Google" className="w-6 h-6"/>
         </button>
       </div>
     </div>
