@@ -14,7 +14,7 @@ const DashboardHome = () => {
   return (
     <div>
       <Helmet>
-        <title>Medi corner | Dashboard Home</title>
+        <title>MediCorner | Dashboard Home</title>
       </Helmet>
 
       {user.role === "admin" && <h2>

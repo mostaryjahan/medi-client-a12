@@ -118,14 +118,17 @@ const Shop = () => {
       <Helmet>
         <title>MediCorner | Shop</title>
       </Helmet>
-      <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold mt-8">
+      <div className="p-4 dark:bg-gray-100 dark:text-black">
+
+      
+      <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold mt-2">
         Explore Our Complete Medicine Collection
       </h1>
       {/* Search Input */}
       <div className="flex justify-center my-4">
         <input
           type="text"
-          className="input input-bordered w-full max-w-xs"
+          className="input input-bordered w-full max-w-xs dark:bg-gray-100 border-primary border-2"
           placeholder="Search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -142,10 +145,10 @@ const Shop = () => {
       </div>
 
       <div className="overflow-x-auto ">
-        <table className="table table-zebra">
+        <table className="table">
           {/* head */}
           <thead className="bg-primary text-white">
-            <tr>
+            <tr className="border border-primary">
               <th>#</th>
               <th>Image</th>
               <th>Name</th>
@@ -155,9 +158,9 @@ const Shop = () => {
               <th>Select</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="border border-black">
             {filteredItems.map((shop, index) => (
-              <tr className="font-bold" key={shop._id}>
+              <tr className="font-bold even:bg-purple-200 border border-black" key={shop._id}>
                 <th>{index + 1}</th>
                 <th>
                   <img
@@ -189,6 +192,7 @@ const Shop = () => {
           </tbody>
         </table>
       </div>
+     
 
       {/* Pagination */}
       <div className="flex justify-center my-4">
@@ -199,8 +203,8 @@ const Shop = () => {
               key={i + 1}
               className={`btn ${
                 currentPage === i + 1
-                  ? "btn-active bg-primary text-white"
-                  : "bg-white text-primary"
+                  ? "btn-active border-none bg-primary text-white mr-1"
+                  : "bg-white border-primary text-primary mr-1"
               }`}
               onClick={() => paginate(i + 1)}
             >
@@ -208,6 +212,7 @@ const Shop = () => {
             </button>
           )
         )}
+      </div>
       </div>
 
       {/* Modal */}

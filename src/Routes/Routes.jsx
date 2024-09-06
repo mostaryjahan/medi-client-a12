@@ -1,6 +1,4 @@
-import {
-    createBrowserRouter,
-  } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Main from "../LayOut/Main";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -33,127 +31,162 @@ import SellerPayment from "../pages/Dashboard/Seller/SellerPayment";
 import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <Error></Error>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
 
-
-
- export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main>,
-      errorElement: <Error></Error>,
-      children: [
-        {
-            path: '/',
-            element: <Home></Home>
-        },
-      
-        {
-          path: "/login",
-          element: <Login></Login>,
-        },
-        {
-          path: "/signUp",
-          element: <SignUp></SignUp>,
-        },
-        {
-          path: '/updateProfile',
-          element:<UpdateProfile></UpdateProfile>
-        },
-        {
-          path: '/categoryCard',
-          element: <CategoryCard></CategoryCard>
-       },
-       {
-         path: '/categoryDetails/:category',
-         element: <CategoryDetails></CategoryDetails>,
-
-       },
-       {
-        path: '/discount/:discount',
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "/updateProfile",
+        element: <UpdateProfile></UpdateProfile>,
+      },
+      {
+        path: "/categoryCard",
+        element: <CategoryCard></CategoryCard>,
+      },
+      {
+        path: "/categoryDetails/:category",
+        element: <CategoryDetails></CategoryDetails>,
+      },
+      {
+        path: "/discount/:discount",
         element: <Discount></Discount>,
       },
-       {
-        path:'/shop',
-        element: <Shop></Shop>
-       },
-       {
-        path: '/payment',
-        element: <PrivateRoute><CheckOutPayment></CheckOutPayment></PrivateRoute>
-     },
-     {
-      path: '/invoice',
-      element: <Invoice />
-     },
-  
-      ]
-    },
-    {
-      path: `/dashboard`,
-      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-      errorElement: <Error></Error>,
-      children: [
       {
-         index: true,
-         element: <DashboardHome></DashboardHome>
+        path: "/shop",
+        element: <Shop></Shop>,
       },
       {
-        path: '/dashboard/allUsers',
-        element:<AdminRoute><AllUsers></AllUsers></AdminRoute> 
-
+        path: "/payment",
+        element: (
+          <PrivateRoute>
+            <CheckOutPayment></CheckOutPayment>
+          </PrivateRoute>
+        ),
       },
       {
-          path: '/dashboard/ad',
-          element:<AdminRoute><Ad></Ad></AdminRoute>
+        path: "/invoice",
+        element: <Invoice />,
+      },
+    ],
+  },
+  {
+    path: `/dashboard`,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    errorElement: <Error></Error>,
+    children: [
+      {
+        index: true,
+        element: <DashboardHome></DashboardHome>,
       },
       {
-         path: '/dashboard/manageCategory/:category',
-         element: <AdminRoute><ManageCategory></ManageCategory></AdminRoute>,
-         
+        path: "/dashboard/allUsers",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
       {
-        path: '/dashboard/paymentManage',
-        element: <AdminRoute><PaymentManage></PaymentManage></AdminRoute>,
-        
-     },
-     {
-        path: '/dashboard/sales',
-        element: <AdminRoute><Sales></Sales></AdminRoute>
-     },
-     {
-        path: '/dashboard/adminHome',
-        element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
-     },
+        path: "/dashboard/ad",
+        element: (
+          <AdminRoute>
+            <Ad></Ad>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/manageCategory/:category",
+        element: (
+          <AdminRoute>
+            <ManageCategory></ManageCategory>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/paymentManage",
+        element: (
+          <AdminRoute>
+            <PaymentManage></PaymentManage>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/sales",
+        element: (
+          <AdminRoute>
+            <Sales></Sales>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/adminHome",
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
 
       //seller
       {
-        path: '/dashboard/sellerHome',
-        element: <SellerRoute><SellerHome></SellerHome></SellerRoute>
+        path: "/dashboard/sellerHome",
+        element: (
+          <SellerRoute>
+            <SellerHome></SellerHome>
+          </SellerRoute>
+        ),
       },
       {
-        path: '/dashboard/manageProducts',
-        element: <SellerRoute><Manage></Manage></SellerRoute>
+        path: "/dashboard/manageProducts",
+        element: (
+          <SellerRoute>
+            <Manage></Manage>
+          </SellerRoute>
+        ),
       },
       {
-         path: '/dashboard/ask',
-         element: <SellerRoute><Ask></Ask></SellerRoute>
+        path: "/dashboard/ask",
+        element: (
+          <SellerRoute>
+            <Ask></Ask>
+          </SellerRoute>
+        ),
       },
       {
-        path: '/dashboard/sellerPayment',
-        element: <SellerRoute><SellerPayment></SellerPayment></SellerRoute>
+        path: "/dashboard/sellerPayment",
+        element: (
+          <SellerRoute>
+            <SellerPayment></SellerPayment>
+          </SellerRoute>
+        ),
       },
 
       //user
-      { path: '/dashboard/cart',
-        element: <Cart></Cart>
-       },
-     
-      {
-        
-          path: '/dashboard/paymentHistory',
-          element: <PaymentHistory></PaymentHistory>
-        
-      },
+      { path: "/dashboard/cart", element: <Cart></Cart> },
 
-      ]
-    }
-  ]);
+      {
+        path: "/dashboard/paymentHistory",
+        element: <PaymentHistory></PaymentHistory>,
+      },
+    ],
+  },
+]);

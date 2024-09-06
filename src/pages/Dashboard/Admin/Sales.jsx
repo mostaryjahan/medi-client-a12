@@ -60,10 +60,13 @@ const SalesReport = () => {
   return (
     <div>
              <Helmet>
-        <title>Medi corner | All sales report</title>
+        <title>MediCorner | All sales report</title>
       </Helmet>
+      <div className="p-4 dark:bg-gray-100 dark:text-black">
+
+     
         <h1 className='text-2xl md:4xl font-semibold text-center mt-6'>
-            Sales Report
+          All  Sales Report
         </h1>
       
                     <div className="flex justify-center mt-4 mb-4">
@@ -74,7 +77,7 @@ const SalesReport = () => {
                     startDate={startDate}
                     endDate={endDate}
                     placeholderText="Start Date"
-                    className="mr-2"
+                    className="mr-2 p-1 text-center border-2 border-primary rounded-md"
                 />
                  <DatePicker
                     selected={endDate}
@@ -83,26 +86,26 @@ const SalesReport = () => {
                     startDate={startDate}
                     endDate={endDate}
                     placeholderText="End Date"
-                    className="mr-2"
+                    className="mr-2  p-1 text-center  border-2 border-primary rounded-md"
                 />
                 <button
                     onClick={handleDateFilter}
-                    className="bg-blue-500 text-white py-1 px-3 rounded"
+                    className="bg-green-600 text-white py-1 px-3 rounded"
                 >
                     Filter
                 </button>
             </div>
                    <div className="flex justify-center mt-4">
-                <button onClick={exportPDF} className="bg-red-500 text-white py-1 px-3 rounded mr-2">Export PDF</button>
+                <button onClick={exportPDF} className="bg-orange-500 text-white py-1 px-3 rounded mr-2">Export PDF</button>
                 </div>
                 
 
-      <div className="overflow-x-auto my-16 border-2 w-full">
+      <div className="overflow-x-auto my-8 w-full">
         {
-          <table className="table font-bold" ref={tableRef}>
+          <table className="table font-medium border border-black" ref={tableRef}>
             {/* head */}
-            <thead className="w-full border-2 ">
-              <tr>
+            <thead className="w-full  ">
+              <tr className='bg-primary text-white'>
                 <th>#</th>
                 <th>Total Price</th>
                 <th>Medicine Name</th>
@@ -116,13 +119,13 @@ const SalesReport = () => {
 
               {(filteredSales.length ? filteredSales : sales).map((item, index) => (
                 <tr key={item._id}>
-                  <td>{index + 1}</td>
+                  <td className='border border-black'>{index + 1}</td>
 
-                  <td> $ {item.price} </td>
-                  <td>{item.nameOfMedicine}</td>
-                  <td>{new Date(item.date).toLocaleDateString()}</td>
-                  <td>{item?.email}</td>
-                  <td>{item?.seller_email}</td>
+                  <td className='border border-black'> $ {item.price} </td>
+                  <td className='border border-black'>{item.nameOfMedicine}</td>
+                  <td className='border border-black'>{new Date(item.date).toLocaleDateString()}</td>
+                  <td className='border border-black'>{item?.email}</td>
+                  <td className='border border-black'>{item?.seller_email}</td>
                 </tr>
               
               ))}
@@ -130,6 +133,7 @@ const SalesReport = () => {
           </table>
         }
       </div>
+    </div>
     </div>
   );
 };

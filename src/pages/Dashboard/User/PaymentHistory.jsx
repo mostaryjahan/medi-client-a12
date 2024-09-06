@@ -17,14 +17,15 @@ const PaymentHistory = () => {
   return (
     <div>
          <Helmet>
-        <title>Medi corner | Payment History</title>
+        <title>MediCorner | Payment History</title>
       </Helmet>
-      <h1>Total Payment: {payments.length}</h1>
+      <div className="dark:bg-slate-100 dark:text-black p-4">
+      <h1 className="text-xl font-medium text-center mb-4">Total Payment: {payments.length}</h1>
 
-      <div className="overflow-x-auto">
-        <table className="table table-zebra">
+      <div className="overflow-x-auto ">
+        <table className="table">
           {/* head */}
-          <thead className="bg-purple-800 text-white">
+          <thead className="bg-primary text-white">
             <tr>
               <th></th>
               {/* <th>Price</th> */}
@@ -44,6 +45,7 @@ const PaymentHistory = () => {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 };

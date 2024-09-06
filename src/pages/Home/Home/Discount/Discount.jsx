@@ -63,7 +63,7 @@ const Discount = () => {
         <title>Medi corner | Home</title>
       </Helmet>
 
-      <h1 className="text-center font-semibold lg:text-4xl text-2xl mt-14 text-primary">
+      <h1 className="text-center font-semibold lg:text-4xl text-2xl mt-14 text-primary dark:text-gray-300">
         <span style={{ color: '', fontWeight: 'bold' }}>
           <Typewriter
             words={['Discount Medicines']}

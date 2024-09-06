@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
-// import { FaTrashAlt } from "react-icons/fa";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
@@ -75,46 +74,47 @@ const AllUsers = () => {
     return (
         <div>
              <Helmet>
-        <title>Medi corner | All Users</title>
+        <title>MediCorner | All Users</title>
       </Helmet>
-            <h1 className="text-center text-3xl">Manage All Users</h1>
-            <p>Total Users: {users.length}</p>
+      <div className="p-4 dark:bg-slate-100 dark:text-black">
 
-            {/*  */}
-            <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
+     
+            <h1 className="text-center text-3xl ">Manage All Users</h1>
+            <p className="text-base font-medium text-center mt-4 mb-2">( Total Users: {users.length} )</p>
+
+            <div className=" dark:text-black ">
+        <table className="min-w-full table font-medium ">
           <thead>
-            <tr className="bg-purple-400">
-              <th>#</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Action</th>
+            <tr className="bg-primary border border-primary text-center text-white">
+              <th className="py-2">#</th>
+              <th className="py-2">Name</th>
+              <th className="py-2">Email</th>
+              <th className="py-2">Role</th>
+              <th className="py-2">Action</th>
             </tr>
           </thead>
           <tbody>
             {
-                users.map((user,index) =>   <tr key={user._id}>
+                users.map((user,index) =>   <tr key={user._id} className="even:bg-purple-200">
                    
-                    <th>{index + 1}</th>
-                    <td> {user.name} </td>
-                    <td> {user.email}</td>
-                    <td>{user.role}</td>
-                    <td>
+                    <td className="border border-gray-700 px-4 py-2">{index + 1}</td>
+                    <td className="border border-gray-700 px-4 py-2"> {user.name} </td>
+                    <td className="border border-gray-700 px-4 py-2"> {user.email}</td>
+                    <td className="border border-gray-700 px-4 py-2">{user.role}</td>
+                    <td className="border border-gray-700 space-x-1 space-y-1">
 
                          {user.role !== "admin" && (
-                      <button onClick={() => updateUserRole(user, "admin")} className="btn bg-orange-400">
+                      <button onClick={() => updateUserRole(user, "admin")} className="btn border-none text-black bg-blue-500 hover:bg-blue-700">
                         Make Admin
                       </button>
                     )}
                     {user.role !== "seller" && (
-                      <button onClick={() => updateUserRole(user, "seller")} className="btn bg-orange-400">
+                      <button onClick={() => updateUserRole(user, "seller")} className="btn border-none text-black bg-green-500 hover:bg-green-500">
                         Make Seller
                       </button>
                     )}
                     {user.role !== "user" && (
-                      <button onClick={() => updateUserRole(user, "user")} className="btn bg-orange-400">
+                      <button onClick={() => updateUserRole(user, "user")} className="btn border-none text-black bg-orange-500 hover:bg-orange-700">
                         Make User
                       </button>
                     )}
@@ -129,6 +129,7 @@ const AllUsers = () => {
          
         </table>
       </div>
+        </div>
         </div>
     );
 };

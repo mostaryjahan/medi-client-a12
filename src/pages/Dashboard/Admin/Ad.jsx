@@ -58,16 +58,16 @@ const Ad = () => {
   };
 
   return (
-    <div className=" font-bold ">
+    <div className="p-4 font-bold dark:bg-gray-100 dark:text-black">
          <Helmet>
         <title>Medi corner | Manage Banner</title>
       </Helmet>
      <h1 className="text-2xl md:text-3xl font-bold text-center">Manage Advertisement</h1>
-      <div className="overflow-x-auto p-2 w-full ">
+      <div className="overflow-x-auto p-2 w-full mt-6">
         <table className="table ">
           {/* head */}
           <thead>
-            <tr className="bg-purple-800 text-white">
+            <tr className="bg-primary border border-primary text-white">
               <th>SL</th>
               <th>description</th>
               <th>Email</th>
@@ -80,18 +80,18 @@ const Ad = () => {
             {/* row 1 */}
             {advertisemente?.map((user, index) => (
               <tr key={user._id} className="even:bg-purple-200 my-3">
-                <td>{index + 1}</td>
-                <td>{user?.description}</td>
-                <td>{user?.email}</td>
-                <td>{user?.status}</td>
-                <td className="min-w-28 md:min-w-12 md:max-w-16">
+                <td className="border border-black">{index + 1}</td>
+                <td className="border border-black">{user?.description}</td>
+                <td className="border border-black">{user?.email}</td>
+                <td className="border border-black">{user?.status}</td>
+                <td className="border border-black min-w-28 md:min-w-12 md:max-w-16">
                   <img
                     src={user?.photo}
                     className="size-full rounded"
                     alt=""
                   />
                 </td>
-                <td>
+                <td className="border border-black">
                   {user?.status === "pending" ? (
                     <button
                       onClick={() => handleApprove(user?._id)}
@@ -119,3 +119,4 @@ const Ad = () => {
 };
 
 export default Ad;
+  
