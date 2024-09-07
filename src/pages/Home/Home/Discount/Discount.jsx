@@ -34,6 +34,8 @@ const Discount = () => {
     speed: 2000,
     autoplaySpeed: 2000,
     cssEase: "linear",
+    arrows: false,
+
     responsive: [
         {
           breakpoint: 1024, 
@@ -63,7 +65,7 @@ const Discount = () => {
         <title>Medi corner | Home</title>
       </Helmet>
 
-      <h1 className="text-center font-semibold lg:text-4xl text-2xl mt-14 text-primary dark:text-gray-300">
+      <h1 className="text-center font-semibold lg:text-4xl text-2xl mt-14 text-primary">
         <span style={{ color: '', fontWeight: 'bold' }}>
           <Typewriter
             words={['Discount Medicines']}

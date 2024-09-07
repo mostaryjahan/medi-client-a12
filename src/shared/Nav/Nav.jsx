@@ -22,29 +22,47 @@ const Nav = () => {
   const navLinks = (
     <>
       <li className="font-semibold md:text-lg   text-white hover:text-white hover:underline">
-        <Link to="/">Home</Link>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "text-white underline"
+              : "text-white hover:text-white hover:underline"
+          }
+        >
+          Home
+        </NavLink>
       </li>
-      <li className="font-semibold md:text-lg text-white hover:text-white hover:underline ">
-        <Link to="/shop">Shop</Link>
+      <li className="font-semibold md:text-lg text-white">
+        <NavLink
+          to="/shop"
+          className={({ isActive }) =>
+            isActive
+              ? "text-white underline"
+              : "text-white hover:text-white hover:underline"
+          }
+        >
+          Shop
+        </NavLink>
       </li>
 
-      <Link to="/dashboard/cart">
+      <NavLink to="/dashboard/cart">
         {" "}
         <li>
           {" "}
           <button className=" bg-base-800 border-white  md:text-lg hover:text-white hover:underline">
             <TiShoppingCart className="w-8 h-8 text-white " />
-            <div className="badge text-[#00157c] dark:text-white">
+            <div className="badge text-[#00157c] dark:text-black">
               +{cart.length}
             </div>
           </button>
         </li>
-      </Link>
+      </NavLink>
     </>
   );
 
   return (
-    <div className="">
+    <div className="px-2 sm:px-0">
       <div className="navbar bg-primary font-extrabold ">
         <div className="navbar-start ">
           <div className="dropdown">
@@ -70,12 +88,15 @@ const Nav = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-primary  rounded-box w-36 "
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-primary  rounded-box w-36"
             >
               {navLinks}
             </ul>
           </div>
-          <a href="/" className=" font-bold md:text-xl lg:text-2xl  sm:flex items-center justify-center text-white bg-clip-text">
+          <a
+            href="/"
+            className=" font-bold md:text-xl lg:text-2xl  sm:flex items-center justify-center text-white bg-clip-text"
+          >
             <span>
               <img src={icon} alt="" className="w-10 h-10 hidden md:block " />
             </span>
@@ -88,7 +109,7 @@ const Nav = () => {
 
         <div className="navbar-end">
           {user ? (
-            <div className="dropdown dropdown-end">
+            <div className="dropdown dropdown-end dark:text-black">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-12 rounded-full border-white border-2">
                   <img
@@ -112,7 +133,7 @@ const Nav = () => {
                 </li>
                 <li>
                   <button
-                    className="btn text-white bg-red-500 w-full"
+                    className="btn text-white bg-red-500 hover:bg-red-700  w-full"
                     onClick={handleLogOut}
                   >
                     LogOut

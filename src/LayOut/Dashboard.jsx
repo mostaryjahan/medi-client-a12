@@ -11,7 +11,6 @@ const Dashboard = () => {
   const [cart] = useCart();
   const { user } = useAuth();
 
-
   if (!user) {
     return null;
   }
@@ -97,7 +96,6 @@ const Dashboard = () => {
 
           {user.role === "user" && (
             <>
-          
               <li>
                 <NavLink to="/dashboard/cart">
                   <TiShoppingCart className="w-4 h-4" />
@@ -113,7 +111,7 @@ const Dashboard = () => {
             </>
           )}
 
-          <div className="divider "></div>
+          <div className="divider border-b border-gray-300 dark:border-gray-300"></div>
 
           {/* shared links */}
           <li>

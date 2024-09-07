@@ -20,26 +20,26 @@ const PaymentHistory = () => {
         <title>MediCorner | Payment History</title>
       </Helmet>
       <div className="dark:bg-slate-100 dark:text-black p-4">
-      <h1 className="text-xl font-medium text-center mb-4">Total Payment: {payments.length}</h1>
+      <h1 className="text-xl font-medium text-center mb-4">Your Total Payment: {payments.length}</h1>
 
       <div className="overflow-x-auto ">
         <table className="table">
           {/* head */}
-          <thead className="bg-primary text-white">
-            <tr>
-              <th></th>
-              {/* <th>Price</th> */}
+          <thead className="bg-primary text-white ">
+            <tr className="text-center border border-black">
+              <th>SL</th>
+              <th>Price</th>
               <th>Transaction Id</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
             {payments.map((payment, index) => (
-              <tr key={payment._id}>
-                <th>{index + 1}</th>
-                {/* <td className="text-right">${payment.price}</td> */}
-                <td>{payment.transactionId}</td>
-                <td>{payment.status}</td>
+              <tr key={payment._id} className="border border-black text-center">
+                <th className="border border-black">{index + 1}</th>
+                <td className="">${payment.price}</td>
+                <td className="border border-black">{payment.transactionId}</td>
+                <td className="border border-black">{payment.status}</td>
               </tr>
             ))}
           </tbody>

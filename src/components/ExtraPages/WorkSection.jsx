@@ -5,16 +5,16 @@ import img3 from "../../assets/pic3.png";
 
 const WorkSection = () => {
   return (
-    <div className="mt-12 lg:mt-20 bg-base-100  mb-6 rounded-lg  dark:bg-slate-100 dark:text-black max-w-6xl mx-auto">
+    <div className="mt-12 lg:mt-20 bg-base-100 dark:text-black ">
       <Helmet>
         <title>Medi corner | Home</title>
       </Helmet>
-      <h3 className="font-medium md:text-xl text-center">To know more</h3>
+      <h3 className="font-medium md:text-xl text-center pt-4">To know more</h3>
       <h1 className="text-2xl md:text-4xl font-bold text-center">
         How MediCorner Works
       </h1>
 
-      <div className="flex flex-col lg:flex-row justify-around items-center gap-10 py-10">
+      <div className="flex flex-col lg:flex-row justify-around items-center gap-10 py-10 max-w-6xl mx-auto">
         {/* Step 1 */}
         <div className="flex flex-col items-center text-center">
           <img src={img1} alt="Compare Prices" className="w-32 h-32 mb-4" />

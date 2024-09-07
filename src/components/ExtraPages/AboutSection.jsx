@@ -2,8 +2,8 @@ import img from "../../assets/about.jpg"
 const AboutSection = () => {
   return (
     
-    <div className="hero mt-8 lg:mt-16 dark:bg-slate-100 dark:text-black max-w-6xl mx-auto">
-    <div className="hero-content flex-col lg:flex-row">
+    <div className="hero mt-8 lg:mt-16 dark:text-black">
+    <div className="hero-content flex-col lg:flex-row max-w-6xl mx-auto">
       <img
         src={img}
         className="sm:w-1/2 lg:h-[280px] rounded-lg mt-6" />

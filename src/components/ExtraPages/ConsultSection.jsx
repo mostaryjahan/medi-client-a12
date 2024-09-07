@@ -1,7 +1,7 @@
 import img from "../../assets/doctor.png";
 const ConsultSection = () => {
   return (
-    <div className="sm:flex justify-center items-center bg-blue-200 px-0 md:px-6 mt-10 lg:mt-16">
+    <div className="sm:flex justify-center items-center bg-blue-200 dark:text-black px-0 md:px-6 mt-10 lg:mt-16">
         
       <div className=" space-y-2 p-8">
         <h1 className="text-2xl md:text-4xl font-bold">Hello!</h1>
