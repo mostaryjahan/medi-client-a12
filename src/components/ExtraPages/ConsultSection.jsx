@@ -4,7 +4,7 @@ const ConsultSection = () => {
     <div className="sm:flex justify-center items-center bg-blue-200 dark:text-black px-0 md:px-6 mt-10 lg:mt-16">
         
       <div className=" space-y-2 p-8">
-        <h1 className="text-2xl md:text-4xl font-bold">Hello!!</h1>
+        <h1 className="text-2xl md:text-4xl font-bold">Hello!</h1>
         <p className="text-lg md:text-2xl font-medium">Consult your doctor through us & get discount for buy anything from us.</p>
         <input
           id="email"

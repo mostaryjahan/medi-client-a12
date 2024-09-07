@@ -14,7 +14,7 @@ const AboutSection = () => {
             dedicated to providing a wide range of medicines and health products
             from various reputable vendors, all in one convenient location. Our
             mission is to make healthcare more accessible and hassle-free for
-            everybody. At MediCorner, we are prioritize customer satisfaction and
+            everyone. At MediCorner, we prioritize customer satisfaction and
             safety, ensuring secure transactions and fast delivery. Our
             user-friendly interface makes it easy to find and purchase the
             products you need. Join us in revolutionizing the way you shop for
