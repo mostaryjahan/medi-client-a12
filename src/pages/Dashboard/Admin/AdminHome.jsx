@@ -20,7 +20,7 @@ const AdminHome = () => {
       <Helmet>
         <title>MediCorner | Admin Home</title>
       </Helmet>
-      <div className="dark:bg-gray-100 dark:text-black p-8">
+      <div className="dark:bg-gray-100 dark:text-black p-8 min-h-screen">
 
       
       <h1 className="font-bold text-3xl text-center mt-10">

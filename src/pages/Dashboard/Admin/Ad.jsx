@@ -12,11 +12,11 @@ const Ad = () => {
   const [approve, setApprove] = useState(false);
 
   const {
-    data: advertisemente = [],
+    data: advertisement = [],
    
     refetch,
   } = useQuery({
-    queryKey: ["advertisemente"],
+    queryKey: ["advertisement"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/slider`);
       return res.data;
@@ -39,7 +39,7 @@ const Ad = () => {
       refetch();
     });
   };
-  const handlepending = (id) => {
+  const handlePending = (id) => {
     setApprove(!approve);
     console.log(approve, id);
     axiosSecure.patch(`/slider/pending/${id}`).then((res) => {
@@ -60,14 +60,14 @@ const Ad = () => {
   return (
     <div className="p-4 font-bold dark:bg-gray-100 dark:text-black">
          <Helmet>
-        <title>Medi corner | Manage Banner</title>
+        <title>MediCorner | Manage Banner</title>
       </Helmet>
      <h1 className="text-2xl md:text-3xl font-bold text-center">Manage Advertisement</h1>
       <div className="overflow-x-auto p-2 w-full mt-6">
         <table className="table ">
           {/* head */}
           <thead>
-            <tr className="bg-primary border border-primary text-white">
+            <tr className="bg-primary border border-primary text-white text-center">
               <th>SL</th>
               <th>description</th>
               <th>Email</th>
@@ -78,8 +78,8 @@ const Ad = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {advertisemente?.map((user, index) => (
-              <tr key={user._id} className="even:bg-purple-200 my-3">
+            {advertisement?.map((user, index) => (
+              <tr key={user._id} className="even:bg-purple-200 my-3 text-center">
                 <td className="border border-black">{index + 1}</td>
                 <td className="border border-black">{user?.description}</td>
                 <td className="border border-black">{user?.email}</td>
@@ -95,14 +95,14 @@ const Ad = () => {
                   {user?.status === "pending" ? (
                     <button
                       onClick={() => handleApprove(user?._id)}
-                      className="btn bg-green-500 text-white hover:bg-special-button-hover hover:text-black"
+                      className="btn border-none bg-green-500 text-white hover:bg-special-button-hover hover:text-black"
                     >
                  Active
                     </button>
                   ) : (
                     <button
-                      onClick={() => handlepending(user?._id)}
-                      className="btn bg-red-500 text-white hover:bg-special-button-hover hover:text-black"
+                      onClick={() => handlePending(user?._id)}
+                      className="btn border-none bg-red-500 text-white hover:bg-special-button-hover hover:text-black"
                     >
                       InActive
                     </button>

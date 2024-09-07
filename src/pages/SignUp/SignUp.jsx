@@ -6,9 +6,13 @@ import Social from "../Social/Social";
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import img from "../../assets/login.jpg"
+import { useState } from "react";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useAuth();
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -102,7 +106,7 @@ const SignUp = () => {
               Sign Up now!
             </h1>
           </div>
-          <div className="card md:w-[400px]  bg-slate-200 opacity-80">
+          <div className="card md:w-[400px]  bg-slate-200 opacity-90 dark:text-black">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -111,7 +115,7 @@ const SignUp = () => {
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="input input-bordered dark:bg-slate-100"
+                  className="input input-bordered dark:bg-slate-100 border border-primary"
                   {...register("name", { required: true })}
                 />
                 {errors.name && (
@@ -125,7 +129,7 @@ const SignUp = () => {
                 </label>
                 <input
                   type="file"
-                  className="input input-bordered dark:bg-slate-100 px-1 py-2"
+                  className="input input-bordered dark:bg-slate-100 px-1 py-2 border border-primary"
                   {...register("photoURL", { required: true })}
                 />
                 {errors.photoURL && (
@@ -140,7 +144,7 @@ const SignUp = () => {
                 <input
                   type="email"
                   placeholder="email"
-                  className="input input-bordered dark:bg-slate-100"
+                  className="input input-bordered dark:bg-slate-100 border border-primary"
                   {...register("email", { required: true })}
                 />
                 {errors.email && (
@@ -153,15 +157,21 @@ const SignUp = () => {
                   <span className="label-text text-black text-lg font-semibold">Password:</span>
                 </label>
                 <input
-                  type="password"
+                  type={show ? "text" : "password"}
                   placeholder="password"
-                  className="input input-bordered dark:bg-slate-100"
+                  className="relative input input-bordered dark:bg-slate-100 border border-primary"
                   {...register("password", {
                     required: true,
                     minLength: 6,
                     maxLength: 20,
                   })}
                 />
+                  <span
+                  onClick={() => setShow(!show)}
+                  className="absolute ml-64 md:ml-72 mt-14"
+                >
+                  {show ? <FaEye /> : <FaEyeSlash />}
+                </span>
                 {errors.password && (
                   <span className="text-red-600">This field is required</span>
                 )}
@@ -173,7 +183,7 @@ const SignUp = () => {
                 </label>
                 <select
                   defaultValue="default"
-                  className="input input-bordered text-black dark:bg-slate-100"
+                  className="input input-bordered text-black dark:bg-slate-100 border border-primary"
                   {...register("role", { required: true })}
                 >
                   <option disabled value="default">

@@ -3,12 +3,17 @@ import useAuth from "../../Hook/useAuth";
 import Swal from "sweetalert2";
 import Social from "../Social/Social";
 import { Helmet } from "react-helmet-async";
-import img1 from "../../assets/login.jpg"
+import img1 from "../../assets/login.jpg";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
+import { useState } from "react";
 
 const Login = () => {
   const { signIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const [show, setShow] = useState(false);
+
 
   const from = location.state?.from?.pathname || "/";
 
@@ -36,14 +41,14 @@ const Login = () => {
   return (
     <div>
       <Helmet>
-        <title>Medi corner | Login</title>
+        <title>MediCorner | Login</title>
       </Helmet>
       <div
         className="hero"
         style={{
-          backgroundImage:  `url(${img1})`, 
-          backgroundSize: 'fit',
-          backgroundPosition: 'center',
+          backgroundImage: `url(${img1})`,
+          backgroundSize: "fit",
+          backgroundPosition: "center",
         }}
       >
         <div className="hero-content flex-col">
@@ -52,36 +57,46 @@ const Login = () => {
               Login Now!
             </h1>
           </div>
-          <div className="card md:w-[400px] bg-slate-200 opacity-80">
+          <div className="card md:w-[400px] text-black bg-slate-200 opacity-80">
             <form onSubmit={handleLogin} className="card-body ">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-black text-lg font-semibold">Email:</span>
+                  <span className="label-text text-black text-lg font-semibold">
+                    Email:
+                  </span>
                 </label>
                 <input
                   type="email"
                   placeholder="Email"
-                  className="input input-bordered dark:bg-slate-100"
+                  className="input input-bordered dark:bg-slate-100 border border-primary"
                   name="email"
                   required
                 />
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-black text-lg font-semibold">Password:</span>
+                  <span className="label-text text-black text-lg font-semibold">
+                    Password:
+                  </span>
                 </label>
                 <input
-                  type="password"
+                  type={show ? "text" : "password"}
                   placeholder="Password"
-                  className="input input-bordered dark:bg-slate-100"
+                  className="relative input input-bordered dark:bg-slate-100  border border-primary"
                   name="password"
                   required
                 />
+                    <span
+                  onClick={() => setShow(!show)}
+                  className="absolute ml-44 md:ml-72 mt-14"
+                >
+                  {show ? <FaEye /> : <FaEyeSlash />}
+                </span>
               </div>
 
               <div className="form-control mt-2">
                 <input
-                  className="btn w-full mx-auto bg-[#00157c] hover:border-2 hover:bg-white hover:border-[#00157c] text-white hover:text-[#00157c]"
+                  className=" btn w-full mx-auto bg-[#00157c] hover:border-2 hover:bg-white hover:border-[#00157c] text-white hover:text-[#00157c]"
                   type="submit"
                   value="Login"
                 />
@@ -96,8 +111,6 @@ const Login = () => {
                 </span>{" "}
               </Link>
             </p>
-           
-
 
             <p className="text-center text-black font-semibold">Or,</p>
             <div className=" text-center text-black">
@@ -111,3 +124,4 @@ const Login = () => {
 };
 
 export default Login;
+ 

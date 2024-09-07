@@ -100,12 +100,12 @@ const SalesReport = () => {
                 </div>
                 
 
-      <div className="overflow-x-auto my-8 w-full">
+      <div className="overflow-x-auto my-8">
         {
           <table className="table font-medium border border-black" ref={tableRef}>
             {/* head */}
             <thead className="w-full  ">
-              <tr className='bg-primary text-white'>
+              <tr className='bg-primary text-white text-center'>
                 <th>#</th>
                 <th>Total Price</th>
                 <th>Medicine Name</th>

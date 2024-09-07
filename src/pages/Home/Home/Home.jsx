@@ -1,10 +1,11 @@
 import { Helmet } from "react-helmet-async";
-import ExtraOne from "../ExtraPages/ExtraOne";
-// import ExtraTwo from "../ExtraPages/ExtraTwo";
 import Banner from "./Banner/Banner";
 import CategoryCard from "./CategoryCard/CategoryCard";
 import Discount from "./Discount/Discount";
-import Contract from "../ExtraPages/Contract";
+import AboutSection from "../../../components/ExtraPages/AboutSection";
+import WorkSection from "../../../components/ExtraPages/WorkSection";
+import ConsultSection from "../../../components/ExtraPages/ConsultSection";
+// import Contract from "../ExtraPages/Contract";
 
 const Home = () => {
     return (
@@ -16,9 +17,11 @@ const Home = () => {
             <Banner></Banner>
             <CategoryCard></CategoryCard>
             <Discount></Discount>
-            <ExtraOne></ExtraOne>
-            {/* <ExtraTwo></ExtraTwo> */}
-            <Contract></Contract>
+            <AboutSection></AboutSection>
+            <ConsultSection></ConsultSection>
+
+            <WorkSection></WorkSection>
+            {/* <Contract></Contract> */}
            
           
         
@@ -27,4 +30,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Home; 

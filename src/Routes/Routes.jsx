@@ -6,7 +6,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Error from "../Error/Error";
 import CategoryCard from "../pages/Home/Home/CategoryCard/CategoryCard";
 import CategoryDetails from "../pages/Home/Home/CategoryCard/CategoryDetails";
-import Shop from "../components/Shop/Shop";
+import Shop from "../pages/Shop/Shop";
 import Discount from "../pages/Home/Home/Discount/Discount";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";

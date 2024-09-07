@@ -1,96 +1,82 @@
-
-
 import useCart from "../../../Hook/useCart";
-import "ka-table/style.css";
-import { Table } from "ka-table";
-import { DataType, EditingMode, SortingMode } from "ka-table/enums";
+// import "ka-table/style.css";
+
 import useAuth from "../../../Hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hook/useAxiosPublic";
-import { Avatar } from "@nextui-org/react";
 import Modaln from "./Modaln";
 import { Helmet } from "react-helmet-async";
 
 const Ask = () => {
-   const [, refetch] = useCart();
+  const [, refetch] = useCart();
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
 
-  const { data: advertisement = [], refetch: refetchAds} = useQuery({
+  const { data: advertisement = [], refetch: refetchAds } = useQuery({
     queryKey: ["advertisement"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/slider/${user?.email}`);
       refetch();
       return res.data;
-      
     },
     enabled: !!user?.email,
   });
-//   console.log(advertisement);
-
-  const dataArray = advertisement.map((item, index) => ({
-    description: item?.description,
-    status: item?.status,
-    ProfilePicture: item?.photo,
-    email: item?.email.slice(0, 25),
-    id: index,
-  }));
+  //   console.log(advertisement);
 
   const handleRefetch = () => {
-    refetchAds(); 
-    refetch();    
+    refetchAds();
+    refetch();
   };
 
   return (
-    <div>
-            <Helmet>
-        <title>Medi corner | Add Advertisement</title>
+    <div className="dark:bg-gray-100 dark:text-black p-4 min-h-screen">
+      <Helmet>
+        <title>MediCorner | Add Advertisement</title>
       </Helmet>
-     
-      <div className=" flex    justify-center                items-center  my-16">
-        <Modaln refetch={handleRefetch}></Modaln>
-       </div>
-       <div className=" text-2xl font-bold">
-      
-       <Table className='overflow-auto'
-        columns={[
-          { key: "description", title: "description", dataType: DataType.String },
-          { key: "status", title: "status", dataType: DataType.String },
-          {
-            key: "ProfilePicture",
-            title: "ProfilePicture",
-            dataType: DataType.String,
-          },
-          { key: "email", title: "email", dataType: DataType.String },
-        
+      <h1 className="text-2xl font-semibold text-center">
+        Add Advertisement For Banner
+      </h1>
 
-         
-        ]}
-       
-        data={dataArray}
-        editingMode={EditingMode.Cell}
-        rowKeyField={"id"}
-         sortingMode={SortingMode.Single}
-         format={({ column, value }) => {
-           if (column.key === "ProfilePicture") {
-            return (
-              <Avatar
-                className="w-[100px] h-[100px]"
-                isBordered
-                radius="sm"
-                src={value}
-              />
-            );
-          }
-        }}
-      />
+      <div className=" flex justify-center           items-center  my-8">
+        <Modaln refetch={handleRefetch}></Modaln>
+      </div>
+
+      <div className="overflow-x-auto font-medium">
+        <table className="table">
+          <thead>
+            <tr className="bg-primary text-white border border-primary text-center">
+              <th>#</th>
+              <th>Image</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {advertisement.map((item, index) => (
+              <tr
+                key={item._id}
+                className="border border-black even:bg-purple-200"
+              >
+                <th>{index + 1}</th>
+                <th>
+                  <img
+                    src={item.photo}
+                    alt="banner"
+                    className="md:w-28 w-14 h-12  lg:h-16 rounded-md"
+                  />
+                </th>
+
+                <td>{item.description}</td>
+                <td>{item.status}</td>
+                <td> {item.email} </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 };
 
 export default Ask;
-
-
-
-
