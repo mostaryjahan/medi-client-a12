@@ -52,7 +52,7 @@ const Banner = () => {
                 <p className="rounded-md md:text-2xl font-bold text-center capitalize text-primary sm:p-6 absolute  top-10  sm:top-20 lg:top-32 left-1/2  bg-white bg-opacity-60 -translate-x-1/2 p-2">
                   {item.description}
                 </p>
-                <p className="text-red-600 absolute bottom-2 right-2 font-medium"> <span className="text-primary">Advertisement By :</span> {item.email}</p>
+                <p className="text-red-600 absolute bottom-2 right-2 font-medium"> <span className="text-primary">Advertisement By:</span> {item.email}</p>
               </div>
             </div>
           ))}
