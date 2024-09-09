@@ -21,49 +21,45 @@ const Nav = () => {
 
   const navLinks = (
     <>
-      <li className="font-semibold md:text-lg   text-white hover:text-white hover:underline">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive
-              ? "text-white underline"
-              : "text-white hover:text-white hover:underline"
-          }
-        >
-          Home
-        </NavLink>
-      </li>
-      <li className="font-semibold md:text-lg text-white">
-        <NavLink
-          to="/shop"
-          className={({ isActive }) =>
-            isActive
-              ? "text-white underline"
-              : "text-white hover:text-white hover:underline"
-          }
-        >
-          Shop
-        </NavLink>
-      </li>
-
-      <NavLink to="/dashboard/cart">
-        {" "}
-        <li>
-          {" "}
-          <button className=" bg-base-800 border-white  md:text-lg hover:text-white hover:underline">
-            <TiShoppingCart className="w-8 h-8 text-white " />
-            <div className="badge text-[#00157c] dark:text-black">
-              +{cart.length}
-            </div>
-          </button>
-        </li>
+    <li className="font-semibold md:text-lg text-primary hover:underline">
+      <NavLink 
+        to="/" 
+        className={({ isActive }) =>
+          isActive ? " underline" : ""
+        }
+      >
+        Home
       </NavLink>
-    </>
+    </li>
+    
+    <li className="font-semibold text-primary md:text-lg hover:underline">
+      <NavLink 
+        to="/shop" 
+        className={({ isActive }) =>
+          isActive ? " underline" : ""
+        }
+      >
+        Shop
+      </NavLink>
+    </li>
+  
+    <NavLink to="/dashboard/cart">
+      <li>
+        <button className="bg-base-800 border-white md:text-lg hover:text-white hover:underline">
+          <TiShoppingCart className="w-8 h-8 text-primary" />
+          <div className="badge text-primary">
+            +{cart.length}
+          </div>
+        </button>
+      </li>
+    </NavLink>
+  </>
+  
   );
 
   return (
     <div className=" ">
-      <div className="navbar w-full fixed top-0 z-10 bg-primary font-extrabold ">
+      <div className="navbar w-full fixed top-0 z-10 bg-base-100 font-extrabold ">
         <div className="navbar-start ">
           <div className="dropdown">
             <div
@@ -93,17 +89,17 @@ const Nav = () => {
               {navLinks}
             </ul>
           </div>
-        
-        <Link
-        to="/"
-        className="font-bold md:text-xl lg:text-2xl sm:flex items-center justify-center text-white bg-clip-text"
-      >
-        <img src={icon} alt="icon" className="w-10 h-10 hidden md:block " />
-        <span>MediCorner</span>
-      </Link>
+
+          <Link
+            to="/"
+            className="font-bold md:text-xl lg:text-2xl sm:flex items-center justify-center text-primary bg-clip-text"
+          >
+            <img src={icon} alt="icon" className="w-10 h-10 hidden md:block " />
+            <span>MediCorner</span>
+          </Link>
         </div>
         <div className="navbar-center  hidden sm:block md:flex lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-2">{navLinks}</ul>
+          <ul className="menu menu-horizontal px-1 gap-2 ">{navLinks}</ul>
         </div>
 
         <div className="navbar-end">
@@ -143,7 +139,7 @@ const Nav = () => {
           ) : (
             <div className="flex ">
               <Link to="/login">
-                <button className="btn border-2 rounded border-white bg-transparent text-white hover:bg-white hover:text-[#00157c] ">
+                <button className="btn border-2 border-primary rounded bg-transparent text-primary hover:bg-primary hover:text-white ">
                   Join Us
                 </button>
               </Link>

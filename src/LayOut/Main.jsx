@@ -22,7 +22,7 @@ const Main = () => {
       <div className="max-w-8xl mx-auto  dark:text-gray-200">
         {!shouldHideNavFooter && <Nav />}
 
-      <div className="mt-[64px]">
+      <div className="mt-[78px]">
           <Outlet></Outlet>
         </div>
       </div>

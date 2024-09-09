@@ -53,7 +53,7 @@ const Login = () => {
       >
         <div className="hero-content flex-col">
           <div className="text-center md:w-2/3 lg:text-left">
-            <h1 className="lg:text-5xl text-3xl font-bold text-primary">
+            <h1 className="lg:text-4xl text-3xl font-bold text-blue-800">
               Login Now!
             </h1>
           </div>
@@ -96,7 +96,7 @@ const Login = () => {
 
               <div className="form-control mt-2">
                 <input
-                  className=" btn w-full mx-auto bg-primary hover:border-2 hover:bg-white hover:border-[#00157c] text-white hover:text-[#00157c]"
+                  className=" btn w-full mx-auto bg-primary hover:border-2 hover:bg-white hover:border-primary text-white hover:text-primary"
                   type="submit"
                   value="Login"
                 />

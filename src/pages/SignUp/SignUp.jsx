@@ -102,7 +102,7 @@ const SignUp = () => {
       >
         <div className="hero-content flex-col">
           <div className="text-center">
-            <h1 className="md:text-5xl text-2xl font-bold text-primary">
+            <h1 className="md:text-5xl text-2xl font-bold text-blue-800">
               Sign Up now!
             </h1>
           </div>
@@ -199,7 +199,7 @@ const SignUp = () => {
 
               <div className="form-control mt-2">
                 <input
-                  className="btn bg-[#00157c] hover:border-2 hover:border-[#00157c] hover:bg-white text-white hover:text-[#00157c]"
+                  className="btn bg-primary hover:border-2 hover:border-primary hover:bg-white text-white hover:text-primary"
                   type="submit"
                   value="Sign Up"
                 />

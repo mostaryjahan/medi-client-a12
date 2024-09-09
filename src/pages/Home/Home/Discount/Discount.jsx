@@ -62,10 +62,10 @@ const Discount = () => {
   return (
     <div className='text-black'>
       <Helmet>
-        <title>Medi corner | Home</title>
+        <title>MediCorner | Home</title>
       </Helmet>
 
-      <h1 className="text-center font-semibold lg:text-4xl text-2xl mt-14 text-primary">
+      <h1 className="text-center font-semibold lg:text-4xl text-2xl mt-14 text-black">
         <span style={{ color: '', fontWeight: 'bold' }}>
           <Typewriter
             words={['Discount Medicines']}

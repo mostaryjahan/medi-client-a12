@@ -15,7 +15,7 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  --c:#0000, #050380 1deg 120deg,#0000 121deg;
+  --c:#0000, #007BFE 1deg 120deg,#0000 121deg;
   background:
     conic-gradient(from 0deg,  var(--c)) top right,
     conic-gradient(from 120deg,var(--c)) bottom,
