@@ -62,7 +62,7 @@ const Nav = () => {
   );
 
   return (
-    <div className="px-2 sm:px-0">
+    <div className=" ">
       <div className="navbar w-full fixed top-0 z-10 bg-primary font-extrabold ">
         <div className="navbar-start ">
           <div className="dropdown">
@@ -143,7 +143,7 @@ const Nav = () => {
           ) : (
             <div className="flex ">
               <Link to="/login">
-                <button className="btn border-b-[3px] border border-white bg-transparent text-white hover:bg-white hover:text-[#00157c] rounded-xl">
+                <button className="btn border-2 rounded border-white bg-transparent text-white hover:bg-white hover:text-[#00157c] ">
                   Join Us
                 </button>
               </Link>

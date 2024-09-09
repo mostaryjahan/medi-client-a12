@@ -52,7 +52,7 @@ const Modaln = ({ refetch }) => {
       // console.log(res);
       if (res.data.insertedId) {
         Swal.fire({
-          title: "Medicine Added ",
+          title: "Advertisement Added ",
           showClass: {
             popup: `
                     animate__animated

@@ -23,12 +23,12 @@ const CategoryCard = () => {
         Checkout Our Medicine Categories
       </h1>
 
-      <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4  mt-8 max-w-6xl  mx-auto">
+      <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4  mt-8 max-w-6xl  mx-auto p-2">
         {categories.slice(0, 6).map((card) => (
           <Link
             to={`/categoryDetails/${card.category}`}
             key={card._id}
-            className=" p-4 rounded-md border-2 border-primary shadow-md bg-gray-100 text-gray-900 transform transition-transform duration-300 ease-in-out hover:scale-105"
+            className=" p-4 rounded-md border-2 border-primary shadow-md bg-gray-100 text-gray-900 "
           >
             <img
               src={card.image}
@@ -43,7 +43,7 @@ const CategoryCard = () => {
             </p>
 
             <Link to={`/categoryDetails/${card.category}`}>
-              <button className="btn mt-2 w-full bg-primary text-white hover:bg-[#3147b4]">
+              <button className="btn mt-2 w-full bg-primary text-white hover:bg-[#0864b9]">
                 See Details
               </button>
             </Link>

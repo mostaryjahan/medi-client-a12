@@ -119,7 +119,7 @@ const Dashboard = () => {
             </>
           )}
 
-          <div className="divider border-b border-gray-300 dark:border-gray-300"></div>
+          <div className="divider border-b border-gray-300 "></div>
 
           {/* shared links */}
           <li>

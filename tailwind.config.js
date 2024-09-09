@@ -11,10 +11,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#011268",
+        primary: "#007BFF",
       },
     },
   },
 
   plugins: [nextui(), require("daisyui")],
 };
+//#011268

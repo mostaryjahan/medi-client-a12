@@ -96,7 +96,7 @@ const Login = () => {
 
               <div className="form-control mt-2">
                 <input
-                  className=" btn w-full mx-auto bg-[#00157c] hover:border-2 hover:bg-white hover:border-[#00157c] text-white hover:text-[#00157c]"
+                  className=" btn w-full mx-auto bg-primary hover:border-2 hover:bg-white hover:border-[#00157c] text-white hover:text-[#00157c]"
                   type="submit"
                   value="Login"
                 />

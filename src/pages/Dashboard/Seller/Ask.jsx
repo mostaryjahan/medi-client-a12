@@ -41,7 +41,7 @@ const Ask = () => {
         <Modaln refetch={handleRefetch}></Modaln>
       </div>
 
-      <div className="overflow-x-auto font-medium">
+      <div className="overflow-x-auto font-medium  max-w-4xl mx-auto">
         <table className="table">
           <thead>
             <tr className="bg-primary text-white border border-primary text-center">
