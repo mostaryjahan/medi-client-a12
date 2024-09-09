@@ -114,11 +114,11 @@ const Shop = () => {
   }, [selectedItem]);
 
   return (
-    <div>
+    <div className=" dark:bg-gray-100 dark:text-black">
       <Helmet>
         <title>MediCorner | Shop</title>
       </Helmet>
-      <div className="p-4 dark:bg-gray-100 dark:text-black">
+      <div className="p-4 max-w-5xl mx-auto">
 
       
       <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold mt-2">

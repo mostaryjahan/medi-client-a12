@@ -12,7 +12,7 @@ const Main = () => {
 
   if (loading) {
     return (
-      // <div className="w-16 h-16 mx-auto mt-20 border-4 border-dashed rounded-full animate-spin border-purple-600">
+    
       <div className="loader mx-auto mt-28 "></div>
     );
   }
@@ -22,7 +22,7 @@ const Main = () => {
       <div className="max-w-8xl mx-auto  dark:text-gray-200">
         {!shouldHideNavFooter && <Nav />}
 
-        <div className="px-2 md:px-0">
+      <div className="mt-[72px]">
           <Outlet></Outlet>
         </div>
       </div>

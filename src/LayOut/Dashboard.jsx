@@ -6,10 +6,13 @@ import { Helmet } from "react-helmet-async";
 import { FaKitMedical, FaShop, FaStairs } from "react-icons/fa6";
 import useAuth from "../Hook/useAuth";
 import { MdPayments } from "react-icons/md";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { useState } from "react";
 
 const Dashboard = () => {
   const [cart] = useCart();
   const { user } = useAuth();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   if (!user) {
     return null;
@@ -20,11 +23,16 @@ const Dashboard = () => {
       <Helmet>
         <title>Medi corner | Dashboard</title>
       </Helmet>
-      {/* side bar */}
-      <div className="w-64 min-h-screen text-white dark:text-white bg-primary">
-        <h2 className="text-3xl text-center p-2 mt-4 font-bold">MediCorner</h2>
 
-        <ul className="menu ">
+      {/* Sidebar */}
+      <div
+        className={`${
+          !isSidebarOpen ? "hidden" : "block"
+        } lg:w-64 min-h-screen text-white dark:text-white bg-primary lg:block`}
+      >
+        <h2 className="text-3xl text-center p-2 mt-[72px] lg:mt-6 font-bold">MediCorner</h2>
+
+        <ul className="menu">
           {user.role === "admin" && (
             <>
               <li>
@@ -129,7 +137,15 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      {/* dashboard content */}
+      {/* Hamburger Button */}
+      <button
+        className="lg:hidden fixed top-4 left-4 p-2 text-white z-50 bg-primary rounded shadow-md"
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        <GiHamburgerMenu className="w-6 h-6" />
+      </button>
+
+      {/* Dashboard content */}
       <div className="flex-1">
         <Outlet></Outlet>
       </div>

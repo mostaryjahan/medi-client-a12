@@ -113,14 +113,15 @@ const Cart = () => {
   };
 
   return (
-    <div className="bg-blue-100 p-4 dark:text-black min-h-screen">
+    <div className="bg-blue-100 dark:text-black ">
+    <div className=" p-4 min-h-screen max-w-3xl mx-auto">
       <Helmet>
         <title>MediCorner | cart</title>
       </Helmet>
 
       <h1 className="text-2xl font-bold text-center  mb-4">Want to Add More?</h1>
-      <hr className=""/>
-      <div className="flex justify-evenly mt-4">
+
+      <div className="flex justify-evenly mt-4 ">
         <h2 className="lg:text-3xl font-medium">Total Prices: {totalPrice} $</h2>
 
         <button onClick={handleClearCart} className="btn bg-red-500 border-none text-white">
@@ -201,6 +202,7 @@ const Cart = () => {
           </button>
         )}
       </div>
+    </div>
     </div>
   );
 };

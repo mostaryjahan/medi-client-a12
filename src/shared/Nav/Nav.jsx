@@ -63,7 +63,7 @@ const Nav = () => {
 
   return (
     <div className="px-2 sm:px-0">
-      <div className="navbar bg-primary font-extrabold ">
+      <div className="navbar w-full fixed top-0 z-10 bg-primary font-extrabold ">
         <div className="navbar-start ">
           <div className="dropdown">
             <div
@@ -93,15 +93,14 @@ const Nav = () => {
               {navLinks}
             </ul>
           </div>
-          <a
-            href="/"
-            className=" font-bold md:text-xl lg:text-2xl  sm:flex items-center justify-center text-white bg-clip-text"
-          >
-            <span>
-              <img src={icon} alt="" className="w-10 h-10 hidden md:block " />
-            </span>
-            MediCorner
-          </a>
+        
+        <Link
+        to="/"
+        className="font-bold md:text-xl lg:text-2xl sm:flex items-center justify-center text-white bg-clip-text"
+      >
+        <img src={icon} alt="icon" className="w-10 h-10 hidden md:block " />
+        <span>MediCorner</span>
+      </Link>
         </div>
         <div className="navbar-center  hidden sm:block md:flex lg:flex">
           <ul className="menu menu-horizontal px-1 gap-2">{navLinks}</ul>
