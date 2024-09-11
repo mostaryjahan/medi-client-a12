@@ -98,8 +98,8 @@ const Nav = () => {
             <span>MediCorner</span>
           </Link>
         </div>
-        <div className="navbar-center  hidden sm:block md:flex lg:flex">
-          <ul className="flex justify-center items-center px-8 gap-8 ">{navLinks}</ul>
+        <div className="navbar-center  hidden sm:block md:flex lg:flex ml-10">
+          <ul className="flex justify-center items-center px-8 gap-12 ">{navLinks}</ul>
         </div>
 
         <div className="navbar-end">
