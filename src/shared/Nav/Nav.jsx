@@ -45,11 +45,11 @@ const Nav = () => {
   
     <NavLink to="/dashboard/cart">
       <li>
-        <button className="bg-base-800 border-white md:text-lg hover:text-white hover:underline">
+        <button className="bg-base-800 border-white md:text-lg hover:text-white hover:underline flex items-center">
           <TiShoppingCart className="w-8 h-8 text-primary" />
-          <div className="badge text-primary">
+          <span className="badge text-primary">
             +{cart.length}
-          </div>
+          </span>
         </button>
       </li>
     </NavLink>
@@ -65,7 +65,7 @@ const Nav = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost sm:hidden text-white "
+              className="btn btn-ghost sm:hidden text-primary "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +84,7 @@ const Nav = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-primary  rounded-box w-36"
+              className="dropdown-content mt-1 z-[1] p-2 shadow bg-white  rounded-box w-32"
             >
               {navLinks}
             </ul>
@@ -99,7 +99,7 @@ const Nav = () => {
           </Link>
         </div>
         <div className="navbar-center  hidden sm:block md:flex lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-2 ">{navLinks}</ul>
+          <ul className="flex justify-center items-center px-8 gap-8 ">{navLinks}</ul>
         </div>
 
         <div className="navbar-end">
@@ -118,7 +118,7 @@ const Nav = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-1  shadow bg-base-100 rounded-box w-40 z-[1]"
+                className="p-2 dropdown-content mt-1   bg-base-100 rounded-box w-32 z-[1]"
               >
                 <li className=" mb-2 font-semibold">
                   <NavLink to="/updateProfile">Update Profile</NavLink>
