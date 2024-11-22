@@ -13,16 +13,14 @@ const CategoryDetails = () => {
 const {  data: medicines = []} = useQuery({
   queryKey: ['discount-home'],
   queryFn: async () => {
-    const res = await axiosPublic.get('/category')
+    const res = await axiosPublic.get('/category');
     return res.data
   }
 })
-
-  const filteredMedicines = medicines.filter(
-    (medicine) => medicine.category === category
-  );
-
-  //  console.log("Filtered medicines:", filteredMedicines);
+const filteredMedicines = medicines.filter(
+  (medicine) => medicine.category.toLowerCase() === category.toLowerCase()
+);
+ 
 
   const capsule = filteredMedicines.filter(
     (item) => item.category === "Capsule"
@@ -32,14 +30,14 @@ const {  data: medicines = []} = useQuery({
   );
   const tablet = filteredMedicines.filter((item) => item.category === "Tablet");
   const syrup = filteredMedicines.filter((item) => item.category === "Syrup");
-  const others = filteredMedicines.filter((item) => item.category === "others");
+  const others = filteredMedicines.filter((item) => item.category === "others" || item.category === "Others");
 
   return (
-    <div>
+    <div className="bg-gray-100">
       <Helmet>
         <title>Medi corner | Home </title>
       </Helmet>
-      <h1 className="text-center text-2xl md:text-3xl lg:text-5xl font-bold mt-4">
+      <h1 className="text-center text-2xl md:text-3xl dark:text-black font-bold pt-6">
         Details of Category Medicine
       </h1>
 
@@ -52,7 +50,7 @@ const {  data: medicines = []} = useQuery({
 
         <FilterCategory items={syrup} title="Syrup"></FilterCategory>
 
-        <FilterCategory items={others} title="others"></FilterCategory>
+        <FilterCategory items={others} title="Others"></FilterCategory>
       </div>
     </div>
   );

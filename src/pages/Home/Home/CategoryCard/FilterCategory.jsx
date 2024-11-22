@@ -100,15 +100,15 @@ const FilterCategory = ({ items, title }) => {
           <Helmet>
         <title>Medi corner | details </title>
       </Helmet>
-      <h2 className="text-center text-xl font-bold mt-4">{title}</h2>
+      <h2 className="text-center text-xl text-black font-bold mt-4 mb-4">{title}</h2>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto max-w-5xl mx-auto mb-8">
         <table className="table">
           {/* head */}
 
-          <thead className="bg-purple-800 text-white">
-            <tr>
-              <th></th>
+          <thead className="bg-primary text-white border border-black">
+            <tr className="border border-primary">
+              <th>SL</th>
               <th>Image</th>
               <th>Name</th>
               <th>Category</th>
@@ -117,9 +117,9 @@ const FilterCategory = ({ items, title }) => {
             </tr>
           </thead>
 
-          <tbody>
+          <tbody className="border border-black text-black">
             {items.map((item, index) => (
-              <tr key={item._id}>
+              <tr className="border border-black font-bold even:bg-purple-200" key={item._id}>
                 <th>{index + 1}</th>
                 <th><img className="w-10 h-10 rounded" src={item.image} alt="" /></th>
                 <td>{item.name}</td>
@@ -128,14 +128,14 @@ const FilterCategory = ({ items, title }) => {
                   <FaEye
                     onClick={() => openModal(item)
                     }
-                    className="text-purple-500 h-8 w-4"
+                    className="text-primary h-8 w-4"
                   />
                 </td>
                 <td>
                   <button 
                    onClick={() => handleAddToCart(item)}
 
-                  className="btn bg-purple-900 text-white">
+                  className="btn bg-primary text-white">
                     Select
                   </button>
                 </td>

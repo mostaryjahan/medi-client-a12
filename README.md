@@ -3,8 +3,8 @@
 
 ## Website: Medi Corner
 
-**Live Site URL**:(https://medi-corner-22.web.app)
-<!-- **Live Site URL**:(https://medi-corner-22.vercel.app) -->
+<!-- **Live Site URL**:(https://medi-corner-22.web.app) -->
+**Live Site URL**:(https://medi-corner-22.vercel.app)
 
 
 

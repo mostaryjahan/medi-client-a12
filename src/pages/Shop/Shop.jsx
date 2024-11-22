@@ -121,7 +121,7 @@ const Shop = () => {
       <div className="p-4 max-w-5xl mx-auto">
 
       
-      <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold mt-2">
+      <h1 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold ">
         Explore Our Complete Medicine Collection
       </h1>
       {/* Search Input */}
